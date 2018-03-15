@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Điện lạnh Phong Vân</title>
+    <link>/</link>
+    <description>Recent content on Điện lạnh Phong Vân</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Dec 2016 23:16:29 +0700</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Obsession</title>
+      <link>/product/</link>
+      <pubDate>Wed, 28 Dec 2016 23:16:29 +0700</pubDate>
+      
+      <guid>/product/</guid>
+      <description>Hello world</description>
+    </item>
+    
+    <item>
+      <title>Obsession</title>
+      <link>/products/remote-maylanh/</link>
+      <pubDate>Wed, 28 Dec 2016 23:16:29 +0700</pubDate>
+      
+      <guid>/products/remote-maylanh/</guid>
+      <description>Hello world</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/product2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/product2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/producta/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/producta/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

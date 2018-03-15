@@ -1,0 +1,46 @@
+{{ partial "header.html" . }}
+
+<main id="main">
+
+<div class="container">
+
+	<div class="row topspace">
+		<div class="col-sm-12">
+
+			<article class="post">
+				<div class="col-md-12">
+					<div class="col-md-1 small-imgs">
+						<img src={{ .Params.Image }} alt="..." class="img-rounded small-product-img">
+						<img src={{ .Params.Image }} alt="..." class="img-rounded small-product-img">
+						<img src={{ .Params.Image }} alt="..." class="img-rounded small-product-img">
+						<img src={{ .Params.Image }} alt="..." class="img-rounded small-product-img">
+					</div>
+					<div class="col-md-4 large-product-img">
+						<img src={{ .Params.Image }} alt="..." style="width:100%;" class="img-rounded">
+					</div>
+					<div class="col-md-6">
+						<div class="row product-name">
+								{{ .Params.ProductName }}
+						</div>
+						<div class="row">
+							<hr/>
+						</div>
+						<div class="product-price row">
+								{{ .Params.ProductPrice }}
+						</div>
+						<div class="product-contact row">
+							Lien he ngay: {{ .Site.Params.Phone }}
+						</div>
+					</div>
+			</article><!-- #post-## -->
+
+				</div>
+		</div> <!-- /row post  -->
+
+
+	</div>	<!-- /container -->
+
+</main>
+
+{{ partial "footer.html" . }}
+

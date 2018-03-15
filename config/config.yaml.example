@@ -1,0 +1,25 @@
+# see dienlanhphongvan/config/config.yaml for more option
+
+app:
+  host: 0.0.0.0
+  port: 5002
+  debug: true
+  whitelist:
+      - "http://localhost:5002"
+
+postgresql:
+  host        : 127.0.0.1
+  port        : 5432
+  username    : justin
+  db          : dienlanhphongvan
+  password    : justin
+  debug       : true
+  maxIdleConns: 10
+  maxOpenConns: 100
+
+
+log:
+  prefix    : "dienlanhphongvan"
+  dir       : /home/justin/workspace/src/dienlanhphongvan/log
+  levelDebug: true
+
