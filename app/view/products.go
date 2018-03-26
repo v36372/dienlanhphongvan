@@ -2,39 +2,54 @@ package view
 
 import (
 	"dienlanhphongvan/models"
+	"dienlanhphongvan/repo"
+	"dienlanhphongvan/utilities/uer"
 	"fmt"
 )
 
 type Product struct {
-	Name      string   `json:"name"`
-	Price     float32  `json:"price"`
-	Slug      string   `json:"slug"`
-	Url       string   `json:"url"`
-	Thumbnail string   `json:"thumbnail"`
-	Images    []string `json:"images"`
+	Name        string   `json:"name"`
+	Description string   `json:"desc"`
+	Category    string   `json:"category"`
+	Price       float32  `json:"price"`
+	Slug        string   `json:"slug"`
+	Url         string   `json:"url"`
+	Thumbnail   string   `json:"thumbnail"`
+	Images      []string `json:"images"`
 }
 
-func NewProduct(product models.Product) Product {
-	return Product{
-		Name:      product.Name,
-		Price:     product.Price,
-		Slug:      product.Slug,
-		Url:       fmt.Sprintf("products/%s", product.Slug),
-		Thumbnail: product.Thumbnail,
-		Images: []string{
-			product.Image01,
-			product.Image02,
-			product.Image03,
-			product.Image04,
-			product.Image05,
-		},
+func NewProduct(product models.Product) (Product, error) {
+	category, err := repo.Category.GetById(product.CategoryId)
+	if err != nil {
+		return Product{}, uer.InternalError(err)
 	}
+
+	return Product{
+		Name:        product.Name,
+		Description: product.Description,
+		Category:    category.Name,
+		Price:       product.Price,
+		Slug:        product.Slug,
+		Url:         fmt.Sprintf("products/%s", product.Slug),
+		Thumbnail:   NewImage(product.Thumbnail),
+		Images: []string{
+			NewImage(product.Image01),
+			NewImage(product.Image02),
+			NewImage(product.Image03),
+			NewImage(product.Image04),
+			NewImage(product.Image05),
+			NewImage(product.Image06),
+		},
+	}, nil
 }
 
-func NewProducts(products []models.Product) (productsView []Product) {
+func NewProducts(products []models.Product) (productsView []Product, err error) {
 	productsView = make([]Product, len(products))
 	for i, product := range products {
-		productsView[i] = NewProduct(product)
+		productsView[i], err = NewProduct(product)
+		if err != nil {
+			return
+		}
 	}
 
 	return

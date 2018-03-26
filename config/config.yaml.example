@@ -17,6 +17,13 @@ postgresql:
   maxIdleConns: 10
   maxOpenConns: 100
 
+# resource, no used
+resource:
+  rootDir: /home/justin/workspace/src/dienlanhphongvan/images
+
+# imgx service: image processing service
+imgx:  
+  address: "0.0.0.0:8921"
 
 log:
   prefix    : "dienlanhphongvan"

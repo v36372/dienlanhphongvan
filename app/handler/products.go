@@ -12,6 +12,7 @@ import (
 
 type productHandler struct {
 	productEntity entity.Product
+	imageEntity   entity.Image
 }
 
 func (h productHandler) GetDetail(c *gin.Context) {
@@ -28,8 +29,17 @@ func (h productHandler) GetDetail(c *gin.Context) {
 		return
 	}
 
-	productView := view.NewProduct(*product)
-	c.HTML(200, "product-detail.html", productView)
+	productView, err := view.NewProduct(*product)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+	productPageView := struct {
+		Product view.Product
+	}{
+		Product: productView,
+	}
+	c.HTML(200, "product-detail.html", productPageView)
 }
 
 func (h productHandler) GetList(c *gin.Context) {
@@ -41,7 +51,11 @@ func (h productHandler) GetList(c *gin.Context) {
 		return
 	}
 
-	productsView := view.NewProducts(products)
+	productsView, err := view.NewProducts(products)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
 	pagination := view.NewPagination(total, limit, page)
 	view.ResponseOKWithPagination(c, productsView, &pagination)
 }
@@ -55,11 +69,15 @@ func (h productHandler) Create(c *gin.Context) {
 	}
 
 	productModelDb := productForm.ToModelDb()
-	err = h.productEntity.Create(productModelDb)
+	err = h.productEntity.Create(productModelDb, h.imageEntity)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
 	}
 
-	productView := view.NewProduct(productModelDb)
+	productView, err := view.NewProduct(productModelDb)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
 	view.ResponseOK(c, productView)
 }

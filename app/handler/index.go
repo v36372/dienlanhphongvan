@@ -17,7 +17,12 @@ const (
 )
 
 func (h indexHandler) Index(c *gin.Context) {
-	categories, _ := h.Category.GetForHomePage(limitCategoryHomePage)
+	categories, err := h.Category.GetForHomePage(limitCategoryHomePage)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
 	categoriesView, err := view.NewCategories(categories)
 	if err != nil {
 		uer.HandleErrorGin(err, c)

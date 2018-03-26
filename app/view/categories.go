@@ -7,8 +7,16 @@ import (
 )
 
 type Category struct {
+	Id       int       `json:"id"`
 	Name     string    `json:"name"`
 	Products []Product `json:"products"`
+}
+
+func NewCategoryForDashboard(category models.Category) Category {
+	return Category{
+		Id:   category.Id,
+		Name: category.Name,
+	}
 }
 
 func NewCategory(category models.Category) (cate Category, err error) {
@@ -19,12 +27,25 @@ func NewCategory(category models.Category) (cate Category, err error) {
 		return
 	}
 
+	productViews, err := NewProducts(products)
+	if err != nil {
+		return
+	}
+
 	return Category{
 		Name:     category.Name,
-		Products: NewProducts(products),
+		Products: productViews,
 	}, nil
 }
 
+func NewCategoriesForDashboard(categories []models.Category) (categoryViews []Category) {
+	categoryViews = make([]Category, len(categories))
+	for i, cate := range categories {
+		categoryViews[i] = NewCategoryForDashboard(cate)
+	}
+
+	return
+}
 func NewCategories(categories []models.Category) (categoryViews []Category, err error) {
 	categoryViews = make([]Category, len(categories))
 	for i, cate := range categories {

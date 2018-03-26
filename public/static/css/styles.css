@@ -612,7 +612,7 @@ img {
   text-align: right;
 }
 .small-imgs {
-	height: 500px;
+	height: 700px;
 	width: 100px;
 	float: left;
 }
@@ -638,7 +638,8 @@ img {
 	font-size:1.5em;
 }
 .large-product-img {
-	height: 430px;
+	height: 650px;
+	width: 450px;
 	margin-bottom: 10px;
 }
 /* Posts navigation */

@@ -1,10 +1,12 @@
 package handler
 
 import (
+	"dienlanhphongvan-cdn/client"
 	"dienlanhphongvan/app/entity"
 	"dienlanhphongvan/config"
 	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/ulog"
+	"path"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,6 +28,13 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		r.Use(gin.Logger())
 	}
 
+	var (
+		originalImageDir = path.Join(conf.Resource.RootDir, "images")
+		cachedImageDir   = path.Join(conf.Resource.RootDir, "cached", "images")
+		uploadImageDir   = path.Join(conf.Resource.RootDir, "tmp")
+		imgx             = client.NewClient(conf.Imgx.Address, nil)
+	)
+
 	indexHandler := indexHandler{
 		Category: entity.NewCategory(),
 	}
@@ -33,15 +42,43 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	{
 		GET(groupIndex, "", indexHandler.Index)
 	}
+
+	productEntity := entity.NewProduct()
+	imageEntity := entity.NewImage(imgx, uploadImageDir, originalImageDir, cachedImageDir, conf.App.Debug)
+
 	// Product
 	productHandler := productHandler{
-		productEntity: entity.NewProduct(),
+		productEntity: productEntity,
+		imageEntity:   imageEntity,
 	}
 	groupProduct := r.Group("/products")
 	{
 		GET(groupProduct, "/:slug", productHandler.GetDetail)
 		GET(groupProduct, "", productHandler.GetList)
 		POST(groupProduct, "", productHandler.Create)
+	}
+
+	// Dashboard
+	dashboardHandler := dashboardHandler{
+		product:  productEntity,
+		category: entity.NewCategory(),
+		image:    imageEntity,
+	}
+	dashboardGroup := r.Group("/dashboard")
+	{
+		GET(dashboardGroup, "/create-product", dashboardHandler.CreateProduct)
+	}
+
+	// Image processing
+	imageHandler := imageHandler{
+		imageEntity: imageEntity,
+	}
+	groupImage := r.Group("/images")
+	{
+		POST(groupImage, "/upload", imageHandler.Upload)
+		POST(groupImage, "/move/:name", imageHandler.Move)
+		GET(groupImage, "/original/:name", imageHandler.GetOriginal)
+		GET(groupImage, "/cached/:name", imageHandler.GetCached)
 	}
 
 	return r

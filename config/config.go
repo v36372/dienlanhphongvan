@@ -14,6 +14,16 @@ type Config struct {
 	App        App
 	PostgreSQL PostgreSQL
 	Log        Log
+	Resource   Resource
+	Imgx       Service
+}
+
+type Resource struct {
+	RootDir string
+}
+
+type Service struct {
+	Address string
 }
 
 type App struct {
