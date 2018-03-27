@@ -15,7 +15,6 @@ const (
 
 var (
 	ErrorPermissionDenied = errors.New("PermissionDenied")
-	roleAdmins            = []int64{2, 1}
 )
 
 type GetLoggedInUserFunc func(userIDStr string) (interface{}, error)

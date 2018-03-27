@@ -54,6 +54,7 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	groupProduct := r.Group("/products")
 	{
 		GET(groupProduct, "/:slug", productHandler.GetDetail)
+		DEL(groupProduct, "/:slug", productHandler.DeleteProduct)
 		GET(groupProduct, "", productHandler.GetList)
 		POST(groupProduct, "", productHandler.Create)
 	}
@@ -64,9 +65,16 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		category: entity.NewCategory(),
 		image:    imageEntity,
 	}
+
+	authMiddleware := middleware.NewAuthMiddleware(secCookie, middleware.Auth.GetLoggedInUser)
+
 	dashboardGroup := r.Group("/dashboard")
+	dashboardGroup.Use(authMiddleware.Interception())
+	dashboardGroup.Use(authMiddleware.RequireLogin())
 	{
 		GET(dashboardGroup, "/create-product", dashboardHandler.CreateProduct)
+		GET(dashboardGroup, "/create-category", dashboardHandler.CreateCategory)
+		GET(dashboardGroup, "/list-product", dashboardHandler.ListProduct)
 	}
 
 	// Image processing
