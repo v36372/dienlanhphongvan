@@ -78,13 +78,15 @@ func init() {
 }
 
 func initCustomConfig() {
+	if isHeroku {
+		fmt.Println("deploted on herok")
+		return
+	}
 	if customConfigFile != "" {
 		customViper.SetConfigFile(customConfigFile)
 		if err := customViper.ReadInConfig(); err != nil {
 			fmt.Println("WARNING: file config/config.yaml not exist")
 		}
-	} else if isHeroku {
-		fmt.Println("deploted on herok")
 	}
 }
 
