@@ -1,1 +1,1 @@
-web: make build && ./bin/dienlanhphongvan -heroku=true
+web: dienlanhphongvan -heroku=true
