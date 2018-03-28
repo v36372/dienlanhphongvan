@@ -1,1 +1,1 @@
-web: ./bin/dienlanhphongvan --heroku=true
+web: root --heroku=true
