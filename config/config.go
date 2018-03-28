@@ -96,6 +96,7 @@ func loadFromOS(conf *Config) {
 }
 
 func load() {
+	fmt.Println("once")
 	once.Do(func() {
 		if err := cmd.GetViper().Unmarshal(&conf); err != nil {
 			fmt.Println("load viper fail")
@@ -112,6 +113,7 @@ func Load() {
 }
 
 func Get() Config {
+	fmt.Println("get")
 	load()
 	return conf
 }
