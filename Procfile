@@ -1,1 +1,1 @@
-web: root --heroku=true
+web: ls
