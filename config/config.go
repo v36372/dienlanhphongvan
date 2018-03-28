@@ -96,10 +96,8 @@ func loadFromOS(conf *Config) {
 }
 
 func load() {
-	fmt.Println("once")
 	once.Do(func() {
 		if cmd.IsOnHeroku() {
-			fmt.Println("load heroku")
 			loadFromOS(&conf)
 			return
 		}
@@ -114,7 +112,6 @@ func Load() {
 }
 
 func Get() Config {
-	fmt.Println("get")
 	load()
 	return conf
 }

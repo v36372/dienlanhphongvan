@@ -12,7 +12,6 @@ type UploadFilename struct {
 
 func ParseUploadFilename(value string) (*UploadFilename, error) {
 	items := regexUploadFilename.FindStringSubmatch(value)
-	fmt.Println("value :%s", value)
 	if len(items) != 3 {
 		return nil, fmt.Errorf("upload filename: invalid format")
 	}

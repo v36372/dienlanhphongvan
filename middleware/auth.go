@@ -4,7 +4,6 @@ import (
 	"dienlanhphongvan/models"
 	"dienlanhphongvan/repo"
 	"errors"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -45,7 +44,6 @@ func (a *authMiddleware) Interception() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		isLoggedIn := true
 		userIdStr, err := a.secCookie.GetCurrentUserID(c.Request)
-		fmt.Println("dit con di me may")
 		if err != nil {
 			if err != http.ErrNoCookie {
 				if err.Error() == "securecookie: expired timestamp" {
@@ -131,8 +129,6 @@ func (auth) GetLoggedInUser(username string) (interface{}, error) {
 	}
 
 	if user == nil {
-		fmt.Println("asdladsjasd")
-		fmt.Println(username)
 		return nil, ErrorPermissionDenied
 	}
 

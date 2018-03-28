@@ -14,7 +14,6 @@ import (
 
 func main() {
 	cmd.Execute()
-	fmt.Println("about to get")
 	conf := config.Get()
 
 	setupInfra(conf)

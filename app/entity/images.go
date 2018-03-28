@@ -73,7 +73,6 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 		toPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", toName.Path())
 
 		if !file.ExistFile(fromPath) {
-			fmt.Println(fromPath)
 			return oimages, uer.NotFoundError(errors.New("image not found"))
 		}
 		f, err := os.Open(fromPath)
