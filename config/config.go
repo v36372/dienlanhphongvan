@@ -2,6 +2,7 @@ package config
 
 import (
 	"dienlanhphongvan/cmd"
+	"fmt"
 	"os"
 	"strconv"
 	"sync"
@@ -97,7 +98,9 @@ func loadFromOS(conf *Config) {
 func load() {
 	once.Do(func() {
 		if err := cmd.GetViper().Unmarshal(&conf); err != nil {
+			fmt.Println("load viper fail")
 			if cmd.IsOnHeroku() {
+				fmt.Println("load heroku")
 				loadFromOS(&conf)
 			}
 		}
