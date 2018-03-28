@@ -98,12 +98,13 @@ func loadFromOS(conf *Config) {
 func load() {
 	fmt.Println("once")
 	once.Do(func() {
+		if cmd.IsOnHeroku() {
+			fmt.Println("load heroku")
+			loadFromOS(&conf)
+			return
+		}
 		if err := cmd.GetViper().Unmarshal(&conf); err != nil {
 			fmt.Println("load viper fail")
-			if cmd.IsOnHeroku() {
-				fmt.Println("load heroku")
-				loadFromOS(&conf)
-			}
 		}
 	})
 }

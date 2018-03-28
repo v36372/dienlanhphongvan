@@ -118,6 +118,7 @@ func initRootConfig() {
 }
 
 func GetViper() *viper.Viper {
+	fmt.Println("once 2")
 	once.Do(func() {
 		for _, key := range customViper.AllKeys() {
 			rootViper.Set(key, customViper.Get(key))
