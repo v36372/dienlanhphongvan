@@ -97,7 +97,7 @@ func (v Http) Fields() Fields {
 func InitDefaultLogger(logPath string, debugMode bool) {
 	err := file.CreateDir(logPath)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	defaultLogger = Ulogger{
 		LogPath:   logPath,
