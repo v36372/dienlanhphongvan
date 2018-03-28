@@ -71,7 +71,7 @@ func init() {
 func loadFromOS(conf *Config) {
 	conf.App.Debug, _ = strconv.ParseBool(os.Getenv("debug"))
 	conf.App.Host = os.Getenv("host")
-	conf.App.Port, _ = strconv.Atoi(os.Getenv("port"))
+	conf.App.Port, _ = strconv.Atoi(os.Getenv("PORT"))
 
 	conf.CookieToken.BlockKey = os.Getenv("blockkey")
 	conf.CookieToken.HashKey = os.Getenv("hashkey")
