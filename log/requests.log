@@ -1,0 +1,1193 @@
+[GIN] 2018/03/04 - 17:39:17 | 404 |         173ns |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:39:25 | 404 |         196ns |       127.0.0.1 | GET      /v1/products
+[GIN] 2018/03/04 - 17:41:55 | 200 |      73.995µs |       127.0.0.1 | GET      /ping
+[GIN] 2018/03/04 - 17:43:53 | 500 |    2.086655ms |       127.0.0.1 | GET      /products/
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:38 : pq: column products.created_at does not exist
+goroutine 27 [running]:
+dienlanhphongvan/repo.product.GetList(0x14, 0x13, 0x100000000000000, 0x0, 0xc42003a558, 0xc42003a500, 0xc420079118, 0xa20093)
+	/home/justin/workspace/src/dienlanhphongvan/repo/products.go:64 +0x226
+dienlanhphongvan/app/entity.productEntity.GetList(0x14, 0x13, 0x0, 0x0, 0x1, 0x1, 0x0, 0x14)
+	/home/justin/workspace/src/dienlanhphongvan/app/entity/products.go:36 +0x50
+dienlanhphongvan/app/handler.productHandler.GetList(0xc98fa0, 0xff30a0, 0xc42033c0b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/products.go:38 +0x6e
+dienlanhphongvan/app/handler.(productHandler).GetList-fm(0xc42033c0b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/init.go:41 +0x43
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.ErrorHandler.func1(0xc42033c0b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/error_handler.go:117 +0x197
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.CORSMiddleware.func1(0xc42033c0b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/CORS.go:25 +0x2fb
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.RecoveryWithWriter.func1(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/recovery.go:46 +0x5a
+github.com/gin-gonic/gin.(*Context).Next(0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc420305e60, 0xc42033c0b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:359 +0x586
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc420305e60, 0xc99a20, 0xc4203380e0, 0xc4202d0700)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:326 +0x153
+net/http.serverHandler.ServeHTTP(0xc4202d4dd0, 0xc99a20, 0xc4203380e0, 0xc4202d0700)
+	/usr/local/go/src/net/http/server.go:2694 +0xbc
+net/http.(*conn).serve(0xc4202ec640, 0xc9a560, 0xc4202c6680)
+	/usr/local/go/src/net/http/server.go:1830 +0x651
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2795 +0x27b
+
+[GIN] 2018/03/04 - 17:44:16 | 500 |    1.931788ms |       127.0.0.1 | GET      /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:38 : pq: column products.created_at does not exist
+goroutine 7 [running]:
+dienlanhphongvan/repo.product.GetList(0x14, 0x13, 0x101000000000001, 0x0, 0xc420038058, 0xc420038000, 0xc42007d118, 0xa20093)
+	/home/justin/workspace/src/dienlanhphongvan/repo/products.go:64 +0x226
+dienlanhphongvan/app/entity.productEntity.GetList(0x14, 0x13, 0x0, 0x0, 0x1, 0x1, 0x0, 0x14)
+	/home/justin/workspace/src/dienlanhphongvan/app/entity/products.go:36 +0x50
+dienlanhphongvan/app/handler.productHandler.GetList(0xc98fa0, 0xff30a0, 0xc4200e6c60)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/products.go:38 +0x6e
+dienlanhphongvan/app/handler.(productHandler).GetList-fm(0xc4200e6c60)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/init.go:41 +0x43
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.ErrorHandler.func1(0xc4200e6c60)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/error_handler.go:117 +0x197
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.CORSMiddleware.func1(0xc4200e6c60)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/CORS.go:25 +0x2fb
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.RecoveryWithWriter.func1(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/recovery.go:46 +0x5a
+github.com/gin-gonic/gin.(*Context).Next(0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc420307e60, 0xc4200e6c60)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:359 +0x586
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc420307e60, 0xc99a20, 0xc42039a000, 0xc42020d300)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:326 +0x153
+net/http.serverHandler.ServeHTTP(0xc4202d0dd0, 0xc99a20, 0xc42039a000, 0xc42020d300)
+	/usr/local/go/src/net/http/server.go:2694 +0xbc
+net/http.(*conn).serve(0xc420277360, 0xc9a560, 0xc420298f40)
+	/usr/local/go/src/net/http/server.go:1830 +0x651
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2795 +0x27b
+
+[GIN] 2018/03/04 - 17:46:11 | 200 |    2.135842ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:47:35 | 200 |    3.049298ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:47:42 | 200 |     959.568µs |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:48:40 | 200 |    2.071114ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:49:28 | 200 |    4.379571ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:49:48 | 200 |     6.12072ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:51:09 | 200 |    2.027835ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:51:38 | 200 |    2.560491ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:52:30 | 200 |    1.665138ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:54:02 | 200 |    2.355121ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:54:07 | 200 |    1.964753ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:54:54 | 200 |    1.573275ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:55:25 | 200 |    5.667752ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:56:06 | 200 |    6.134297ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:56:33 | 200 |    6.146677ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:57:55 | 200 |    4.557628ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:58:17 | 200 |    2.837898ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:58:38 | 200 |    3.996334ms |       127.0.0.1 | POST     /products
+[GIN] 2018/03/04 - 17:58:50 | 200 |     1.13057ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 17:59:46 | 200 |    2.569812ms |       127.0.0.1 | GET      /products
+[GIN] 2018/03/04 - 18:53:58 | 200 |     1.06433ms |             ::1 | GET      /ping
+[GIN] 2018/03/04 - 18:53:58 | 404 |      17.913µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/04 - 18:54:04 | 404 |      57.178µs |             ::1 | GET      /tags
+[GIN] 2018/03/04 - 18:54:12 | 200 |     665.713µs |             ::1 | GET      /ping
+[GIN] 2018/03/06 - 09:11:29 | 404 |     195.123µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 09:11:29 | 404 |      17.879µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/06 - 09:11:36 | 404 |     174.497µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 09:11:54 | 404 |      54.602µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 09:11:59 | 301 |      15.675µs |             ::1 | GET      /public/index.html
+[GIN] 2018/03/06 - 09:11:59 | 404 |      78.004µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 09:15:48 | 404 |     140.514µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 09:15:52 | 404 |       22.99µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 09:16:15 | 404 |     127.183µs |             ::1 | GET      /public/var/www
+[GIN] 2018/03/06 - 09:16:23 | 404 |      49.617µs |             ::1 | GET      /var/www
+[GIN] 2018/03/06 - 09:16:31 | 404 |      24.412µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 10:36:47 | 404 |     121.671µs |             ::1 | GET      /ping
+[GIN] 2018/03/06 - 10:36:51 | 200 |    1.330063ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 10:36:51 | 404 |     103.603µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 10:36:51 | 404 |     307.014µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:36:51 | 404 |      26.078µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:36:51 | 404 |      50.596µs |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/06 - 10:44:52 | 200 |     557.466µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 10:44:52 | 404 |      36.616µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 10:44:52 | 404 |      41.173µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:44:53 | 404 |      50.148µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:46:02 | 200 |    3.300143ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 10:46:02 | 404 |      28.955µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 10:46:02 | 404 |      14.012µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:46:02 | 404 |      16.846µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:46:05 | 200 |    1.380983ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 10:46:05 | 404 |      28.677µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 10:46:05 | 404 |      23.127µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 10:46:05 | 404 |      18.897µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 11:03:05 | 200 |     551.621µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 11:03:05 | 404 |       60.58µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 11:03:05 | 404 |       43.96µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 11:03:06 | 404 |      18.802µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 11:03:50 | 404 |      20.526µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 11:03:53 | 200 |     500.992µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 11:03:53 | 404 |      74.068µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 11:03:53 | 404 |      26.584µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 11:03:53 | 404 |      20.504µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 11:06:47 | 404 |      25.505µs |             ::1 | GET      /static/style/style.css
+[GIN] 2018/03/06 - 11:07:08 | 404 |      22.017µs |             ::1 | GET      /static/styles.css
+[GIN] 2018/03/06 - 11:07:22 | 404 |      35.045µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/06 - 11:07:24 | 404 |      22.867µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/06 - 12:01:17 | 200 |      618.61µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:01:17 | 404 |      31.565µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:01:17 | 404 |     146.722µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:01:17 | 404 |      22.217µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:01:23 | 404 |      44.093µs |             ::1 | GET      /post/
+[GIN] 2018/03/06 - 12:01:30 | 404 |      29.866µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:01:33 | 200 |      1.2139ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:01:33 | 404 |      26.665µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:01:33 | 404 |      32.399µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:01:33 | 404 |      28.625µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:10:25 | 200 |     668.274µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:10:25 | 404 |      35.577µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:10:25 | 404 |      85.699µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:10:25 | 404 |      30.326µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:10:34 | 404 |     150.461µs |             ::1 | GET      /public/
+[GIN] 2018/03/06 - 12:10:39 | 404 |      37.594µs |             ::1 | GET      /public/css
+[GIN] 2018/03/06 - 12:10:46 | 404 |      51.523µs |             ::1 | GET      /public/css/styles.css
+[GIN] 2018/03/06 - 12:12:14 | 200 |    6.480959ms |             ::1 | GET      /public/css/styles.css
+[GIN] 2018/03/06 - 12:12:18 | 200 |     515.337µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:12:18 | 404 |      29.352µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:12:18 | 404 |     106.109µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:12:18 | 404 |      80.785µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:13:04 | 200 |     436.815µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:13:04 | 404 |     130.041µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 12:13:04 | 404 |     138.959µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:13:04 | 404 |      39.959µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 12:19:08 | 200 |     613.827µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:19:08 | 200 |    5.524544ms |             ::1 | GET      /assets/css/styles.css
+[GIN] 2018/03/06 - 12:19:08 | 200 |      474.45µs |             ::1 | GET      /assets/js/template.js
+[GIN] 2018/03/06 - 12:19:09 | 200 |     325.324µs |             ::1 | GET      /assets/images/bg_head.jpg
+[GIN] 2018/03/06 - 12:19:09 | 200 |      77.786µs |             ::1 | GET      /assets/images/gt_favicon.png
+[GIN] 2018/03/06 - 12:19:20 | 200 |     382.896µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:20:29 | 200 |    1.020645ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:23:05 | 200 |     572.934µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:23:05 | 200 |    3.719691ms |             ::1 | GET      /assets/images/gt_favicon.png
+[GIN] 2018/03/06 - 12:23:09 | 200 |      453.55µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:27:23 | 200 |    3.162332ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:27:23 | 404 |      17.491µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 12:27:35 | 200 |    1.949736ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 12:27:35 | 404 |      100.46µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:18:25 | 200 |     996.598µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:18:25 | 404 |      32.337µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:18:25 | 404 |      22.707µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:18:25 | 404 |      18.631µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:18:25 | 404 |      23.108µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:18:29 | 404 |      22.435µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:18:34 | 200 |    1.641111ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:18:34 | 404 |      33.442µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:18:34 | 404 |     121.745µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:18:34 | 404 |      19.525µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:18:34 | 404 |      39.026µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:18:52 | 404 |        42.3µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:19:00 | 404 |      74.641µs |             ::1 | GET      /public/css/styles.css
+[GIN] 2018/03/06 - 13:19:04 | 200 |    7.995429ms |             ::1 | GET      /css/css/styles.css
+[GIN] 2018/03/06 - 13:29:59 | 200 |     545.067µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:29:59 | 404 |      84.406µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:29:59 | 404 |      26.402µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:29:59 | 404 |      20.148µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:29:59 | 404 |      17.037µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:30:15 | 200 |     654.435µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:30:15 | 404 |      36.076µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:30:15 | 404 |      24.515µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:30:15 | 404 |      40.645µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:30:15 | 404 |      19.887µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:30:19 | 200 |    2.115558ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:30:19 | 404 |      48.828µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:30:19 | 404 |     154.484µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:30:19 | 404 |      76.324µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:30:19 | 404 |      51.848µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:30:23 | 304 |     141.394µs |             ::1 | GET      /css/css/styles.css
+[GIN] 2018/03/06 - 13:30:34 | 404 |      28.201µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:33:12 | 200 |     546.491µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:33:12 | 404 |      81.344µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:33:12 | 200 |    1.876878ms |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 13:33:12 | 200 |     511.681µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 13:33:12 | 200 |    1.493774ms |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:33:12 | 404 |       20.29µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:33:16 | 404 |      81.481µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:33:18 | 200 |     478.691µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:33:18 | 404 |      26.666µs |             ::1 | GET      /styles.css
+[GIN] 2018/03/06 - 13:33:32 | 200 |     679.897µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:33:32 | 200 |    3.072026ms |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 13:33:32 | 200 |     112.427µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/06 - 13:50:57 | 200 |     757.672µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 13:51:02 | 404 |      22.551µs |             ::1 | GET      /product
+[GIN] 2018/03/06 - 13:51:07 | 404 |      58.832µs |             ::1 | GET      /post
+[GIN] 2018/03/06 - 13:51:12 | 404 |      60.061µs |             ::1 | GET      /post/product
+[GIN] 2018/03/06 - 13:51:15 | 200 |      625.55µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 20:03:06 | 200 |     586.176µs |             ::1 | GET      /
+[GIN] 2018/03/06 - 20:03:06 | 200 |    2.399501ms |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/06 - 20:03:06 | 304 |      32.732µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/06 - 20:03:06 | 304 |      28.812µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/06 - 20:03:06 | 304 |      73.482µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/08 - 11:06:39 | 200 |    2.927969ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 11:06:39 | 304 |     263.404µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 11:06:39 | 304 |      31.695µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 11:06:39 | 304 |      32.942µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/08 - 11:06:39 | 304 |       37.37µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/08 - 11:06:39 | 200 |    3.569441ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 12:40:27 | 200 |    1.948446ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 12:40:27 | 200 |    2.542618ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 12:42:14 | 200 |   17.967271ms |             ::1 | GET      /products
+[GIN] 2018/03/08 - 12:42:14 | 404 |      45.573µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/08 - 15:18:41 | 200 |    8.951762ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 15:18:41 | 304 |      78.551µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 15:48:31 | 200 |     1.92511ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 16:04:44 | 200 |    8.718323ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 16:04:44 | 200 |    3.101958ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:06:10 | 200 |   12.027141ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 16:06:10 | 200 |    1.584949ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:07:38 | 304 |      54.126µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/08 - 16:07:38 | 200 |    1.775635ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:10:13 | 200 |    2.423572ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:28:41 | 200 |    1.628755ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:28:42 | 200 |      59.618µs |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:34:33 | 200 |    4.541356ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:35:34 | 200 |   11.597887ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 16:35:34 | 304 |       55.78µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 16:35:34 | 200 |    1.491921ms |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:55:44 | 200 |   10.653349ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 16:55:44 | 404 |      25.831µs |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/08 - 16:56:05 | 404 |      53.129µs |             ::1 | GET      /products/slug:hi-bac
+[GIN] 2018/03/08 - 16:59:28 | 404 |     1.95789ms |             ::1 | GET      /products/slug:hi-bac
+[GIN] 2018/03/08 - 16:59:40 | 200 |    9.309349ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:00:56 | 200 |    7.818389ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:01:57 | 200 |     2.50754ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/08 - 17:01:57 | 404 |      27.206µs |             ::1 | GET      /products/css/styles.css
+[GIN] 2018/03/08 - 17:01:57 | 404 |      17.372µs |             ::1 | GET      /products/js/template.js
+[GIN] 2018/03/08 - 17:01:57 | 404 |      24.299µs |             ::1 | GET      /products/js/template.js
+[GIN] 2018/03/08 - 17:01:57 | 404 |      19.681µs |             ::1 | GET      /products/images/gt_favicon.png
+[GIN] 2018/03/08 - 17:02:09 | 404 |      22.184µs |             ::1 | GET      /products/css/styles.css
+[GIN] 2018/03/08 - 17:02:12 | 200 |    1.168518ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/08 - 17:02:12 | 404 |      28.857µs |             ::1 | GET      /products/css/styles.css
+[GIN] 2018/03/08 - 17:02:12 | 404 |      24.137µs |             ::1 | GET      /products/js/template.js
+[GIN] 2018/03/08 - 17:02:12 | 404 |      30.438µs |             ::1 | GET      /products/js/template.js
+[GIN] 2018/03/08 - 17:02:51 | 200 |   14.061626ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:03:17 | 200 |    4.460928ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:03:17 | 404 |      18.965µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:03:18 | 404 |      44.679µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:03:18 | 404 |      19.657µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:03:21 | 404 |      77.494µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:03:23 | 200 |     4.64165ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:03:23 | 404 |      21.751µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:03:23 | 404 |      27.359µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:03:23 | 404 |      41.111µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:03:36 | 404 |      21.221µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:03:49 | 200 |    1.833127ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/08 - 17:13:56 | 200 |    3.275292ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:13:56 | 404 |      22.799µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:13:56 | 404 |      28.208µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:13:56 | 404 |      21.567µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:14:00 | 404 |      30.567µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:14:03 | 200 |    4.710747ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:14:03 | 404 |      28.057µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/08 - 17:14:03 | 404 |      16.852µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:14:03 | 404 |      50.928µs |             ::1 | GET      /js/template.js
+[GIN] 2018/03/08 - 17:14:56 | 200 |   17.034433ms |             ::1 | GET      /
+[GIN] 2018/03/08 - 17:14:56 | 200 |    1.961861ms |             ::1 | GET      /static/js/template.js
+[GIN] 2018/03/08 - 17:14:56 | 200 |    2.438985ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/08 - 17:14:56 | 200 |    1.284562ms |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/08 - 17:14:56 | 200 |     159.239µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/08 - 17:15:02 | 200 |    2.636051ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/15 - 23:48:41 | 200 |   25.382762ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:48:41 | 200 |    3.307065ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/15 - 23:48:41 | 200 |      126.23µs |             ::1 | GET      /static/js/template.js
+[GIN] 2018/03/15 - 23:48:42 | 200 |     114.505µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/15 - 23:48:43 | 200 |      117.79µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/15 - 23:48:47 | 200 |    2.526337ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/15 - 23:53:00 | 200 |    7.806771ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:53:00 | 200 |      64.975µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/15 - 23:53:11 | 200 |    2.978464ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/15 - 23:53:15 | 200 |   11.050026ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:53:30 | 200 |    5.940509ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:53:53 | 200 |   10.272355ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:53:58 | 200 |   13.251629ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:54:14 | 200 |    3.009988ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/15 - 23:55:42 | 200 |   13.602918ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:55:43 | 200 |    1.782831ms |             ::1 | GET      /static/js/template.js
+[GIN] 2018/03/15 - 23:55:43 | 200 |    1.873521ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/15 - 23:55:44 | 200 |     136.941µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/15 - 23:57:07 | 200 |    15.05414ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:57:07 | 404 |      44.085µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/15 - 23:57:07 | 404 |      55.564µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/15 - 23:57:07 | 404 |      26.467µs |             ::1 | GET      /images/gt_favicon.png
+[GIN] 2018/03/15 - 23:57:13 | 404 |      29.349µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/15 - 23:57:15 | 200 |   12.944947ms |             ::1 | GET      /
+[GIN] 2018/03/15 - 23:57:15 | 404 |     102.402µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/15 - 23:57:15 | 404 |      25.329µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/15 - 23:58:15 | 404 |      53.917µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/15 - 23:58:16 | 404 |      20.664µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/16 - 00:00:18 | 200 |    8.348024ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:00:18 | 404 |      33.365µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/16 - 00:00:18 | 404 |      28.595µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/16 - 00:00:41 | 200 |   27.371827ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:00:41 | 200 |    3.826266ms |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/16 - 00:00:41 | 200 |    2.827309ms |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/16 - 00:00:42 | 200 |     144.144µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/16 - 00:00:42 | 200 |   16.831186ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:00:46 | 200 |   13.833719ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:00:59 | 200 |   13.337707ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:01:23 | 200 |   21.854193ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:01:23 | 200 |     167.909µs |             ::1 | GET      /css/styles.css
+[GIN] 2018/03/16 - 00:01:23 | 200 |      79.175µs |             ::1 | GET      /images/s1.jpg
+[GIN] 2018/03/16 - 00:01:23 | 200 |     161.386µs |             ::1 | GET      /images/bg_head.jpg
+[GIN] 2018/03/16 - 00:01:32 | 404 |      50.748µs |             ::1 | GET      /post/vivamus-lacus-mauris/
+[GIN] 2018/03/16 - 00:04:08 | 200 |   21.014534ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:04:11 | 200 |    3.004771ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 00:04:27 | 200 |    10.62752ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:04:45 | 200 |   13.522189ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:04:45 | 404 |      22.063µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/16 - 00:04:46 | 200 |    3.839616ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:04:56 | 200 |   10.463246ms |             ::1 | GET      /
+[GIN] 2018/03/16 - 00:08:23 | 200 |     1.96016ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:24:47 | 200 |    2.474431ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:25:33 | 200 |    3.611662ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:45:28 | 200 |    4.576539ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:45:28 | 404 |     148.804µs |             ::1 | GET      /products/images/s1.jpg
+[GIN] 2018/03/16 - 00:45:57 | 200 |    4.066977ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:51:35 | 200 |     4.23752ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:53:43 | 200 |     3.66253ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:53:44 | 200 |    3.457377ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:56:41 | 200 |    2.484357ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:57:10 | 200 |    2.945095ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 00:58:53 | 200 |    3.084044ms |             ::1 | GET      /products/ki-z-ta
+[GIN] 2018/03/16 - 01:00:21 | 200 |    3.074847ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 01:02:13 | 200 |    4.301455ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 01:03:32 | 200 |    4.186559ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 01:03:33 | 200 |     3.68327ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 01:04:25 | 200 |    4.840316ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 01:36:32 | 200 |    3.975693ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/16 - 03:57:37 | 200 |     1.93485ms |             ::1 | POST     /upload/images
+[GIN] 2018/03/16 - 10:47:55 | 404 |      71.721µs |             ::1 | POST     /upload/images
+[GIN] 2018/03/16 - 10:48:08 | 200 |     1.49351ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/16 - 10:55:53 | 500 |     208.183µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=1521172088_c8600727db2e57807007366c47f0772f
+Error #01: image filename: invalid format
+[GIN] 2018/03/16 - 10:57:31 | 500 |     449.936µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=1521172088_c8600727db2e57807007366c47f0772f
+Error #01: image filename: invalid format
+[GIN] 2018/03/16 - 10:59:10 | 500 |     163.317µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=1521172088_c8600727db2e57807007366c47f0772f
+Error #01: image filename: invalid format
+[GIN] 2018/03/16 - 11:00:13 | 500 |      81.025µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=product-image-example
+Error #01: image filename: invalid format
+[GIN] 2018/03/16 - 11:00:53 | 500 |      96.921µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=product-image-7263182
+Error #01: image filename: invalid timestamp require since 2013
+[GIN] 2018/03/16 - 11:02:22 | 200 |     507.868µs |             ::1 | POST     /images/move/1521172088_c8600727db2e57807007366c47f0772f?name=product-image-1521172926
+[GIN] 2018/03/16 - 11:03:46 | 200 |    2.573273ms |             ::1 | GET      /images/original/product-image-1521172926
+[GIN] 2018/03/16 - 11:46:19 | 200 |   57.904218ms |             ::1 | GET      /images/cached/product-image-1521172926
+[GIN] 2018/03/16 - 22:20:11 | 200 |    3.743729ms |             ::1 | GET      /images/cached/product-image-1521172926
+[GIN] 2018/03/16 - 22:20:21 | 500 |      87.658µs |             ::1 | GET      /images/cached/product-image-152117292
+Error #01: image filename: invalid timestamp require since 2013
+[GIN] 2018/03/16 - 22:20:43 | 404 |     120.482µs |             ::1 | GET      /images/cached/product-image-1521172925
+[GIN] 2018/03/16 - 22:23:46 | 400 |     140.488µs |             ::1 | GET      /images/cached/product-image-152117292
+Error #01: image filename: invalid timestamp require since 2013
+[GIN] 2018/03/16 - 22:25:54 | 200 |    1.613966ms |             ::1 | GET      /images/cached/product-image-1521172926?width=360&type=s
+[GIN] 2018/03/16 - 22:26:01 | 200 |      153.86µs |             ::1 | GET      /images/cached/product-image-1521172926?width=360&type=o
+[GIN] 2018/03/16 - 22:26:31 | 200 |     681.026µs |             ::1 | GET      /images/cached/product-image-1521172926?width=480&type=o
+[GIN] 2018/03/16 - 22:26:38 | 200 |     467.503µs |             ::1 | GET      /images/cached/product-image-1521172926?width=950&type=o
+[GIN] 2018/03/16 - 22:26:42 | 200 |     141.713µs |             ::1 | GET      /images/cached/product-image-1521172926?width=950&type=s
+[GIN] 2018/03/16 - 23:41:33 | 200 |    3.375084ms |             ::1 | GET      /images/cached/product-image-1521172926?width=950&type=s
+[GIN] 2018/03/16 - 23:41:36 | 200 |     190.074µs |             ::1 | GET      /images/cached/product-image-1521172926?width=950&type=s
+[GIN] 2018/03/16 - 23:41:37 | 200 |     333.428µs |             ::1 | GET      /images/cached/product-image-1521172926?width=950&type=s
+[GIN] 2018/03/16 - 23:41:58 | 200 |    7.094714ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/16 - 23:42:57 | 200 |    2.174598ms |             ::1 | POST     /images/move/1521218518_26f0db7db7ceebeb96806c2ddc982be3?name=nice-image-1521172923
+[GIN] 2018/03/16 - 23:43:27 | 200 |  125.528739ms |             ::1 | GET      /images/cached/nice-image-1521172923?width=960&type=s
+[GIN] 2018/03/16 - 23:43:52 | 500 |     111.438µs |             ::1 | POST     /images/upload
+Error #01: http: no such file
+[GIN] 2018/03/16 - 23:44:10 | 200 |    6.689152ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/16 - 23:50:28 | 200 |    7.635908ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/16 - 23:50:57 | 200 |    2.267811ms |             ::1 | POST     /images/move/1521219028_a1c2d18a0874d532d14980a7e0e74dd7?name=nice-image-1521172923
+[GIN] 2018/03/16 - 23:51:05 | 200 |    2.275789ms |             ::1 | GET      /images/cached/nice-image-1521172923?width=960&type=s
+[GIN] 2018/03/16 - 23:53:47 | 200 |    3.907779ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/16 - 23:54:01 | 200 |     801.889µs |             ::1 | POST     /images/move/1521219227_8fe40c8835f182479e6029538ad61f70?name=demo-image-1521172923
+[GIN] 2018/03/16 - 23:54:12 | 500 |    3.543185ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=960&type=s
+Error #01: Status 500 at dienlanhphongvan/app/entity/images.go:93 : Post http://localhost:8921/v1/images/crop?width=240: dial tcp 127.0.0.1:8921: connect: connection refused
+[GIN] 2018/03/16 - 23:54:24 | 200 |  132.988586ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=960&type=s
+[GIN] 2018/03/16 - 23:57:29 | 200 |    3.461159ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=960&type=o
+[GIN] 2018/03/16 - 23:57:54 | 200 |    2.894212ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=960&type=o
+[GIN] 2018/03/16 - 23:58:22 | 200 |     483.037µs |             ::1 | GET      /images/cached/demo-image-1521172923?width=360&type=o
+[GIN] 2018/03/16 - 23:59:37 | 200 |    2.855721ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=360&type=o
+[GIN] 2018/03/17 - 00:00:09 | 200 |    4.170926ms |             ::1 | GET      /images/cached/demo-image-1521172923?width=360&type=o
+[GIN] 2018/03/17 - 00:00:54 | 200 |     994.918µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/17 - 00:01:12 | 200 |     281.692µs |             ::1 | POST     /images/move/1521219654_f6171025f4ecd105daa35300e64e3d38?name=dime-image-1521172923
+[GIN] 2018/03/17 - 00:01:36 | 200 |     219.465µs |             ::1 | GET      /images/original/dime-image-1521172923
+[GIN] 2018/03/17 - 00:01:57 | 200 |   62.129054ms |             ::1 | GET      /images/cached/dime-image-1521172923?width=960&type=o
+[GIN] 2018/03/17 - 00:02:37 | 200 |     210.184µs |             ::1 | GET      /images/cached/dime-image-1521172923?width=960&type=o
+[GIN] 2018/03/17 - 00:02:49 | 200 |     201.277µs |             ::1 | GET      /images/cached/dime-image-1521172923?width=960&type=o
+[GIN] 2018/03/17 - 00:03:23 | 200 |   14.403701ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/17 - 00:03:34 | 200 |    2.956715ms |             ::1 | POST     /images/move/1521219803_ed2a8a64b465ef5706412ed0d07b135f?name=dota-image-1521172923
+[GIN] 2018/03/17 - 00:03:45 | 200 |    2.832262ms |             ::1 | GET      /images/original/dota-image-1521172923
+[GIN] 2018/03/17 - 00:04:07 | 200 |  142.385063ms |             ::1 | GET      /images/cached/dota-image-1521172923?width=960&type=o
+[GIN] 2018/03/17 - 00:06:01 | 200 |     307.381µs |             ::1 | GET      /images/cached/dota-image-1521172923?w=960&type=o
+[GIN] 2018/03/17 - 00:06:15 | 200 |    1.516676ms |             ::1 | GET      /images/original/dota-image-1521172923?w=960&type=o
+[GIN] 2018/03/17 - 00:06:27 | 200 |    2.617254ms |             ::1 | GET      /images/original/dota-image-1521172923?w=960&type=s
+[GIN] 2018/03/17 - 00:06:33 | 200 |    14.61906ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/17 - 00:06:45 | 200 |    2.088509ms |             ::1 | POST     /images/move/1521219993_1048663ad8f8a37da8093fdfe4307b0d?name=cac-image-1521172923
+[GIN] 2018/03/17 - 00:06:51 | 200 |    2.043584ms |             ::1 | GET      /images/original/cac-image-1521172923
+[GIN] 2018/03/17 - 00:07:07 | 404 |      25.632µs |             ::1 | GET      /images/cache/cac-image-1521172923?w=960&type=s
+[GIN] 2018/03/17 - 00:07:16 | 200 |  412.407814ms |             ::1 | GET      /images/cached/cac-image-1521172923?w=960&type=s
+[GIN] 2018/03/17 - 00:07:41 | 200 |     1.30869ms |             ::1 | GET      /images/cached/cac-image-1521172923?w=960&type=o
+[GIN] 2018/03/17 - 00:38:48 | 404 |     251.003µs |             ::1 | GET      /dashboard
+[GIN] 2018/03/17 - 00:39:49 | 200 |     1.71433ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/17 - 00:39:49 | 200 |    6.075662ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/17 - 00:39:50 | 200 |     133.576µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/17 - 00:39:50 | 200 |     412.993µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/26 - 23:11:15 | 200 |   23.112581ms |             ::1 | GET      /
+[GIN] 2018/03/26 - 23:11:15 | 200 |     2.19543ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/26 - 23:11:17 | 200 |     432.323µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/26 - 23:11:19 | 200 |     225.211µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/26 - 23:11:29 | 200 |    3.633672ms |             ::1 | GET      /products/wtf
+[GIN] 2018/03/26 - 23:14:24 | 404 |      63.882µs |             ::1 | GET      /admin
+[GIN] 2018/03/26 - 23:14:24 | 404 |       30.54µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/26 - 23:14:30 | 200 |     887.881µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:01:10 | 200 |    2.327924ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:01:11 | 200 |    3.314821ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 00:01:14 | 404 |      20.168µs |             ::1 | POST     /product
+[GIN] 2018/03/27 - 00:53:32 | 200 |    2.554691ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:53:45 | 200 |    1.277658ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:55:45 | 200 |     576.206µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:56:40 | 200 |    1.709784ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:56:56 | 200 |    1.406242ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:57:28 | 200 |    1.681429ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:57:36 | 200 |     566.339µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:58:19 | 200 |     513.061µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:59:06 | 200 |    1.510287ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 00:59:06 | 200 |    1.702207ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 00:59:07 | 200 |     442.396µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/27 - 01:01:22 | 200 |     1.91779ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:10:18 | 200 |    1.826785ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:10:51 | 500 |     178.352µs |             ::1 | POST     /images/upload
+Error #01: request Content-Type isn't multipart/form-data
+[GIN] 2018/03/27 - 01:13:10 | 200 |    3.690347ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:14:32 | 404 |      58.529µs |             ::1 | GET      /images/upload
+[GIN] 2018/03/27 - 01:14:36 | 200 |    2.019823ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:14:36 | 200 |    1.812891ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 01:14:39 | 200 |    1.629739ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:17:21 | 200 |    1.700324ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:17:21 | 200 |      74.273µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 01:17:24 | 200 |    1.045526ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:17:30 | 200 |    1.892774ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:17:33 | 200 |    4.281559ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:22:29 | 200 |    1.712744ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:25:30 | 200 |     620.287µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:25:38 | 200 |     902.766µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:29:07 | 200 |     1.60357ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:29:15 | 200 |     952.057µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:35:00 | 200 |       1.623ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:36:04 | 200 |    1.328785ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:41:28 | 200 |    2.418754ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:41:28 | 200 |     811.297µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:42:17 | 200 |    1.938021ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:42:17 | 200 |     514.117µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:43:22 | 200 |    1.582478ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:43:22 | 200 |     830.614µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:44:51 | 200 |    1.651518ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:44:52 | 200 |     712.347µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:49:39 | 200 |      2.3755ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:49:39 | 200 |     615.744µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:52:11 | 200 |    1.801901ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:52:11 | 200 |    1.308606ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:52:26 | 404 |      55.789µs |             ::1 | GET      /images/upload?files=%5Bobject+File%5D&_=1522090331669
+[GIN] 2018/03/27 - 01:53:07 | 200 |     451.733µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:53:07 | 200 |     600.695µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:53:10 | 200 |     897.031µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:53:32 | 200 |     531.059µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:53:32 | 200 |     825.892µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:53:38 | 200 |    4.615221ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:55:36 | 200 |    1.710246ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:55:37 | 200 |     727.205µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:55:40 | 200 |    1.291798ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 01:57:02 | 200 |     1.92905ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:57:02 | 200 |     677.517µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 01:57:05 | 200 |    2.004543ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:02:23 | 200 |    1.687703ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:02:23 | 200 |     542.895µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:03:17 | 200 |     659.482µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:03:40 | 200 |    2.069247ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:03:40 | 200 |     789.091µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:03:44 | 200 |     770.883µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:05:30 | 200 |     1.64729ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:05:30 | 200 |     738.682µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:05:39 | 200 |    2.382313ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:08:29 | 200 |    1.477968ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:09:40 | 200 |    2.532321ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:09:49 | 200 |     1.66545ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:09:51 | 200 |     478.843µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:09:51 | 200 |    1.431786ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:12:09 | 200 |     1.62268ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:12:11 | 200 |     581.681µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:12:11 | 200 |      608.76µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:13:45 | 200 |    1.787388ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:13:46 | 200 |    1.883171ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:13:58 | 200 |    3.742693ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:13:59 | 200 |    1.648337ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:14:29 | 200 |    2.015372ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:15:18 | 200 |       991.8µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:15:18 | 200 |     175.939µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 02:15:18 | 200 |     150.603µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/27 - 02:18:44 | 200 |     739.767µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:18:55 | 200 |    2.100451ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:20:40 | 200 |     576.354µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:20:47 | 200 |     940.832µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:23:21 | 200 |     475.776µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:23:25 | 200 |      952.95µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:23:28 | 200 |    1.126086ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:23:32 | 200 |    1.854887ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:23:37 | 200 |    3.705426ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:23:44 | 200 |     2.33567ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:26:53 | 200 |    1.074625ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:27:58 | 200 |    1.638788ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:28:08 | 200 |    2.130125ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:31 | 200 |     535.857µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:28:37 | 200 |    1.442736ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:40 | 200 |    2.115074ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:43 | 200 |     969.178µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:48 | 200 |     719.607µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:52 | 200 |    1.943685ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:28:56 | 200 |     589.681µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:33:21 | 200 |    2.540969ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:33:24 | 200 |    2.258231ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:37:59 | 200 |    1.433262ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 02:38:03 | 200 |     849.813µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 02:41:10 | 200 |   10.107388ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 02:42:16 | 200 |   12.000627ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 02:57:38 | 200 |   23.108999ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 03:14:31 | 200 |    5.624434ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 03:14:45 | 200 |    2.869075ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:14:59 | 200 |    6.804641ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 03:15:33 | 200 |   22.416195ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 03:15:39 | 500 |    6.819212ms |             ::1 | GET      /products
+Error #01: Status 500 at dienlanhphongvan/app/view/products.go:24 : record not found
+goroutine 24 [running]:
+dienlanhphongvan/repo.category.GetById(0x0, 0xc420194b70, 0x460b8c, 0x1018060, 0xc420194bc0, 0x411c89, 0xc4202c6360, 0x60, 0x60, 0xb1abc0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/repo/categories.go:65 +0x1b2
+dienlanhphongvan/app/view.NewProduct(0x5, 0xc42020c050, 0x7, 0xc42020c170, 0x9, 0x0, 0x45108000, 0x0, 0x0, 0x0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:22 +0xa1
+dienlanhphongvan/app/view.NewProducts(0xc42013f800, 0x6, 0x8, 0xc42013f800, 0x6, 0x8, 0x6, 0x0)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:49 +0x199
+dienlanhphongvan/app/handler.productHandler.GetList(0xcdb2a0, 0x104b498, 0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/products.go:53 +0xad
+dienlanhphongvan/app/handler.(productHandler).GetList-fm(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/init.go:56 +0x43
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.ErrorHandler.func1(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/error_handler.go:117 +0x197
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.CORSMiddleware.func1(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/CORS.go:25 +0x2fb
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.RecoveryWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/recovery.go:46 +0x5a
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc42039d200, 0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:359 +0x586
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc42039d200, 0xcdbd20, 0xc4203b21c0, 0xc420236100)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:326 +0x153
+net/http.serverHandler.ServeHTTP(0xc4203d40d0, 0xcdbd20, 0xc4203b21c0, 0xc420236100)
+	/usr/local/go/src/net/http/server.go:2694 +0xbc
+net/http.(*conn).serve(0xc4203f6000, 0xcdc8a0, 0xc4202ec480)
+	/usr/local/go/src/net/http/server.go:1830 +0x651
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2795 +0x27b
+
+[GIN] 2018/03/27 - 03:17:03 | 500 |    6.450052ms |             ::1 | GET      /products
+Error #01: Status 500 at dienlanhphongvan/app/view/products.go:24 : record not found
+goroutine 24 [running]:
+dienlanhphongvan/repo.category.GetById(0x0, 0xc420194b70, 0x460b8c, 0x1018060, 0xc420194bc0, 0x411c89, 0xc4202c6720, 0x60, 0x60, 0xb1abc0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/repo/categories.go:65 +0x1b2
+dienlanhphongvan/app/view.NewProduct(0x5, 0xc4203561d0, 0x7, 0xc420356200, 0x9, 0x0, 0x45108000, 0x0, 0x0, 0x0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:22 +0xa1
+dienlanhphongvan/app/view.NewProducts(0xc42078a000, 0x6, 0x8, 0xc42078a000, 0x6, 0x8, 0x6, 0x0)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:49 +0x199
+dienlanhphongvan/app/handler.productHandler.GetList(0xcdb2a0, 0x104b498, 0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/products.go:53 +0xad
+dienlanhphongvan/app/handler.(productHandler).GetList-fm(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/init.go:56 +0x43
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.ErrorHandler.func1(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/error_handler.go:117 +0x197
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.CORSMiddleware.func1(0xc4203e00b0)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/CORS.go:25 +0x2fb
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.RecoveryWithWriter.func1(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/recovery.go:46 +0x5a
+github.com/gin-gonic/gin.(*Context).Next(0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc42039d200, 0xc4203e00b0)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:359 +0x586
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc42039d200, 0xcdbd20, 0xc4203b22a0, 0xc420408000)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:326 +0x153
+net/http.serverHandler.ServeHTTP(0xc4203d40d0, 0xcdbd20, 0xc4203b22a0, 0xc420408000)
+	/usr/local/go/src/net/http/server.go:2694 +0xbc
+net/http.(*conn).serve(0xc4203f6000, 0xcdc8a0, 0xc4202ec480)
+	/usr/local/go/src/net/http/server.go:1830 +0x651
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2795 +0x27b
+
+[GIN] 2018/03/27 - 03:17:05 | 200 |   16.673927ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 03:18:01 | 200 |    4.184916ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/27 - 03:18:06 | 500 |    5.610986ms |             ::1 | GET      /products
+Error #01: Status 500 at dienlanhphongvan/app/view/products.go:24 : record not found
+goroutine 24 [running]:
+dienlanhphongvan/repo.category.GetById(0x0, 0xc420644b70, 0x460b8c, 0x1018060, 0xc420644bc0, 0x411c89, 0xc4200daba0, 0x60, 0x60, 0xb1abc0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/repo/categories.go:65 +0x1b2
+dienlanhphongvan/app/view.NewProduct(0x5, 0xc4201b2b50, 0x7, 0xc4201b2c10, 0x9, 0x0, 0x45108000, 0x0, 0x0, 0x0, ...)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:22 +0xa1
+dienlanhphongvan/app/view.NewProducts(0xc42013f800, 0x6, 0x8, 0xc42013f800, 0x6, 0x8, 0x6, 0x0)
+	/home/justin/workspace/src/dienlanhphongvan/app/view/products.go:49 +0x199
+dienlanhphongvan/app/handler.productHandler.GetList(0xcdb2a0, 0x104b498, 0xc420112f20)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/products.go:53 +0xad
+dienlanhphongvan/app/handler.(productHandler).GetList-fm(0xc420112f20)
+	/home/justin/workspace/src/dienlanhphongvan/app/handler/init.go:56 +0x43
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.ErrorHandler.func1(0xc420112f20)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/error_handler.go:117 +0x197
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.LoggerWithWriter.func1(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/logger.go:83 +0xcc
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+dienlanhphongvan/middleware.CORSMiddleware.func1(0xc420112f20)
+	/home/justin/workspace/src/dienlanhphongvan/middleware/CORS.go:25 +0x2fb
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.RecoveryWithWriter.func1(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/recovery.go:46 +0x5a
+github.com/gin-gonic/gin.(*Context).Next(0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/context.go:107 +0x43
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc42039d200, 0xc420112f20)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:359 +0x586
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc42039d200, 0xcdbd20, 0xc42018a000, 0xc420182600)
+	/home/justin/workspace/src/github.com/gin-gonic/gin/gin.go:326 +0x153
+net/http.serverHandler.ServeHTTP(0xc4203d40d0, 0xcdbd20, 0xc42018a000, 0xc420182600)
+	/usr/local/go/src/net/http/server.go:2694 +0xbc
+net/http.(*conn).serve(0xc4203f6000, 0xcdc8a0, 0xc4202ec480)
+	/usr/local/go/src/net/http/server.go:1830 +0x651
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2795 +0x27b
+
+[GIN] 2018/03/27 - 03:19:13 | 200 |    7.721859ms |             ::1 | GET      /products
+[GIN] 2018/03/27 - 03:29:43 | 200 |   19.149391ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 03:29:51 | 200 |    3.595011ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 03:29:54 | 200 |     2.42044ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:29:58 | 200 |     984.125µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:30:01 | 200 |    1.940668ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:30:04 | 200 |     668.938µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:30:07 | 200 |     2.08357ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:30:10 | 200 |     3.54126ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 03:30:28 | 200 |   34.163595ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 03:30:31 | 200 |   18.410855ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 03:30:31 | 404 |     108.869µs |             ::1 | GET      /1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+[GIN] 2018/03/27 - 03:30:36 | 200 |    4.776023ms |             ::1 | GET      /products/cai-con-di-me-may
+[GIN] 2018/03/27 - 03:30:36 | 404 |     138.422µs |             ::1 | GET      /original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+[GIN] 2018/03/27 - 03:30:36 | 404 |      32.894µs |             ::1 | GET      /original/1522096198_a4ae9f6175c004ca75c9436757cafc42
+[GIN] 2018/03/27 - 03:30:36 | 404 |      40.015µs |             ::1 | GET      /original/1522096201_242584d385fa3d4ac02470ee736f023f
+[GIN] 2018/03/27 - 03:30:36 | 404 |      42.083µs |             ::1 | GET      /original/1522096204_56cc1b54bf9f3500ca10da5b1e20e7db
+[GIN] 2018/03/27 - 03:30:36 | 404 |     115.913µs |             ::1 | GET      /original/1522096207_cee95bcc476bb3e391a068ded7accd17
+[GIN] 2018/03/27 - 03:30:36 | 404 |      36.821µs |             ::1 | GET      /original/1522096210_3309ddc14107a5cf83612c9be9c46e8e
+[GIN] 2018/03/27 - 03:30:37 | 404 |      23.315µs |             ::1 | GET      /original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+[GIN] 2018/03/27 - 03:31:35 | 200 |    6.290562ms |             ::1 | GET      /products/cai-con-di-me-may
+[GIN] 2018/03/27 - 03:31:35 | 500 |     146.377µs |             ::1 | GET      /images/original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |     107.295µs |             ::1 | GET      /images/original/1522096198_a4ae9f6175c004ca75c9436757cafc42
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |      82.345µs |             ::1 | GET      /images/original/1522096201_242584d385fa3d4ac02470ee736f023f
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |      77.649µs |             ::1 | GET      /images/original/1522096204_56cc1b54bf9f3500ca10da5b1e20e7db
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |     101.414µs |             ::1 | GET      /images/original/1522096207_cee95bcc476bb3e391a068ded7accd17
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |     124.588µs |             ::1 | GET      /images/original/1522096210_3309ddc14107a5cf83612c9be9c46e8e
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:31:35 | 500 |      71.819µs |             ::1 | GET      /images/original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 03:32:39 | 404 |      54.357µs |             ::1 | GET      /images/upload/1522096201_242584d385fa3d4ac02470ee736f023f
+[GIN] 2018/03/27 - 04:05:16 | 200 |    2.791375ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:05:21 | 200 |    1.119878ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:24 | 200 |    2.150023ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:28 | 200 |     3.27374ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:30 | 200 |    2.437957ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:33 | 200 |     678.646µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:35 | 200 |     3.21448ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:05:47 | 200 |   30.695319ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:107 : image not found
+[GIN] 2018/03/27 - 04:07:32 | 200 |   21.038514ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:07:32 | 404 |      25.135µs |             ::1 | GET      /1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+[GIN] 2018/03/27 - 04:07:49 | 200 |    1.805521ms |             ::1 | GET      /products/cai-con-di-me-may
+[GIN] 2018/03/27 - 04:07:49 | 500 |     214.275µs |             ::1 | GET      /images/original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |     114.862µs |             ::1 | GET      /images/original/1522096198_a4ae9f6175c004ca75c9436757cafc42
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |      94.329µs |             ::1 | GET      /images/original/1522096201_242584d385fa3d4ac02470ee736f023f
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |     130.712µs |             ::1 | GET      /images/original/1522096204_56cc1b54bf9f3500ca10da5b1e20e7db
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |      91.572µs |             ::1 | GET      /images/original/1522096207_cee95bcc476bb3e391a068ded7accd17
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |      79.198µs |             ::1 | GET      /images/original/1522096210_3309ddc14107a5cf83612c9be9c46e8e
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:07:49 | 500 |          59µs |             ::1 | GET      /images/original/1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:09:23 | 200 |    2.477139ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:107 : image not found
+[GIN] 2018/03/27 - 04:11:28 | 200 |   34.664994ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:108 : image not found
+[GIN] 2018/03/27 - 04:12:01 | 200 |   41.957609ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:108 : image not found
+[GIN] 2018/03/27 - 04:12:36 | 200 |   36.609542ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:108 : image not found
+[GIN] 2018/03/27 - 04:15:33 | 200 |    26.74313ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:108 : image not found
+[GIN] 2018/03/27 - 04:15:57 | 200 |   32.682527ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:109 : image not found
+[GIN] 2018/03/27 - 04:16:50 | 200 |    1.121164ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:16:50 | 200 |    3.251414ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:16:53 | 200 |    3.134431ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:17:02 | 200 |    1.559479ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:109 : image not found
+[GIN] 2018/03/27 - 04:19:32 | 200 |    6.445189ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:19:32 | 200 |    1.458989ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:19:35 | 200 |    2.957774ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:19:44 | 200 |   28.909997ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 404 at dienlanhphongvan/app/entity/images.go:108 : image not found
+[GIN] 2018/03/27 - 04:22:12 | 200 |    3.240775ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:22:12 | 200 |    1.380945ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:22:16 | 200 |    1.193642ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:22:27 | 200 |   35.344167ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 500 at dienlanhphongvan/app/entity/images.go:104 : upload filename: invalid format
+[GIN] 2018/03/27 - 04:26:04 | 200 |    8.869776ms |             ::1 | POST     /images/move/1521219993_1048663ad8f8a37da8093fdfe4307b0d?name=cac-image-1521172923
+[GIN] 2018/03/27 - 04:27:00 | 200 |    4.759804ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:27:01 | 200 |     1.51552ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:27:05 | 200 |    1.341742ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:27:18 | 200 |   40.075839ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 500 at dienlanhphongvan/app/entity/images.go:104 : upload filename: invalid format
+[GIN] 2018/03/27 - 04:28:34 | 200 |    1.360342ms |             ::1 | POST     /images/move/1522099625_82fb9690c9f5a35288165ed252bcfad6?name=cac-image-1521172923
+[GIN] 2018/03/27 - 04:29:17 | 200 |    4.563969ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:29:17 | 200 |    3.105065ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:29:22 | 200 |    2.049698ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:29:24 | 200 |   34.751228ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:60 : Status 500 at dienlanhphongvan/app/entity/images.go:104 : upload filename: invalid format
+[GIN] 2018/03/27 - 04:30:54 | 200 |     7.61519ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:30:54 | 200 |     1.43103ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:31:01 | 200 |    3.009478ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:32:29 | 200 |    6.584301ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:32:29 | 200 |     1.49325ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:32:34 | 200 |    1.482379ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:33:41 | 200 |    8.247814ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:33:41 | 200 |    4.071096ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:33:46 | 200 |    1.362288ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:33:48 | 200 |   33.576691ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 04:39:15 | 200 |    7.030688ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:39:16 | 200 |     1.88644ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:39:22 | 200 |     1.44144ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:39:24 | 200 |   17.706738ms |             ::1 | POST     /products
+Error #01: Status 500 at dienlanhphongvan/app/entity/products.go:61 : Status 500 at dienlanhphongvan/app/entity/images.go:113 : image filename: invalid format
+[GIN] 2018/03/27 - 04:43:25 | 200 |    3.027529ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:43:25 | 200 |    1.526848ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:43:30 | 200 |    4.319458ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:43:33 | 200 |   41.075402ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 04:44:03 | 200 |    6.662396ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:44:03 | 404 |      26.346µs |             ::1 | GET      /1522100610_76dd9408a8f472cbe21da298fecb4671-1522100613
+[GIN] 2018/03/27 - 04:44:03 | 404 |       89.98µs |             ::1 | GET      /1522100026_0169282b74c2566f1f60e6cd04ce3ab7-1522100028
+[GIN] 2018/03/27 - 04:44:03 | 404 |      26.907µs |             ::1 | GET      /1522096194_eaeca9fd7c2d64f99bb0c46b4cc36f87
+[GIN] 2018/03/27 - 04:44:46 | 200 |     4.42269ms |             ::1 | GET      /products/hi-bac
+[GIN] 2018/03/27 - 04:44:46 | 404 |      23.839µs |             ::1 | GET      /images/original/
+[GIN] 2018/03/27 - 04:44:46 | 404 |      35.074µs |             ::1 | GET      /images/original/
+[GIN] 2018/03/27 - 04:44:52 | 200 |     8.95174ms |             ::1 | GET      /products
+[GIN] 2018/03/27 - 04:45:46 | 200 |    8.201233ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:45:46 | 200 |      62.729µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:45:51 | 200 |    3.447951ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:45:54 | 200 |    2.398828ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:45:57 | 200 |    2.240557ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:46:01 | 200 |    2.626759ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:46:03 | 200 |     2.98404ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:46:06 | 200 |     716.251µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:46:09 | 200 |    2.301685ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:46:22 | 200 |    9.533778ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 04:46:24 | 200 |   10.011949ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:46:24 | 404 |      24.262µs |             ::1 | GET      /1522100754_2b461f0022cbe0a1b632dc7cb0aee6cb-1522100782
+[GIN] 2018/03/27 - 04:46:27 | 200 |    5.176697ms |             ::1 | GET      /products/con-cac
+[GIN] 2018/03/27 - 04:46:27 | 200 |     286.797µs |             ::1 | GET      /images/original/1522100754_2b461f0022cbe0a1b632dc7cb0aee6cb-1522100782
+[GIN] 2018/03/27 - 04:46:27 | 500 |     182.826µs |             ::1 | GET      /images/original/1522100757_c5ad07c1e6056652ce9a5b4342a52877
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:46:27 | 500 |       88.17µs |             ::1 | GET      /images/original/1522100763_cefc0af4b67119a1ebd104ed9d90e56a
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:46:27 | 500 |     123.692µs |             ::1 | GET      /images/original/1522100761_131e1cc3ee073d68ce14797dab2c750a
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:46:27 | 500 |     293.388µs |             ::1 | GET      /images/original/1522100766_907a43c3adc4ef2f25c8e19093d7836e
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:46:27 | 500 |      121.68µs |             ::1 | GET      /images/original/1522100769_5761576879285c9bddd538e2284158e1
+Error #01: image filename: invalid format
+[GIN] 2018/03/27 - 04:47:48 | 200 |    1.851511ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/27 - 04:47:55 | 200 |    1.274367ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:47:57 | 200 |    2.350362ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:48:01 | 200 |    2.381041ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:48:03 | 200 |    4.021219ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:48:06 | 200 |    2.179557ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:48:09 | 200 |      643.65µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/27 - 04:48:25 | 200 |   53.947976ms |             ::1 | POST     /products
+[GIN] 2018/03/27 - 04:48:28 | 200 |   20.277567ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:48:28 | 404 |      32.667µs |             ::1 | GET      /1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |    5.381255ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:48:31 | 200 |    3.551519ms |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |     515.633µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |     289.502µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |     244.372µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |     221.935µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 04:48:31 | 200 |     236.966µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 04:49:10 | 200 |   16.798263ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:49:10 | 404 |      37.937µs |             ::1 | GET      /1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:49:17 | 200 |    20.63365ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:49:17 | 404 |      37.141µs |             ::1 | GET      /1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:49:55 | 200 |    21.40748ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:49:55 | 304 |     157.575µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:49:55 | 200 |    2.228597ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:50:26 | 200 |    4.916257ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:50:26 | 304 |     345.447µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:50:26 | 304 |     204.771µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 04:50:26 | 304 |       243.8µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 04:50:26 | 304 |     107.337µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 04:50:26 | 304 |     144.182µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 04:50:26 | 304 |     141.022µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 200 |    4.766178ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:56:46 | 304 |     121.924µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 304 |     344.584µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 304 |      82.695µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 304 |      128.64µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 304 |     179.681µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 304 |      71.146µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 04:56:46 | 200 |      51.022µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:56:48 | 200 |    4.392821ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:56:48 | 200 |       158.2µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:56:49 | 200 |    5.830185ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:56:49 | 200 |       67.55µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/27 - 04:57:08 | 200 |   14.693052ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 04:57:09 | 200 |     116.784µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:57:09 | 200 |     791.655µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:57:10 | 200 |     110.204µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/27 - 04:57:11 | 200 |    4.541133ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:57:11 | 304 |      58.437µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:57:11 | 200 |     470.588µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 04:57:11 | 200 |     415.209µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 04:57:11 | 200 |     278.217µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 04:57:11 | 200 |     347.549µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 04:57:11 | 200 |     253.371µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 04:57:34 | 200 |    5.584128ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:57:34 | 200 |     959.864µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:58:35 | 200 |    4.148135ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:58:35 | 200 |     152.277µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:58:35 | 304 |     127.511µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 04:58:35 | 304 |     146.604µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 04:58:35 | 304 |       120.5µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 04:58:35 | 304 |     101.544µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 04:58:35 | 304 |      72.678µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 04:58:35 | 304 |     210.753µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 04:58:37 | 200 |    3.065754ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:58:37 | 304 |      55.101µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:58:39 | 200 |    5.944458ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:58:39 | 304 |      97.095µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:58:44 | 200 |     4.54269ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:58:44 | 200 |     318.496µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 04:58:57 | 200 |    4.462708ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 04:58:57 | 200 |     224.557µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:00:14 | 200 |    4.065346ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:00:14 | 304 |      111.07µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:00:14 | 304 |     230.711µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 05:00:14 | 304 |     221.899µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 05:00:14 | 304 |     167.894µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 05:00:14 | 304 |     199.563µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 05:00:14 | 304 |     193.192µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 05:00:14 | 304 |     136.314µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 05:01:02 | 200 |    5.747742ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:01:02 | 200 |     299.919µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:01:36 | 200 |    2.575276ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:01:36 | 200 |     175.463µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:01:36 | 304 |     111.033µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 05:01:36 | 304 |     134.763µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 05:01:36 | 304 |     107.417µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 05:01:36 | 304 |     119.969µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 05:01:36 | 304 |      87.338µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 05:01:36 | 304 |     518.746µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 05:01:56 | 200 |    4.676562ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:01:56 | 200 |     296.601µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:02:21 | 200 |    3.925115ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:02:21 | 200 |     273.452µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:04:19 | 404 |      39.494µs |             ::1 | GET      /post/
+[GIN] 2018/03/27 - 05:05:28 | 200 |   12.425405ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 05:05:28 | 304 |      58.922µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:05:28 | 304 |      163.94µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 05:06:05 | 200 |    5.140139ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:06:05 | 304 |      86.234µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:06:05 | 304 |     263.402µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 05:06:05 | 304 |     405.116µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 05:06:05 | 304 |     237.927µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 05:06:05 | 304 |     283.659µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 05:06:05 | 304 |     182.826µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 05:06:13 | 200 |    5.762042ms |             ::1 | GET      /
+[GIN] 2018/03/27 - 05:06:15 | 200 |    4.140391ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:07:20 | 200 |    4.613394ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:07:20 | 200 |     386.943µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:07:20 | 304 |     217.741µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/27 - 05:07:29 | 200 |    4.790339ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:07:29 | 200 |     335.778µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:07:37 | 200 |    4.578126ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:07:37 | 200 |     247.277µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:07:59 | 200 |    4.421332ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:07:59 | 200 |     235.561µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:07:59 | 304 |     114.532µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/27 - 05:07:59 | 304 |     119.974µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/27 - 05:07:59 | 304 |     165.349µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/27 - 05:07:59 | 304 |     130.356µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/27 - 05:07:59 | 304 |     125.885µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/27 - 05:08:17 | 200 |     134.361µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/27 - 05:08:51 | 200 |    3.844339ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/27 - 05:08:51 | 200 |     262.488µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/28 - 00:42:16 | 401 |     139.994µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 00:42:16 | 404 |      29.166µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/28 - 00:42:38 | 200 |   27.742953ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 00:42:39 | 200 |    5.390113ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/28 - 00:42:39 | 404 |     112.359µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 00:42:40 | 200 |    1.791255ms |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/28 - 00:43:19 | 200 |    2.071388ms |             ::1 | GET      /products/dit-me-may-lam-nhu-ngon-lam
+[GIN] 2018/03/28 - 00:43:19 | 404 |     118.922µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |      74.842µs |             ::1 | GET      /images/original/1522100877_317b0e73653f23a6f6b5d2efe8dafd7c-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |      75.478µs |             ::1 | GET      /images/original/1522100883_012420e69ea1763765094de60c4d0aad-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |       88.34µs |             ::1 | GET      /images/original/1522100881_1fce32e750fdc366cefe249e544bd0f7-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |      56.116µs |             ::1 | GET      /images/original/1522100886_3ebbf6d2f46c3d1e47005f70e47f584e-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |      42.141µs |             ::1 | GET      /images/original/1522100889_00feab396f9c469ffb0302d77bc0d76e-1522100905
+[GIN] 2018/03/28 - 00:43:19 | 404 |       49.17µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 21:00:24 | 401 |     119.186µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:00:24 | 401 |      98.543µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:00:24 | 404 |      17.413µs |             ::1 | GET      /favicon.ico
+[GIN] 2018/03/28 - 21:00:48 | 404 |      22.428µs |             ::1 | GET      /dashboard/login
+[GIN] 2018/03/28 - 21:01:01 | 200 |    1.332783ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:01:02 | 200 |    2.377646ms |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/28 - 21:01:04 | 200 |     149.781µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/28 - 21:01:19 | 401 |      49.194µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:04:41 | 401 |       191.3µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:25:12 | 200 |    4.324931ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:25:12 | 200 |    2.064163ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:25:21 | 404 |      54.034µs |             ::1 | POST     /dashboard/login
+[GIN] 2018/03/28 - 21:26:28 | 404 |      327.16µs |             ::1 | POST     /dashboard/login
+[GIN] 2018/03/28 - 21:27:11 | 200 |    1.303796ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:27:11 | 200 |    2.862799ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:27:22 | 404 |      72.817µs |             ::1 | POST     /dashboard/login
+[GIN] 2018/03/28 - 21:28:28 | 200 |   30.656549ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 21:28:28 | 404 |      96.248µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 21:28:34 | 200 |     1.92684ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:28:38 | 500 |     183.557µs |             ::1 | POST     /user/login
+Error #01: Status 500 at dienlanhphongvan/app/entity/user.go:25 : unsupported destination, should be slice or struct
+[GIN] 2018/03/28 - 21:30:16 | 200 |    3.522726ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:30:16 | 200 |    2.706398ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:30:22 | 500 |     266.383µs |             ::1 | POST     /user/login
+Error #01: Status 500 at dienlanhphongvan/app/entity/user.go:25 : unsupported destination, should be slice or struct
+[GIN] 2018/03/28 - 21:39:00 | 200 |    2.546023ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:39:00 | 200 |      1.4597ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:39:03 | 302 |   66.847045ms |             ::1 | POST     /user/login
+Error #01: Status 500 at dienlanhphongvan/app/handler/user.go:42 : securecookie: error - caused by: crypto/aes: invalid key size 0
+[GIN] 2018/03/28 - 21:41:05 | 200 |    5.190079ms |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 21:41:05 | 200 |    4.520488ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:41:08 | 302 |    91.85072ms |             ::1 | POST     /user/login
+[GIN] 2018/03/28 - 21:41:08 | 200 |    5.015178ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:41:38 | 200 |    4.621774ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:41:38 | 200 |      40.921µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:41:39 | 200 |    5.618484ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:41:39 | 200 |      83.464µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:41:40 | 200 |     4.48007ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:41:41 | 200 |      82.639µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 21:41:48 | 200 |    2.632844ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:42:02 | 401 |      92.605µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:42:09 | 401 |     157.774µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:42:26 | 200 |    1.695497ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/28 - 21:42:33 | 200 |     6.34414ms |             ::1 | POST     /dashboard/categories
+[GIN] 2018/03/28 - 21:59:20 | 200 |   11.429302ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 21:59:33 | 404 |      66.015µs |             ::1 | GET      /dashboard/list-product
+[GIN] 2018/03/28 - 21:59:38 | 200 |   12.296293ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 21:59:38 | 404 |      133.25µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 22:00:19 | 200 |    7.391543ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:00:19 | 404 |      72.238µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 22:00:19 | 200 |    1.832417ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:00:33 | 200 |    6.203389ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:00:33 | 404 |      72.596µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 22:00:33 | 200 |      63.083µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:00:51 | 200 |    7.434869ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:00:51 | 404 |      100.42µs |             ::1 | GET      /images/original/1522100875_244bbc7a94823d7a79510978efc443b1-1522100905
+[GIN] 2018/03/28 - 22:00:51 | 200 |      176.12µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:01:13 | 200 |    9.499501ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 22:01:13 | 200 |      49.953µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:01:16 | 200 |     943.207µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:24 | 200 |     1.89909ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:26 | 200 |    2.512869ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:29 | 200 |    1.970945ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:32 | 200 |    2.037194ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:35 | 200 |     2.19379ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:01:50 | 302 |    49.17186ms |             ::1 | POST     /dashboard/products
+[GIN] 2018/03/28 - 22:01:50 | 200 |    6.114041ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:01:50 | 200 |    1.820749ms |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:02:48 | 200 |    6.454867ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:02:48 | 200 |      40.307µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:02:56 | 200 |     4.58577ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 22:03:08 | 200 |    6.910859ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:03:11 | 200 |     968.502µs |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:03:15 | 200 |    3.478044ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:03:18 | 200 |    3.195983ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:03:21 | 200 |    3.011499ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:04:26 | 200 |    3.460797ms |             ::1 | POST     /images/upload
+[GIN] 2018/03/28 - 22:04:28 | 302 |   39.726757ms |             ::1 | POST     /dashboard/products
+[GIN] 2018/03/28 - 22:04:28 | 200 |    2.419876ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:12:01 | 200 |   12.320363ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:12:01 | 200 |    2.480999ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:13:02 | 200 |    15.75558ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:13:03 | 200 |    2.637075ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:14:18 | 200 |   11.435216ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/28 - 22:14:18 | 200 |    2.900692ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:14:52 | 200 |   12.970174ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:14:52 | 200 |     464.943µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:14:53 | 200 |    3.187328ms |             ::1 | GET      /products/asdasdsd
+[GIN] 2018/03/28 - 22:14:53 | 200 |      218.72µs |             ::1 | GET      /images/original/1522249391_cbb7a669e1d6819164e8fc2d9cb3e9b1-1522249468
+[GIN] 2018/03/28 - 22:14:53 | 200 |     750.774µs |             ::1 | GET      /images/original/1522249395_f46aae9c715981a05620d834b86f4899-1522249468
+[GIN] 2018/03/28 - 22:14:53 | 200 |     460.899µs |             ::1 | GET      /images/original/1522249398_3dd7800344842d45aec9a39a99bae6ab-1522249468
+[GIN] 2018/03/28 - 22:14:53 | 200 |     284.425µs |             ::1 | GET      /images/original/1522249401_f4408f4e71b081bce349ea2cb055f7bc-1522249468
+[GIN] 2018/03/28 - 22:14:53 | 200 |     258.949µs |             ::1 | GET      /images/original/1522249466_48b878172b18ec4a4afb0f7289398f73-1522249468
+[GIN] 2018/03/28 - 22:17:19 | 200 |    4.506472ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:17:19 | 304 |      75.336µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:18:45 | 200 |    11.25911ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:18:45 | 304 |     116.077µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:18:45 | 304 |      86.174µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:18:45 | 200 |     2.34403ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:18:49 | 200 |    5.836075ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:18:49 | 200 |       42.85µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:18:51 | 200 |   20.438672ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:18:51 | 200 |      57.706µs |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:21:11 | 200 |   13.614885ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:21:11 | 304 |      84.644µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:21:11 | 304 |      72.768µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:21:11 | 200 |    1.552521ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:22:17 | 200 |    5.343712ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:22:17 | 200 |     101.549µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/28 - 22:22:17 | 200 |     248.785µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:22:17 | 200 |     226.565µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:22:19 | 200 |     208.192µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/28 - 22:22:24 | 200 |    5.535588ms |             ::1 | GET      /products/asdasdsd
+[GIN] 2018/03/28 - 22:22:24 | 200 |    1.156595ms |             ::1 | GET      /images/original/1522249391_cbb7a669e1d6819164e8fc2d9cb3e9b1-1522249468
+[GIN] 2018/03/28 - 22:22:24 | 200 |     489.807µs |             ::1 | GET      /images/original/1522249395_f46aae9c715981a05620d834b86f4899-1522249468
+[GIN] 2018/03/28 - 22:22:24 | 200 |     384.883µs |             ::1 | GET      /images/original/1522249398_3dd7800344842d45aec9a39a99bae6ab-1522249468
+[GIN] 2018/03/28 - 22:22:24 | 200 |     366.334µs |             ::1 | GET      /images/original/1522249401_f4408f4e71b081bce349ea2cb055f7bc-1522249468
+[GIN] 2018/03/28 - 22:22:24 | 200 |     417.191µs |             ::1 | GET      /images/original/1522249466_48b878172b18ec4a4afb0f7289398f73-1522249468
+[GIN] 2018/03/28 - 22:22:30 | 401 |     124.357µs |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 22:34:48 | 200 |   10.699941ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:34:48 | 304 |     135.115µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:34:48 | 304 |     148.019µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:34:53 | 200 |     582.133µs |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 22:34:55 | 200 |    15.70933ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:40:54 | 401 |     273.611µs |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:41:26 | 401 |     245.665µs |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:44:50 | 200 |   34.556404ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:44:50 | 304 |     139.549µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:44:50 | 304 |     179.803µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:44:50 | 200 |    2.388523ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:44:54 | 200 |     540.478µs |             ::1 | GET      /user/login
+[GIN] 2018/03/28 - 22:47:27 | 200 |     3.93728ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/28 - 22:47:28 | 200 |    1.690697ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:47:33 | 200 |     5.31062ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:47:48 | 200 |   15.633784ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:49:39 | 200 |   11.430749ms |             ::1 | GET      /
+[GIN] 2018/03/28 - 22:49:39 | 304 |     755.566µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/28 - 22:49:39 | 304 |    1.740266ms |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/28 - 22:49:39 | 200 |    1.610518ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/28 - 22:49:47 | 200 |    3.363593ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/29 - 00:08:21 | 200 |   18.466838ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:10:43 | 200 |   23.059175ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:10:43 | 304 |    1.052836ms |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/29 - 00:10:43 | 304 |    1.912119ms |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/29 - 00:15:33 | 200 |    1.816134ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/29 - 00:16:19 | 200 |   16.496376ms |             ::1 | GET      /products/asdasdsd
+[GIN] 2018/03/29 - 00:16:19 | 304 |    1.488331ms |             ::1 | GET      /images/original/1522249391_cbb7a669e1d6819164e8fc2d9cb3e9b1-1522249468
+[GIN] 2018/03/29 - 00:16:19 | 304 |    1.369291ms |             ::1 | GET      /images/original/1522249395_f46aae9c715981a05620d834b86f4899-1522249468
+[GIN] 2018/03/29 - 00:16:19 | 304 |    7.655934ms |             ::1 | GET      /images/original/1522249398_3dd7800344842d45aec9a39a99bae6ab-1522249468
+[GIN] 2018/03/29 - 00:16:19 | 304 |    7.265655ms |             ::1 | GET      /images/original/1522249401_f4408f4e71b081bce349ea2cb055f7bc-1522249468
+[GIN] 2018/03/29 - 00:16:19 | 304 |    9.202095ms |             ::1 | GET      /images/original/1522249466_48b878172b18ec4a4afb0f7289398f73-1522249468
+[GIN] 2018/03/29 - 00:16:19 | 200 |    2.489767ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/29 - 00:17:07 | 200 |   11.973688ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/29 - 00:17:07 | 200 |    1.816916ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/29 - 00:17:12 | 200 |   17.263966ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:17:13 | 200 |    8.967564ms |             ::1 | GET      /dashboard/product-list
+[GIN] 2018/03/29 - 00:17:54 | 200 |   19.131944ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:17:54 | 200 |     179.754µs |             ::1 | GET      /static/css/styles.css
+[GIN] 2018/03/29 - 00:17:54 | 200 |     291.672µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/29 - 00:17:54 | 200 |     205.361µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/29 - 00:17:56 | 200 |     123.487µs |             ::1 | GET      /static/images/bg_head.jpg
+[GIN] 2018/03/29 - 00:17:58 | 200 |     509.539µs |             ::1 | GET      /user/login
+[GIN] 2018/03/29 - 00:25:47 | 200 |   14.697785ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:25:47 | 304 |     610.483µs |             ::1 | GET      /images/original/1522249388_0d6952b778b22f3f59cf0e877b42d17c-1522249468
+[GIN] 2018/03/29 - 00:25:47 | 304 |     483.104µs |             ::1 | GET      /images/original/1522249276_592e2e3219d22b2d35a81d20a5e534ca-1522249310
+[GIN] 2018/03/29 - 00:25:49 | 200 |    5.483371ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/29 - 00:25:50 | 200 |    4.020623ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/29 - 00:25:59 | 200 |   19.952744ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:27:08 | 200 |   13.277935ms |             ::1 | GET      /
+[GIN] 2018/03/29 - 00:27:09 | 200 |    1.834489ms |             ::1 | GET      /static/images/gt_favicon.png
+[GIN] 2018/03/29 - 00:27:11 | 200 |    5.039006ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/29 - 00:27:12 | 200 |    6.060448ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/29 - 00:27:13 | 200 |    4.495452ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/29 - 00:27:15 | 200 |     5.94827ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/29 - 00:27:16 | 200 |    4.724128ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/29 - 00:27:17 | 200 |    6.015612ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/29 - 00:27:20 | 200 |    4.593291ms |             ::1 | GET      /dashboard/create-category
+[GIN] 2018/03/29 - 00:27:24 | 200 |    4.663074ms |             ::1 | GET      /dashboard/create-product
+[GIN] 2018/03/29 - 00:27:26 | 200 |    5.188071ms |             ::1 | GET      /dashboard/create-category

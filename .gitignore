@@ -6,6 +6,5 @@ tags
 *.yaml
 *.yml
 !*.example
-log
 
 images
