@@ -2,9 +2,8 @@ package entity
 
 import (
 	"crypto/md5"
-	"dienlanhphongvan-cdn/client"
-	"dienlanhphongvan-cdn/model"
-	"dienlanhphongvan-cdn/util"
+	"dienlanhphongvan/cdnmodel"
+	"dienlanhphongvan/utilities/file"
 	"dienlanhphongvan/utilities/uer"
 	"encoding/hex"
 	"errors"
@@ -19,7 +18,6 @@ import (
 )
 
 type imageEntity struct {
-	Imgx        *client.Client
 	UploadDir   string
 	OriginalDir string
 	CachedDir   string
@@ -29,14 +27,12 @@ type imageEntity struct {
 type Image interface {
 	Upload(f io.Reader) (*model.UploadFilename, error)
 	GetOriginal(name model.Filename) (string, error)
-	GetCached(name model.Filename) (string, error)
 	Move(fromName model.UploadFilename, toName model.Filename) error
 	MoveImagesOfProduct(images []string) ([]string, error)
 }
 
-func NewImage(imgx *client.Client, uploadDir, originalDir, cachedDir string, debug bool) *imageEntity {
+func NewImage(uploadDir, originalDir, cachedDir string, debug bool) *imageEntity {
 	return &imageEntity{
-		Imgx:        imgx,
 		UploadDir:   uploadDir,
 		OriginalDir: originalDir,
 		CachedDir:   cachedDir,
@@ -48,7 +44,7 @@ func (i imageEntity) Upload(f io.Reader) (*model.UploadFilename, error) {
 	uuid := uniqueStr(time.Now().UnixNano())
 	name := model.NewUploadFilename(uuid, time.Now())
 	filepath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/tmp/", name.Path())
-	if err := util.WriteFile(filepath, f); err != nil {
+	if err := file.WriteFile(filepath, f); err != nil {
 		return nil, err
 	}
 	return &name, nil
@@ -56,45 +52,11 @@ func (i imageEntity) Upload(f io.Reader) (*model.UploadFilename, error) {
 
 func (i imageEntity) GetOriginal(name model.Filename) (string, error) {
 	filepath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", name.Path())
-	if util.ExistFile(filepath) {
+	if file.ExistFile(filepath) {
 		return filepath, nil
 	}
 
 	return "", uer.NotFoundError(errors.New("image not found"))
-}
-
-func (i imageEntity) GetCached(name model.Filename) (string, error) {
-	cachedPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/cached/", name.Path())
-	if util.ExistFile(cachedPath) {
-		return cachedPath, nil
-	}
-	// crop or resize original file
-	originalPath, err := i.GetOriginal(name)
-	if err != nil {
-		return "", err
-	}
-	var f io.Reader
-	switch name.Shape() {
-	case "o":
-		f, err = i.Imgx.Image.Resize(originalPath, client.ResizeOption{
-			Width: name.Width(),
-		})
-	case "s":
-		f, err = i.Imgx.Image.Crop(originalPath, client.CropOption{
-			Width: name.Width(),
-		})
-	default:
-		f, err = i.Imgx.Image.Resize(originalPath, client.ResizeOption{
-			Width: name.Width(),
-		})
-	}
-	if err != nil {
-		return "", uer.InternalError(err)
-	}
-	if err := util.WriteFile(cachedPath, f); err != nil {
-		return "", uer.InternalError(err)
-	}
-	return cachedPath, nil
 }
 
 func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err error) {
@@ -110,7 +72,7 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 		toName := model.NewImageFilename(image, time.Now())
 		toPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", toName.Path())
 
-		if !util.ExistFile(fromPath) {
+		if !file.ExistFile(fromPath) {
 			fmt.Println(fromPath)
 			return oimages, uer.NotFoundError(errors.New("image not found"))
 		}
@@ -119,7 +81,7 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 			err = uer.InternalError(err)
 			return images, err
 		}
-		if err := util.WriteFile(toPath, f); err != nil {
+		if err := file.WriteFile(toPath, f); err != nil {
 			err = uer.InternalError(err)
 			return images, err
 		}
@@ -134,14 +96,14 @@ func (i imageEntity) Move(fromName model.UploadFilename, toName model.Filename) 
 	fromPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/tmp/", fromName.Path())
 	toPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", toName.Path())
 
-	if !util.ExistFile(fromPath) {
+	if !file.ExistFile(fromPath) {
 		return uer.NotFoundError(errors.New("image not found"))
 	}
 	f, err := os.Open(fromPath)
 	if err != nil {
 		return uer.InternalError(err)
 	}
-	if err := util.WriteFile(toPath, f); err != nil {
+	if err := file.WriteFile(toPath, f); err != nil {
 		return uer.InternalError(err)
 	}
 	return nil

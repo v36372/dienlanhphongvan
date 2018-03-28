@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"dienlanhphongvan-cdn/client"
 	"dienlanhphongvan/app/entity"
 	"dienlanhphongvan/config"
 	"dienlanhphongvan/middleware"
@@ -44,7 +43,6 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		originalImageDir = path.Join(conf.Resource.RootDir, "images")
 		cachedImageDir   = path.Join(conf.Resource.RootDir, "cached", "images")
 		uploadImageDir   = path.Join(conf.Resource.RootDir, "tmp")
-		imgx             = client.NewClient(conf.Imgx.Address, nil)
 	)
 
 	// Setup auth middleware
@@ -63,7 +61,7 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	}
 
 	productEntity := entity.NewProduct()
-	imageEntity := entity.NewImage(imgx, uploadImageDir, originalImageDir, cachedImageDir, conf.App.Debug)
+	imageEntity := entity.NewImage(uploadImageDir, originalImageDir, cachedImageDir, conf.App.Debug)
 
 	// Product
 	productHandler := productHandler{
@@ -121,7 +119,6 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		POST(groupImage, "/upload", imageHandler.Upload)
 		POST(groupImage, "/move/:name", imageHandler.Move)
 		GET(groupImage, "/original/:name", imageHandler.GetOriginal)
-		GET(groupImage, "/cached/:name", imageHandler.GetCached)
 	}
 
 	return r
