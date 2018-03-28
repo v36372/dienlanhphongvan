@@ -1,1 +1,1 @@
-web: ls bin
+web: server --heroku=true
