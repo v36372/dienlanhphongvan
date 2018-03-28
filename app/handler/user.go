@@ -15,7 +15,19 @@ type userHandler struct {
 }
 
 func (h userHandler) LoginPage(c *gin.Context) {
-	c.HTML(200, "login.html", nil)
+	admin := middleware.Auth.GetCurrentUser(c)
+
+	if admin != nil {
+		c.Redirect(302, "/dashboard/product-list")
+		return
+	}
+
+	loginPageView := struct {
+		IsAdmin bool
+	}{
+		IsAdmin: admin != nil,
+	}
+	c.HTML(200, "login", loginPageView)
 }
 
 func (h userHandler) Login(c *gin.Context) {
