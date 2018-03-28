@@ -48,10 +48,6 @@ func defaultFlags() {
 	pflags.Int("port", 9000, "app binding port")
 	customViper.BindPFlag("app.port", pflags.Lookup("port"))
 
-	// is heroku
-	val := pflags.Bool("heroku", false, "is deployed on heroku")
-	isHeroku = *val
-
 	// TODO: Add more default config here
 }
 
@@ -71,6 +67,7 @@ func init() {
 	pflags := rootCmd.PersistentFlags()
 	pflags.StringVar(&rootConfigFile, "rootConfig", "", "root config file, could be overrided (default is $GOPATH/src/dienlanhphongvan/config/config.yaml)")
 	pflags.StringVar(&customConfigFile, "config", "config/config.yaml", "custom config file")
+	pflags.BoolVar(&isHeroku, "heroku", false, "is deploy on heroku")
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 
