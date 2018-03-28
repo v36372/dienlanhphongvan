@@ -56,7 +56,7 @@ func defaultFlags() {
 }
 
 func init() {
-	cobra.OnInitialize(initCustomConfig, initRootConfig)
+	cobra.OnInitialize(initCustomConfig)
 
 	rootCmd = &cobra.Command{
 		Use:   "CLI",
