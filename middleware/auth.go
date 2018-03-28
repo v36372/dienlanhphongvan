@@ -1,16 +1,20 @@
 package middleware
 
 import (
+	"dienlanhphongvan/models"
+	"dienlanhphongvan/repo"
 	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 const (
-	ExpireCode = "TOKEN_EXPIRED"
-	BadCode    = "BAD_TOKEN"
-	userGinKey = "CurrentUser"
+	ExpireCode       = "TOKEN_EXPIRED"
+	BadCode          = "BAD_TOKEN"
+	userGinKey       = "CurrentUser"
+	IsLoggedInGinKey = "IsLoggedInGinKey"
 )
 
 var (
@@ -41,6 +45,7 @@ func (a *authMiddleware) Interception() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		isLoggedIn := true
 		userIdStr, err := a.secCookie.GetCurrentUserID(c.Request)
+		fmt.Println("dit con di me may")
 		if err != nil {
 			if err != http.ErrNoCookie {
 				if err.Error() == "securecookie: expired timestamp" {
@@ -98,4 +103,38 @@ func (a *authMiddleware) RequireLogin() gin.HandlerFunc {
 func (a *authMiddleware) GetCurrentUser(c *gin.Context) (user interface{}, exists bool) {
 	currentUser, exists := c.Get(userGinKey)
 	return currentUser, exists
+}
+
+type auth struct {
+	getCurrentUserFunc GetCurrentUser
+}
+
+var Auth auth
+
+func InitAuth(f GetCurrentUser) {
+	Auth.getCurrentUserFunc = f
+}
+
+func (a *auth) GetCurrentUser(c *gin.Context) *models.User {
+	user, exists := a.getCurrentUserFunc(c)
+	if exists {
+		resp := user.(*models.User)
+		return resp
+	}
+	return nil
+}
+
+func (auth) GetLoggedInUser(username string) (interface{}, error) {
+	user, err := repo.User.GetByUsername(username)
+	if err != nil {
+		return nil, err
+	}
+
+	if user == nil {
+		fmt.Println("asdladsjasd")
+		fmt.Println(username)
+		return nil, ErrorPermissionDenied
+	}
+
+	return user, nil
 }

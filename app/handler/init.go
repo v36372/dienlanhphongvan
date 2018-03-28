@@ -8,6 +8,7 @@ import (
 	"dienlanhphongvan/utilities/ulog"
 	"path"
 
+	"github.com/foolin/gin-template"
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,8 +22,19 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	r.Use(gin.Recovery())
 	r.Use(middleware.CORSMiddleware(conf.App.Whitelist))
 	r.Use(gin.LoggerWithWriter(ulog.Logger().Request))
-	r.LoadHTMLGlob("public/*.html")
 	r.Static("static", "./public/static")
+
+	templateConfig := gintemplate.TemplateConfig{
+		Root:      "public",
+		Extension: ".html",
+		Master:    "layouts/master",
+		Partials: []string{
+			"partials/nav",
+		},
+		DisableCache: conf.App.Debug,
+	}
+
+	r.HTMLRender = gintemplate.New(templateConfig)
 
 	if conf.App.Debug {
 		r.Use(gin.Logger())
@@ -34,6 +46,13 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		uploadImageDir   = path.Join(conf.Resource.RootDir, "tmp")
 		imgx             = client.NewClient(conf.Imgx.Address, nil)
 	)
+
+	// Setup auth middleware
+	secCookie := middleware.NewSetCookie(conf.CookieToken.BlockKey, conf.CookieToken.HashKey)
+	authMiddleware := middleware.NewAuthMiddleware(secCookie, middleware.Auth.GetLoggedInUser)
+	middleware.InitAuth(authMiddleware.GetCurrentUser)
+
+	r.Use(authMiddleware.Interception())
 
 	indexHandler := indexHandler{
 		Category: entity.NewCategory(),
@@ -54,19 +73,33 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	groupProduct := r.Group("/products")
 	{
 		GET(groupProduct, "/:slug", productHandler.GetDetail)
-		DEL(groupProduct, "/:slug", productHandler.DeleteProduct)
 		GET(groupProduct, "", productHandler.GetList)
-		POST(groupProduct, "", productHandler.Create)
 	}
 
+	categoryEntity := entity.NewCategory()
 	// Dashboard
 	dashboardHandler := dashboardHandler{
 		product:  productEntity,
-		category: entity.NewCategory(),
+		category: categoryEntity,
 		image:    imageEntity,
 	}
 
-	authMiddleware := middleware.NewAuthMiddleware(secCookie, middleware.Auth.GetLoggedInUser)
+	// Category
+	categoryHandler := categoryHandler{
+		category: categoryEntity,
+	}
+
+	// User
+	userEntity := entity.NewUser()
+	userHandler := userHandler{
+		user:      userEntity,
+		secCookie: secCookie,
+	}
+	userGroup := r.Group("/user")
+	{
+		GET(userGroup, "/login", userHandler.LoginPage)
+		POST(userGroup, "/login", userHandler.Login)
+	}
 
 	dashboardGroup := r.Group("/dashboard")
 	dashboardGroup.Use(authMiddleware.Interception())
@@ -74,7 +107,9 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	{
 		GET(dashboardGroup, "/create-product", dashboardHandler.CreateProduct)
 		GET(dashboardGroup, "/create-category", dashboardHandler.CreateCategory)
-		GET(dashboardGroup, "/list-product", dashboardHandler.ListProduct)
+		GET(dashboardGroup, "/product-list", dashboardHandler.ListProduct)
+		POST(dashboardGroup, "/products", productHandler.Create)
+		POST(dashboardGroup, "/categories", categoryHandler.Create)
 	}
 
 	// Image processing

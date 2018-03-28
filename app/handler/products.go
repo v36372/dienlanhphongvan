@@ -5,6 +5,7 @@ import (
 	"dienlanhphongvan/app/form"
 	"dienlanhphongvan/app/params"
 	"dienlanhphongvan/app/view"
+	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/uer"
 
 	"github.com/gin-gonic/gin"
@@ -16,8 +17,9 @@ type productHandler struct {
 }
 
 func (h productHandler) GetDetail(c *gin.Context) {
-	productSlug := params.NewGetProductSlugParam(c)
+	admin := middleware.Auth.GetCurrentUser(c)
 
+	productSlug := params.NewGetProductSlugParam(c)
 	product, err := h.productEntity.GetBySlug(productSlug)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
@@ -36,10 +38,12 @@ func (h productHandler) GetDetail(c *gin.Context) {
 	}
 	productPageView := struct {
 		Product view.Product
+		IsAdmin bool
 	}{
 		Product: productView,
+		IsAdmin: admin != nil,
 	}
-	c.HTML(200, "product-detail.html", productPageView)
+	c.HTML(200, "product-detail", productPageView)
 }
 
 func (h productHandler) GetList(c *gin.Context) {
@@ -74,10 +78,5 @@ func (h productHandler) Create(c *gin.Context) {
 		uer.HandleErrorGin(err, c)
 	}
 
-	productView, err := view.NewProduct(productModelDb)
-	if err != nil {
-		uer.HandleErrorGin(err, c)
-		return
-	}
-	view.ResponseOK(c, productView)
+	c.Redirect(302, "/dashboard/product-list")
 }

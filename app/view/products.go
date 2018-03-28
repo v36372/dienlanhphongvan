@@ -5,13 +5,15 @@ import (
 	"dienlanhphongvan/repo"
 	"dienlanhphongvan/utilities/uer"
 	"fmt"
+
+	"github.com/leekchan/accounting"
 )
 
 type Product struct {
 	Name        string   `json:"name"`
 	Description string   `json:"desc"`
 	Category    string   `json:"category"`
-	Price       float32  `json:"price"`
+	Price       string   `json:"price"`
 	Slug        string   `json:"slug"`
 	Url         string   `json:"url"`
 	Thumbnail   string   `json:"thumbnail"`
@@ -24,11 +26,17 @@ func NewProduct(product models.Product) (Product, error) {
 		return Product{}, uer.InternalError(err)
 	}
 
+	ac := accounting.Accounting{
+		Symbol:   "đ",
+		Thousand: ".",
+		Format:   "%v %s",
+	}
+
 	return Product{
 		Name:        product.Name,
 		Description: product.Description,
 		Category:    category.Name,
-		Price:       product.Price,
+		Price:       ac.FormatMoney(product.Price),
 		Slug:        product.Slug,
 		Url:         fmt.Sprintf("products/%s", product.Slug),
 		Thumbnail:   NewImage(product.Thumbnail),

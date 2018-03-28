@@ -1,57 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
-
-	<title>Obsession</title>
-
-	<link rel="shortcut icon" href="/static/images/gt_favicon.png">
-
-	
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-	
-	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-	
-	<link rel="stylesheet" href="/static/css/styles.css">
-
-</head>
-<body class="home">
-
-<header id="header">
-	<div id="head" class="parallax" parallax-speed="2">
-		<h1 id="logo" class="text-center">
-			<span class="title">Điện Lạnh Phong Vân</span>
-			<span class="tagline">Chuyên bán đồ điện lạnh<br>
-				<a href=""></a>
-            </span>
-		</h1>
-	</div>
-
-
-<script type="text/javascript">
-	function image(img) {
-	    var src = img.src;
-			document.getElementById("large-img").src=src;
-	}
-</script>
-
-</header>
-
-
-<main id="main">
-
+{{define "content"}}
 <div class="container">
-
 	<div class="row topspace">
 		<div class="col-sm-12">
-
 			{{ with $product := .Product  }}
-
 			<article class="post">
 				<div class="col-md-12">
 					<div class="col-md-1 small-imgs">
@@ -81,83 +32,10 @@
 							Lien he ngay: &#43;234 23 9873237
 						</div>
 					</div>
+				</div>
 			</article>
-
 			{{ end }}
-				</div>
 		</div> 
-
-
 	</div>	
-
-</main>
-
-<footer id="footer">
-	<div class="container">
-		<div class="row">
-			
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Contact</h3>
-				<div class="widget-body">
-					<p>&#43;234 23 9873237<br>
-						<a href="mailto:"></a><br>
-						<br>
-						234 Hidden Pond Road, Ashland City, TN 37015
-					</p>
-				</div>
-			</div>
-			
-
-			
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Follow me</h3>
-				<div class="widget-body">
-					<p class="follow-me-icons">
-                        
-                            
-                                <a href="https://www.facebook.com/nickname" target="_blank"><i class="fa fa-facebook-square fa-2"></i></a>
-                            
-                        
-                            
-                        
-					</p>
-				</div>
-			</div>
-			
-
-			
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Text widget</h3>
-				<div class="widget-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-				</div>
-			</div>
-			
-
-			
-			<div class="col-md-3 widget">
-				<h3 class="widget-title">Form widget</h3>
-				<div class="widget-body">
-					<p>&#43;234 23 9873237<br>
-						<a href="mailto:"></a><br>
-						<br>
-                        234 Hidden Pond Road, Ashland City, TN 37015
-					</p>
-				</div>
-			</div>
-			
-
-		</div> 
-	</div>
-</footer>
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
-
-
+</div>	
+{{ end }}

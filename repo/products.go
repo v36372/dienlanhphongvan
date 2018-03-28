@@ -21,7 +21,7 @@ func init() {
 type IProduct interface {
 	GetBySlug(slug string) (*models.Product, error)
 	GetList(limit, offset int) (products []models.Product, total int, err error)
-	GetByCategory(category string, limit, offset int) (products []models.Product, total int, err error)
+	GetByCategory(categoryId, limit, offset int) (products []models.Product, total int, err error)
 	Create(*models.Product) error
 	Update(*models.Product) error
 }
@@ -47,9 +47,9 @@ func (product) GetBySlug(slug string) (*models.Product, error) {
 	return &product, err
 }
 
-func (product) GetByCategory(category string, limit, offset int) (products []models.Product, total int, err error) {
-	query := infra.PostgreSql.Model(models.Product{}).Joins("JOIN categories ON categories.id = products.category_id").
-		Where("categories.name = ?", category)
+func (product) GetByCategory(categoryId, limit, offset int) (products []models.Product, total int, err error) {
+	query := infra.PostgreSql.Model(models.Product{}).
+		Where("category_id = ?", categoryId)
 
 	err = query.Count(&total).Error
 	if err != nil {

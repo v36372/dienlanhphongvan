@@ -16,6 +16,7 @@ var (
 	rootViper        = viper.New()
 	customConfigFile string
 	customViper      = viper.New()
+	isHeroku         bool
 
 	// rootCmd represents the base command when called without any subcommands
 	rootCmd *cobra.Command
@@ -46,6 +47,10 @@ func defaultFlags() {
 	// app port
 	pflags.Int("port", 9000, "app binding port")
 	customViper.BindPFlag("app.port", pflags.Lookup("port"))
+
+	// is heroku
+	val := pflags.Bool("heroku", false, "is deployed on heroku")
+	isHeroku = *val
 
 	// TODO: Add more default config here
 }
@@ -78,6 +83,8 @@ func initCustomConfig() {
 		if err := customViper.ReadInConfig(); err != nil {
 			fmt.Println("WARNING: file config/config.yaml not exist")
 		}
+	} else if isHeroku {
+		fmt.Println("deploted on herok")
 	}
 }
 
@@ -118,4 +125,8 @@ func GetViper() *viper.Viper {
 		}
 	})
 	return rootViper
+}
+
+func IsOnHeroku() bool {
+	return isHeroku
 }

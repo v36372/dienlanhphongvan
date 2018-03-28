@@ -1,213 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport"    content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
-
-		<title>Obsession</title>
-
-		<link rel="shortcut icon" href="/static/images/gt_favicon.png">
-
-
-		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-
-		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
-
-		<link rel="stylesheet" href="/static/css/styles.css">
-
-	</head>
-	<body class="home">
-
-		<header id="header">
-			<div id="head" class="parallax" parallax-speed="2">
-				<h1 id="logo" class="text-center">
-					<span class="title">Điện Lạnh Phong Vân</span>
-					<span class="tagline">Chuyên bán đồ điện lạnh<br>
-						<a href=""></a>
-					</span>
-				</h1>
-			</div>
-
-			<nav class="navbar navbar-default navbar-sticky">
-				<div class="container-fluid">
-
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-
-					<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-
-						<ul class="nav navbar-nav">
-
-							<li>
-								<a href="/post/">Máy lạnh</a>
-							</li>
-
-							<li>
-								<a href="/post/">Nồi cơm</a>
-							</li>
-
-							<li>
-								<a href="/post/">Remote</a>
-							</li>
-
-							<li>
-								<a href="/post/">Liên hệ</a>
-							</li>
-
-
-						</ul>
-
-					</div>
+{{define "content"}}
+<div class="container">
+	<div class="row topspace">
+		<div class="col-sm-12">
+			<article class="post">
+				<div class="col-md-12">
+					Chọn ảnh 1: <br>
+					<form id="form-image1" action="/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
+						<input id="image1" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image1" src="" alt="your image" />
+					</form>
+					Chọn ảnh 2: <br>
+					<form id="form-image2" action="/images/upload" method="post">
+						<input id="image2" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image2" src="" alt="your image" />
+					</form>
+					Chọn ảnh 3: <br>
+					<form id="form-image3" action="/images/upload" method="post">
+						<input id="image3" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image3" src="" alt="your image" />
+					</form>
+					Chọn ảnh 4: <br>
+					<form id="form-image4" action="/images/upload" method="post">
+						<input id="image4" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image4" src="" alt="your image" />
+					</form>
+					Chọn ảnh 5: <br>
+					<form id="form-image5" action="/images/upload" method="post">
+						<input id="image5" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image5" src="" alt="your image" />
+					</form>
+					Chọn ảnh 6: <br>
+					<form id="form-image6" action="/images/upload" method="post">
+						<input id="image6" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+						<img id="preview-image6" src="" alt="your image" />
+					</form>
+					<form action="/dashboard/products" method="post">
+						Tên sản phẩm: <br>
+						<input type="text" name="name"> <br>
+						Phan loại : <br>
+						<select name="categoryId">
+							{{ range $index, $category := $.Categories  }}
+							<option value="{{ $category.Id }}">{{ $category.Name }}</option>
+							{{ end }}
+						</select>
+						Giá: <br>
+						<input type="number" name="price"> <br>
+						Miêu tả: <br>
+						<input type="text" name="desc"> <br>
+						<input id="url-image1" type="text" name="image01" style="display:none;">
+						<br>
+						<input id="url-image2" type="text" name="image02" style="display:none;">
+						<br>
+						<input id="url-image3" type="text" name="image03" style="display:none;">
+						<br>
+						<input id="url-image4" type="text" name="image04" style="display:none;">
+						<br>
+						<input id="url-image5" type="text" name="image05" style="display:none;">
+						<br>
+						<input id="url-image6" type="text" name="image06" style="display:none;">
+						<br>
+						<br><input type="submit"><br>
+					</form>
 				</div>
-			</nav>
+			</article>
 
-		</header>
-
-
-		<main id="main">
-
-		<div class="container">
-
-			<div class="row topspace">
-				<div class="col-sm-12">
-
-					<article class="post">
-						<div class="col-md-12">
-							Chọn ảnh 1: <br>
-							<form id="form-image1" action="/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
-								<input id="image1" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image1" src="" alt="your image" />
-							</form>
-							Chọn ảnh 2: <br>
-							<form id="form-image2" action="/images/upload" method="post">
-								<input id="image2" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image2" src="" alt="your image" />
-							</form>
-							Chọn ảnh 3: <br>
-							<form id="form-image3" action="/images/upload" method="post">
-								<input id="image3" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image3" src="" alt="your image" />
-							</form>
-							Chọn ảnh 4: <br>
-							<form id="form-image4" action="/images/upload" method="post">
-								<input id="image4" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image4" src="" alt="your image" />
-							</form>
-							Chọn ảnh 5: <br>
-							<form id="form-image5" action="/images/upload" method="post">
-								<input id="image5" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image5" src="" alt="your image" />
-							</form>
-							Chọn ảnh 6: <br>
-							<form id="form-image6" action="/images/upload" method="post">
-								<input id="image6" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-								<img id="preview-image6" src="" alt="your image" />
-							</form>
-							<form action="/products" method="post">
-								Tên sản phẩm: <br>
-								<input type="text" name="name"> <br>
-								Phan loại : <br>
-								<select name="categoryId">
-									{{ range $index, $category := $.Categories  }}
-									<option value="{{ $category.Id }}">{{ $category.Name }}</option>
-									{{ end }}
-								</select>
-								Giá: <br>
-								<input type="number" name="price"> <br>
-								Miêu tả: <br>
-								<input type="text" name="desc"> <br>
-								<input id="url-image1" type="text" name="image01" style="display:none;">
-								<br>
-								<input id="url-image2" type="text" name="image02" style="display:none;">
-								<br>
-								<input id="url-image3" type="text" name="image03" style="display:none;">
-								<br>
-								<input id="url-image4" type="text" name="image04" style="display:none;">
-								<br>
-								<input id="url-image5" type="text" name="image05" style="display:none;">
-								<br>
-								<input id="url-image6" type="text" name="image06" style="display:none;">
-								<br>
-								<br><input type="submit"><br>
-							</form>
-						</div>
-					</article>
-
-				</div>
-			</div> 
-
-
-		</div>	
-
-		</main>
-
-		<footer id="footer">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Contact</h3>
-						<div class="widget-body">
-							<p>&#43;234 23 9873237<br>
-							<a href="mailto:"></a><br>
-							<br>
-							234 Hidden Pond Road, Ashland City, TN 37015
-							</p>
-						</div>
-					</div>
-
-
-
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Follow me</h3>
-						<div class="widget-body">
-							<p class="follow-me-icons">
-							<a href="https://www.facebook.com/nickname" target="_blank"><i class="fa fa-facebook-square fa-2"></i></a>
-							</p>
-						</div>
-					</div>
-
-
-
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Text widget</h3>
-						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
-						</div>
-					</div>
-
-
-
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Form widget</h3>
-						<div class="widget-body">
-							<p>&#43;234 23 9873237<br>
-							<a href="mailto:"></a><br>
-							<br>
-							234 Hidden Pond Road, Ashland City, TN 37015
-							</p>
-						</div>
-					</div>
-
-
-				</div> 
-			</div>
-		</footer>
-
-
-
-		<script type="text/javascript">
+		</div>
+	</div> 
+	<script type="text/javascript">
 function readURL(input) {
 	var inputId = input.id
 		if (input.files && input.files[0]) {
@@ -233,23 +92,17 @@ function readURL(input) {
 	$('#form-'+inputId).submit()
 };
 
-		</script>
+	</script>
+	<script src="http://malsup.github.com/jquery.form.js"></script> 
 
-		<style>
+	<iframe  id="concac" name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+	<style>
 img[src=""] {
 	display: none;
 
 }
-		</style>
-
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="http://malsup.github.com/jquery.form.js"></script> 
-		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-		<iframe  id="concac" name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-
-	</body>
-</html>
+	</style>
+</div>	
+{{ end }}
 
 

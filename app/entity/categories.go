@@ -11,6 +11,7 @@ type categoryEntity struct{}
 type Category interface {
 	GetForHomePage(limit int) ([]models.Category, error)
 	GetForDashboard() (categories []models.Category, err error)
+	Create(category *models.Category) (err error)
 }
 
 func NewCategory() Category {
@@ -28,6 +29,15 @@ func (categoryEntity) GetForHomePage(limit int) (categories []models.Category, e
 	return
 }
 
+func (categoryEntity) Create(category *models.Category) (err error) {
+	err = repo.Category.Create(category)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	return
+}
 func (categoryEntity) GetForDashboard() (categories []models.Category, err error) {
 	categories, err = repo.Category.GetAll()
 	if err != nil {

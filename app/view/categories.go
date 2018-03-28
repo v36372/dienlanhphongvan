@@ -21,7 +21,7 @@ func NewCategoryForDashboard(category models.Category) Category {
 
 func NewCategory(category models.Category) (cate Category, err error) {
 	limit, offset := 10, 0
-	products, _, err := repo.Product.GetByCategory(category.Name, limit, offset)
+	products, _, err := repo.Product.GetByCategory(category.Id, limit, offset)
 	if err != nil {
 		err = uer.InternalError(err)
 		return

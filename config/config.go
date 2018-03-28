@@ -2,6 +2,8 @@ package config
 
 import (
 	"dienlanhphongvan/cmd"
+	"os"
+	"strconv"
 	"sync"
 )
 
@@ -11,11 +13,17 @@ var (
 )
 
 type Config struct {
-	App        App
-	PostgreSQL PostgreSQL
-	Log        Log
-	Resource   Resource
-	Imgx       Service
+	App         App
+	CookieToken CookieToken
+	PostgreSQL  PostgreSQL
+	Log         Log
+	Resource    Resource
+	Imgx        Service
+}
+
+type CookieToken struct {
+	HashKey  string
+	BlockKey string
 }
 
 type Resource struct {
@@ -59,10 +67,39 @@ func init() {
 	cmd.SetRunFunc(load)
 }
 
+func loadFromOS(conf *Config) {
+	conf.App.Debug, _ = strconv.ParseBool(os.Getenv("debug"))
+	conf.App.Host = os.Getenv("host")
+	conf.App.Port, _ = strconv.Atoi(os.Getenv("port"))
+
+	conf.CookieToken.BlockKey = os.Getenv("blockkey")
+	conf.CookieToken.HashKey = os.Getenv("hashkey")
+
+	conf.PostgreSQL.Username = os.Getenv("dbusername")
+	conf.PostgreSQL.Password = os.Getenv("dbpassword")
+	conf.PostgreSQL.Host = os.Getenv("dbhost")
+	conf.PostgreSQL.Port, _ = strconv.Atoi(os.Getenv("dbport"))
+	conf.PostgreSQL.Db = os.Getenv("dbname")
+	conf.PostgreSQL.Debug, _ = strconv.ParseBool(os.Getenv("dbdebug"))
+	conf.PostgreSQL.MaxIdleConns, _ = strconv.Atoi(os.Getenv("dbmaxidleconns"))
+	conf.PostgreSQL.MaxOpenConns, _ = strconv.Atoi(os.Getenv("dbmaxopenconns"))
+
+	conf.Log.Dir = os.Getenv("logdir")
+	conf.Log.LevelDebug, _ = strconv.ParseBool(os.Getenv("loglevel"))
+	conf.Log.Prefix = os.Getenv("logprefix")
+
+	conf.Resource.RootDir = os.Getenv("resource")
+
+	conf.Imgx.Address = os.Getenv("imgxaddress")
+
+}
+
 func load() {
 	once.Do(func() {
 		if err := cmd.GetViper().Unmarshal(&conf); err != nil {
-			panic(err)
+			if cmd.IsOnHeroku() {
+				loadFromOS(&conf)
+			}
 		}
 	})
 }
