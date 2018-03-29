@@ -43,7 +43,7 @@ func NewImage(uploadDir, originalDir, cachedDir string, debug bool) *imageEntity
 func (i imageEntity) Upload(f io.Reader) (*model.UploadFilename, error) {
 	uuid := uniqueStr(time.Now().UnixNano())
 	name := model.NewUploadFilename(uuid, time.Now())
-	filepath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/tmp/", name.Path())
+	filepath := path.Join(i.UploadDir, name.Path())
 	if err := file.WriteFile(filepath, f); err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (i imageEntity) Upload(f io.Reader) (*model.UploadFilename, error) {
 }
 
 func (i imageEntity) GetOriginal(name model.Filename) (string, error) {
-	filepath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", name.Path())
+	filepath := path.Join(i.OriginalDir, name.Path())
 	if file.ExistFile(filepath) {
 		return filepath, nil
 	}
@@ -68,9 +68,9 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 		if err != nil {
 			return oimages, uer.InternalError(err)
 		}
-		fromPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/tmp/", fromName.Path())
+		fromPath := path.Join(i.UploadDir, fromName.Path())
 		toName := model.NewImageFilename(image, time.Now())
-		toPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", toName.Path())
+		toPath := path.Join(i.OriginalDir, toName.Path())
 
 		if !file.ExistFile(fromPath) {
 			return oimages, uer.NotFoundError(errors.New("image not found"))
@@ -92,8 +92,8 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 }
 
 func (i imageEntity) Move(fromName model.UploadFilename, toName model.Filename) error {
-	fromPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/tmp/", fromName.Path())
-	toPath := path.Join("/home/justin/workspace/src/dienlanhphongvan/images/products/original/", toName.Path())
+	fromPath := path.Join(i.UploadDir, fromName.Path())
+	toPath := path.Join(i.OriginalDir, toName.Path())
 
 	if !file.ExistFile(fromPath) {
 		return uer.NotFoundError(errors.New("image not found"))
