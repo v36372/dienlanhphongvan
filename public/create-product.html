@@ -42,9 +42,9 @@
 							{{ range $index, $category := $.Categories  }}
 							<option value="{{ $category.Id }}">{{ $category.Name }}</option>
 							{{ end }}
-						</select>
+						</select><br>
 						Giá: <br>
-						<input type="number" name="price"> <br>
+						<textarea type="number" name="price"> <br>
 						Miêu tả: <br>
 						<input type="text" name="desc"> <br>
 						<input id="url-image1" type="text" name="image01" style="display:none;">
