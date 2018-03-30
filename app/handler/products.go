@@ -76,6 +76,7 @@ func (h productHandler) Create(c *gin.Context) {
 	err = h.productEntity.Create(productModelDb, h.imageEntity)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
+		return
 	}
 
 	c.Redirect(302, "/dashboard/product-list")

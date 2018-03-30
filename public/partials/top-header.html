@@ -1,0 +1,32 @@
+{{ define "top-header" }}
+	<div class="top-header">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						{{ if .IsAdmin }}
+						<a href="/dashboard/create-product" style="margin-right:10px;">
+							Create product
+						</a>
+						<a href="/dashboard/create-category">
+							Create category
+						</a>
+						{{ else }}
+						<a href="/user/login">
+							Login
+						</a>
+						{{ end }}
+
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+{{ end }}

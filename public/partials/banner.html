@@ -1,0 +1,40 @@
+{{ define "banner" }}
+	<div class="bnr" id="home">
+		<div  id="top" class="callbacks_container">
+			<ul class="rslides" id="slider4">
+			    <li>
+					<img src="/static/images/bnr-1.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="/static/images/bnr-2.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="/static/images/bnr-3.jpg" alt=""/>
+				</li>
+			</ul>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+				<script src="/static/js/responsiveslides.min.js"></script>
+			 <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager: true,
+			        nav: true,
+			        speed: 500,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+			
+			    });
+			  </script>
+			<!--End-slider-script-->
+{{ end }}

@@ -1,17 +1,18 @@
 {{define "content"}}
-<div class="container">
-	<div class="row topspace">
-		<div class="col-sm-12">
-			<article class="post">
-				<div class="col-md-12">
+{{template "breadcrumbs" .}}
+	<div class="contact">
+		<div class="container">
+			<div class="contact-top heading">
+				<h2>Tạo phan loại</h2>
+			</div>
+					<div class="col-md-3 account-left">
 					<form action="/dashboard/categories" method="post">
-						Tên loại: <br>
-						<input type="text" name="name"> <br>
-						<br><input type="submit"><br>
-					</form>
-				</div>
-			</article>
+							<input type="text" placeholder="Tên loại" name="name">
+							<div class="submit-btn">
+								<input type="submit" value="TẠO"></div>
+						</form>
+					</div>	
+					<div class="clearfix"></div>
 		</div>
-	</div> 
-</div>	
+	</div>
 {{ end }}

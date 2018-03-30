@@ -2,7 +2,9 @@ package entity
 
 import (
 	"crypto/md5"
-	"dienlanhphongvan/cdnmodel"
+	"dienlanhphongvan-cdn/client"
+	"dienlanhphongvan-cdn/model"
+	"dienlanhphongvan-cdn/util"
 	"dienlanhphongvan/utilities/file"
 	"dienlanhphongvan/utilities/uer"
 	"encoding/hex"
@@ -18,6 +20,7 @@ import (
 )
 
 type imageEntity struct {
+	Imgx        *client.Client
 	UploadDir   string
 	OriginalDir string
 	CachedDir   string
@@ -29,15 +32,18 @@ type Image interface {
 	GetOriginal(name model.Filename) (string, error)
 	Move(fromName model.UploadFilename, toName model.Filename) error
 	MoveImagesOfProduct(images []string) ([]string, error)
+	GetCached(name model.Filename) (string, error)
 }
 
-func NewImage(uploadDir, originalDir, cachedDir string, debug bool) *imageEntity {
+func NewImage(imgx *client.Client, uploadDir, originalDir, cachedDir string, debug bool) *imageEntity {
 	return &imageEntity{
+		Imgx:        imgx,
 		UploadDir:   uploadDir,
 		OriginalDir: originalDir,
 		CachedDir:   cachedDir,
 		debug:       debug,
 	}
+
 }
 
 func (i imageEntity) Upload(f io.Reader) (*model.UploadFilename, error) {
@@ -57,6 +63,46 @@ func (i imageEntity) GetOriginal(name model.Filename) (string, error) {
 	}
 
 	return "", uer.NotFoundError(errors.New("image not found"))
+}
+
+func (i imageEntity) GetCached(name model.Filename) (string, error) {
+	cachedPath := path.Join(i.CachedDir, name.Path())
+	if util.ExistFile(cachedPath) {
+		return cachedPath, nil
+
+	}
+	// crop or resize original file
+	originalPath, err := i.GetOriginal(name)
+	if err != nil {
+		return "", err
+
+	}
+	var f io.Reader
+	switch name.Shape() {
+	case "o":
+		f, err = i.Imgx.Image.Resize(originalPath, client.ResizeOption{
+			Width: name.Width(),
+		})
+	case "s":
+		f, err = i.Imgx.Image.Crop(originalPath, client.CropOption{
+			Width: name.Width(),
+		})
+	default:
+		f, err = i.Imgx.Image.Resize(originalPath, client.ResizeOption{
+			Width: name.Width(),
+		})
+
+	}
+	if err != nil {
+		return "", uer.InternalError(err)
+
+	}
+	if err := util.WriteFile(cachedPath, f); err != nil {
+		return "", uer.InternalError(err)
+
+	}
+	return cachedPath, nil
+
 }
 
 func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err error) {

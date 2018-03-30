@@ -5,19 +5,23 @@ import (
 	"dienlanhphongvan/repo"
 	"dienlanhphongvan/utilities/uer"
 	"fmt"
+	"html/template"
+	"strings"
 
 	"github.com/leekchan/accounting"
 )
 
 type Product struct {
-	Name        string   `json:"name"`
-	Description string   `json:"desc"`
-	Category    string   `json:"category"`
-	Price       string   `json:"price"`
-	Slug        string   `json:"slug"`
-	Url         string   `json:"url"`
-	Thumbnail   string   `json:"thumbnail"`
-	Images      []string `json:"images"`
+	Name            string        `json:"name"`
+	DescriptionHtml template.HTML `json:"-"`
+	Description     string        `json:"desc"`
+	Category        string        `json:"category"`
+	Price           string        `json:"price"`
+	Slug            string        `json:"slug"`
+	Url             string        `json:"url"`
+	Thumbnail       string        `json:"thumbnail"`
+	Images          []string      `json:"images"`
+	RelatedProducts []Product     `json:"relatedProducts"`
 }
 
 func NewProduct(product models.Product) (Product, error) {
@@ -27,26 +31,29 @@ func NewProduct(product models.Product) (Product, error) {
 	}
 
 	ac := accounting.Accounting{
-		Symbol:   "đ",
+		Symbol:   "₫",
 		Thousand: ".",
 		Format:   "%v %s",
 	}
 
+	desc := strings.Replace(product.Description, "\n", "<br/>", -1)
+	desc = strings.Replace(product.Description, "\r", "<br/>", -1)
+
 	return Product{
-		Name:        product.Name,
-		Description: product.Description,
-		Category:    category.Name,
-		Price:       ac.FormatMoney(product.Price),
-		Slug:        product.Slug,
-		Url:         fmt.Sprintf("products/%s", product.Slug),
-		Thumbnail:   NewImage(product.Thumbnail),
+		Name:            product.Name,
+		DescriptionHtml: template.HTML(desc),
+		Description:     product.Description,
+		Category:        category.Name,
+		Price:           ac.FormatMoney(product.Price),
+		Slug:            product.Slug,
+		Url:             fmt.Sprintf("products/%s", product.Slug),
+		Thumbnail:       NewImage(product.Thumbnail),
 		Images: []string{
 			NewImage(product.Image01),
 			NewImage(product.Image02),
 			NewImage(product.Image03),
 			NewImage(product.Image04),
 			NewImage(product.Image05),
-			NewImage(product.Image06),
 		},
 	}, nil
 }

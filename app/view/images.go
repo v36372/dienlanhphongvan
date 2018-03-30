@@ -5,5 +5,5 @@ import (
 )
 
 func NewImage(imageName string) string {
-	return fmt.Sprintf("/images/original/%s", imageName)
+	return fmt.Sprintf("/images/cached/%s?type=s&w=480", imageName)
 }

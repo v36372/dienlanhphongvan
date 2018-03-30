@@ -1,0 +1,59 @@
+{{ define "bottom-header" }}
+<div class="header-bottom">
+	<div class="container">
+		<div class="header">
+			<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue"><li class="active"><a href="/">Home</a></li>
+						<li class="grid"><a href="#">Men</a>
+							<div class="mepanel">
+								<div class="row">
+									<div class="col1 me-one">
+										<h4>Shop</h4>
+										<ul>
+											<li><a href="products.html">New Arrivals</a></li>
+											<li><a href="products.html">Blazers</a></li>
+											<li><a href="products.html">Swem Wear</a></li>
+											<li><a href="products.html">Accessories</a></li>
+											<li><a href="products.html">Handbags</a></li>
+											<li><a href="products.html">T-Shirts</a></li>
+											<li><a href="products.html">Watches</a></li>
+											<li><a href="products.html">My Shopping Bag</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						{{if .IsAdmin}}
+						<li>
+							<a href="/dashboard/product-list">Quản lí</a>
+						</li>
+						<li>
+							<a href="/dashboard/create-product">Tạo sản phẩm</a>
+						</li>
+						<li>
+							<a href="/dashboard/create-category">Tạo phan loại</a>
+						</li>
+						{{else}}
+						<li>
+							<a href="/user/login">Đăng nhập</a>
+						</li>
+						{{end}}
+						<li>
+							<a href="/post/">Liên hệ</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+{{ end }}

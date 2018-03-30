@@ -1,0 +1,40 @@
+{{ define "checkout" }}
+	<div class="ckeckout">
+		<div class="container">
+			<div class="ckeck-top heading">
+				<h2>Danh sách sản phẩm</h2>
+			</div>
+			<div class="ckeckout-top">
+			<div class="cart-items">
+			 <h3>My Shopping Bag (3)</h3>
+			<div class="in-check" >
+				<ul class="unit">
+					<li><span>Item</span></li>
+					<li><span>Name</span></li>		
+					<li><span>Price</span></li>
+					<li><span>Category</span></li>
+					<li><span>Description</span></li>
+					<li> </li>
+					<div class="clearfix"> </div>
+				</ul>
+				{{ range $index, $product := $.Products  }}
+				<ul class="cart-header">
+					<li class="ring-in"><a href="single.html" ><img src="{{ $product.Thumbnail }}" class="img-responsive" alt="" style="max-width:50%;"></a>
+						</li>
+						<li><span class="name">{{ $product.Name }}</span></li>
+						<li><span class="cost">{{ $product.Price }}</span></li>
+						<li><span class="cost">{{ $product.Category }}</span></li>
+						<li>
+							<p class="prod-desc">
+							{{ $product.DescriptionHtml }}
+							</p>
+						</li>
+					<div class="clearfix"> </div>
+				</ul>
+				{{ end }}
+			</div>
+			</div>  
+		 </div>
+		</div>
+	</div>
+{{ end }}

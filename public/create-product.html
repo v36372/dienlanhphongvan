@@ -1,75 +1,79 @@
 {{define "content"}}
-<div class="container">
-	<div class="row topspace">
-		<div class="col-sm-12">
-			<article class="post">
-				<div class="col-md-12">
-					Chọn ảnh 1: <br>
-					<form id="form-image1" action="/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
-						<input id="image1" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image1" src="" alt="your image" />
-					</form>
-					Chọn ảnh 2: <br>
-					<form id="form-image2" action="/images/upload" method="post">
-						<input id="image2" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image2" src="" alt="your image" />
-					</form>
-					Chọn ảnh 3: <br>
-					<form id="form-image3" action="/images/upload" method="post">
-						<input id="image3" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image3" src="" alt="your image" />
-					</form>
-					Chọn ảnh 4: <br>
-					<form id="form-image4" action="/images/upload" method="post">
-						<input id="image4" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image4" src="" alt="your image" />
-					</form>
-					Chọn ảnh 5: <br>
-					<form id="form-image5" action="/images/upload" method="post">
-						<input id="image5" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image5" src="" alt="your image" />
-					</form>
-					Chọn ảnh 6: <br>
-					<form id="form-image6" action="/images/upload" method="post">
-						<input id="image6" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-						<img id="preview-image6" src="" alt="your image" />
-					</form>
+{{template "breadcrumbs" .}}
+<div class="contact">
+	<div class="container">
+		<div class="contact-top heading">
+			<h2>CREATE PRODUCT</h2>
+		</div>
+
+		<div class="col-md-12 account-left">
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 1: <br>
+				<form id="form-image1" action="/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
+					<input id="image1" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image1" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 2: <br>
+				<form id="form-image2" action="/images/upload" method="post">
+					<input id="image2" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image2" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 3: <br>
+				<form id="form-image3" action="/images/upload" method="post">
+					<input id="image3" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image3" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 4: <br>
+				<form id="form-image4" action="/images/upload" method="post">
+					<input id="image4" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image4" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 5: <br>
+				<form id="form-image5" action="/images/upload" method="post">
+					<input id="image5" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image5" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-12">
+
+				<div class="col-md-6 account-left">
 					<form action="/dashboard/products" method="post">
-						Tên sản phẩm: <br>
-						<input type="text" name="name"> <br>
-						Phan loại : <br>
-						<select name="categoryId">
+						<input placeholder="Product name" type="text" tabindex="1" required name="name">
+						<select name="categoryId" tabindex="2" required>
+							<option value="" disabled selected>Category</option>
 							{{ range $index, $category := $.Categories  }}
 							<option value="{{ $category.Id }}">{{ $category.Name }}</option>
 							{{ end }}
-						</select><br>
-						Giá: <br>
-						<input type="number" name="price"> 
-						<br>
-						Miêu tả: <br>
-						<textarea type="text" name="desc">
-						</textarea>
-						<br>
+						</select>
+						<input placeholder="Price" type="text" tabindex="3" required  name="pricetext" onkeyup="priceFormat(this)"/>
+						<input type="number" style="display:none" required  name="price" id="trueprice"/>
+						<textarea placeholder="Description" value="" type="text" tabindex="4" required="" name="desc"></textarea>
 						<input id="url-image1" type="text" name="image01" style="display:none;">
-						<br>
 						<input id="url-image2" type="text" name="image02" style="display:none;">
-						<br>
 						<input id="url-image3" type="text" name="image03" style="display:none;">
-						<br>
 						<input id="url-image4" type="text" name="image04" style="display:none;">
-						<br>
 						<input id="url-image5" type="text" name="image05" style="display:none;">
-						<br>
-						<input id="url-image6" type="text" name="image06" style="display:none;">
-						<br>
-						<br><input type="submit"><br>
+						<div class="submit-btn">
+							<input type="submit" value="SUBMIT" tabindex="4">
+						</div>
+						<div class="clearfix"></div>
 					</form>
 				</div>
-			</article>
-
+			</div>
 		</div>
-	</div> 
-	<script type="text/javascript">
+		</article>
+
+	</div>
+</div> 
+<script type="text/javascript">
 function readURL(input) {
 	var inputId = input.id
 		if (input.files && input.files[0]) {
@@ -95,17 +99,35 @@ function readURL(input) {
 	$('#form-'+inputId).submit()
 };
 
-	</script>
-	<script src="/static/js/jquery.form.js"></script> 
+function priceFormat(input) {
+	var ele = $( input  );
+	var value = ele.val();
 
-	<iframe  id="concac" name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-	<style>
+	var ovalue = value.replace(/[\D\s\._\-]+/g, "");
+
+	value = ovalue ? parseInt( ovalue, 10  ) : 0;
+
+	ele.val( function() {
+		return ( value === 0  ) ? "" : value.toLocaleString("en-US");
+	}  );
+
+	var truePrice = $('#trueprice');
+	trueprice.value  = parseFloat(ovalue)
+	console.log(trueprice.value)
+
+};
+</script>
+<script src="/static/js/jquery.form.js"></script> 
+
+<iframe  id="concac" name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<style>
 img[src=""] {
 	display: none;
 
 }
-	</style>
+</style>
 </div>	
+</div>
 {{ end }}
 
 

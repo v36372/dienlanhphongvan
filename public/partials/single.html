@@ -1,0 +1,103 @@
+{{ define "single" }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('.slider').bxSlider();
+
+});
+</script>
+
+
+<style type="text/css"> 
+.slider-wrapper {display: none;} 
+
+/* Smartphone Portrait and Landscape */ 
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px){ 
+	.slider-wrapper {display: inline;}
+}
+
+					 /* Smartphone Portrait and Landscape */ 
+					 @media only screen 
+					 and (min-device-width : 320px) 
+					 and (max-device-width : 480px){ 
+						 .sngl-top { display: none; }
+					 }
+</style>
+
+<div class="single contact">
+	<div class="container">
+		<div class="single-main">
+			<div class="col-md-12 single-main-left">
+				{{ with $product := .Product  }}
+				<div class="col-md-6 slider-wrapper">
+					<div class="slider">
+						{{ range $index, $imageUrl := $product.Images  }}
+						<img src="{{ $imageUrl }}" class="img-responsive"/> 
+						{{ end }}
+					</div>
+				</div>
+				<div class="sngl-top">
+					<div class="col-md-1 single-top-left small-imgs">	
+						<div class="">
+							{{ range $index, $imageUrl := $product.Images  }}
+							<img src="{{ $imageUrl }}" class="small-product-img img-responsive  img-rounded" alt="" onclick="image(this)"/> 
+							{{ end }}
+						</div>
+
+					</div>	
+					<div class="col-md-5 single-top-left large-product-img">	
+						<img src="{{ $product.Thumbnail }}" class="img-responsive img-rounded" id="large-img" alt=""/> 
+						</li>
+					</div>
+
+					<script type="text/javascript">
+function image(img) {
+	var src = img.src;
+	document.getElementById("large-img").src=src;
+
+}
+					</script>
+
+
+				</div>	
+				<div class="col-md-6 single-top-right">
+					<div class="single-para simpleCart_shelfItem">
+						<h2>{{ $product.Name }}</h2>
+						<h5 class="item-price" style="color:#ef0000;">{{ $product.Price }}</h5>
+						<p>{{ $product.DescriptionHtml }}</p>
+						<div class="add-cart">
+							<i class="fas fa-phone"></i>
+							<a href="tel:091.864.4143">091.864.4143</a> để có giá tốt nhất
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="latestproducts">
+				<div class="product-one">
+					{{ range $index, $product := $product.RelatedProducts  }}
+					<div class="col-md-4 product-left p-left"> 
+						<div class="product-main simpleCart_shelfItem">
+							<a href="{{ $product.Url }}" class="mask"><img class="img-responsive zoom-img" src="{{ $product.Thumbnail }}" alt="" /></a>
+							<div class="product-bottom">
+								<h3>{{ $product.Name }}</h3>
+								<h4><span class="item-price" style="color:#ef0000;">{{ $product.Price }}</span></h4>
+							</div>
+						</div>
+					</div>
+					{{ end }}
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			{{ end }}
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+</div>
+{{ end }}

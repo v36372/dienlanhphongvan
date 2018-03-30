@@ -1,9 +1,9 @@
 package handler
 
 import (
+	"dienlanhphongvan-cdn/model"
 	"dienlanhphongvan/app/entity"
 	"dienlanhphongvan/app/view"
-	"dienlanhphongvan/cdnmodel"
 	"dienlanhphongvan/utilities/uer"
 
 	"github.com/gin-gonic/gin"
@@ -56,6 +56,20 @@ func (h imageHandler) GetOriginal(c *gin.Context) {
 		return
 	}
 	filepath, err := h.imageEntity.GetOriginal(*imageName)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+	c.File(filepath)
+}
+
+func (h imageHandler) GetCached(c *gin.Context) {
+	imageName, err := model.ParseImageFilename(c.Param("name"), c.Query("type"), c.Query("w"))
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+	filepath, err := h.imageEntity.GetCached(*imageName)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
 		return

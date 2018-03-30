@@ -1,17 +1,13 @@
 <!doctype html>
 
 <html>
-    <head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        {{include "layouts/header"}}
-    </head>
-    <body>
-        {{template "nav" .}}
-		<main id="main">
-        {{template "content" .}}
-		</main>
-        {{include "layouts/footer"}}
+	{{include "layouts/header"}}
+	<body>
+		{{template "start-logo" .}}
+		{{template "bottom-header" .}}
+		{{template "content" .}}
+		{{template "information" .}}
 
-    </body>
+		{{include "layouts/footer"}}
+	</body>
 </html>
