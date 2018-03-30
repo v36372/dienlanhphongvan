@@ -18,7 +18,7 @@ type Product struct {
 	Image02     string  `form:"image02" json:"image02" validator:"nonzero"`
 	Image03     string  `form:"image03" json:"image03" validator:"nonzero"`
 	Image04     string  `form:"image04" json:"image04" validator:"nonzero"`
-	Image05     string  `form:"image05" json:"image04" validator:"nonzero"`
+	Image05     string  `form:"image05" json:"image05" validator:"nonzero"`
 }
 
 func (inputForm *Product) FromCtx(c *gin.Context) error {
