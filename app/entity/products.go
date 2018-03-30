@@ -52,6 +52,7 @@ func (productEntity) Create(product models.Product, imgx Image) (err error) {
 		product.Image02,
 		product.Image03,
 		product.Image04,
+		product.Image05,
 	}
 	originalImages, err := imgx.MoveImagesOfProduct(uploadImages)
 	if err != nil {
@@ -63,6 +64,7 @@ func (productEntity) Create(product models.Product, imgx Image) (err error) {
 	product.Image02 = originalImages[1]
 	product.Image03 = originalImages[2]
 	product.Image04 = originalImages[3]
+	product.Image05 = originalImages[4]
 
 	err = repo.Product.Create(&product)
 	if err != nil {
