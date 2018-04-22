@@ -5,20 +5,17 @@
 			<div class="col-md-9 header-left">
 				<div class="top-nav">
 					<ul class="memenu skyblue"><li class="active"><a href="/">Home</a></li>
-						<li class="grid"><a href="#">Men</a>
+						<li class="grid"><a href="#">Danh mục sản phẩm</a>
 							<div class="mepanel">
 								<div class="row">
 									<div class="col1 me-one">
-										<h4>Shop</h4>
+										<h4>Phan loại</h4>
 										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
+										{{ with $g := . }}
+											{{ range $index, $category := $g.Categories}}
+											<li><a href="{{ $category.Url }}">{{ $category.Name }}</a></li>
+											{{ end }}
+										{{ end }}
 										</ul>
 									</div>
 								</div>
@@ -40,7 +37,7 @@
 						</li>
 						{{end}}
 						<li>
-							<a href="/post/">Liên hệ</a>
+							<a href="/contact/">Liên hệ</a>
 						</li>
 					</ul>
 				</div>
@@ -48,7 +45,7 @@
 			</div>
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
 					<input type="submit" value="">
 				</div>
 			</div>

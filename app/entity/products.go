@@ -5,6 +5,7 @@ import (
 	"dienlanhphongvan/repo"
 	"dienlanhphongvan/utilities/uer"
 	"errors"
+	"fmt"
 
 	"github.com/gosimple/slug"
 )
@@ -14,6 +15,8 @@ type productEntity struct{}
 type Product interface {
 	GetBySlug(slug string) (*models.Product, error)
 	GetList(limit, offset int) (products []models.Product, total int, err error)
+	GetNewest(limit int) (products []models.Product, err error)
+	GetByCategorySlug(categorySlug string) (products []models.Product, categoryName string, err error)
 	Create(product models.Product, imgx Image) (err error)
 }
 
@@ -34,8 +37,41 @@ func (productEntity) GetBySlug(slug string) (*models.Product, error) {
 	return product, nil
 }
 
+func (productEntity) GetByCategorySlug(categorySlug string) (products []models.Product, categoryName string, err error) {
+	limit, offset := 120, 0
+	category, err := repo.Category.GetBySlug(categorySlug)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+	if category == nil {
+		err = uer.NotFoundError(fmt.Errorf("category not found"))
+		return
+	}
+
+	categoryName = category.Name
+
+	products, _, err = repo.Product.GetByCategory(category.Id, limit, offset)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	return
+}
+
 func (productEntity) GetList(limit, offset int) (products []models.Product, total int, err error) {
 	products, total, err = repo.Product.GetList(limit, offset)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	return
+}
+
+func (productEntity) GetNewest(limit int) (products []models.Product, err error) {
+	products, err = repo.Product.GetNewest(limit)
 	if err != nil {
 		err = uer.InternalError(err)
 		return

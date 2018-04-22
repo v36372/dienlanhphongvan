@@ -2,6 +2,7 @@ package handler
 
 import (
 	"dienlanhphongvan/app/entity"
+	"dienlanhphongvan/app/presenter"
 	"dienlanhphongvan/app/view"
 	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/uer"
@@ -11,34 +12,28 @@ import (
 
 type indexHandler struct {
 	Category entity.Category
+	Product  entity.Product
 }
 
 const (
-	limitCategoryHomePage = 10
+	limitCategoriesHomePage = 100
+	limitProductsHomePage   = 12
 )
 
 func (h indexHandler) Index(c *gin.Context) {
 	admin := middleware.Auth.GetCurrentUser(c)
 
-	categories, err := h.Category.GetForHomePage(limitCategoryHomePage)
+	products, err := h.Product.GetNewest(limitProductsHomePage)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+	productsView, err := view.NewProducts(products)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
 		return
 	}
 
-	categoriesView, err := view.NewCategories(categories)
-	if err != nil {
-		uer.HandleErrorGin(err, c)
-		return
-	}
-
-	homePageView := struct {
-		Categories []view.Category
-		IsAdmin    bool
-	}{
-		Categories: categoriesView,
-		IsAdmin:    admin != nil,
-	}
-
-	c.HTML(200, "index", homePageView)
+	indexPresenter := presenter.NewIndexPagePresenter(productsView, admin != nil)
+	c.HTML(200, "index", indexPresenter)
 }

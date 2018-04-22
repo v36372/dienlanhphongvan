@@ -2,14 +2,14 @@ package view
 
 import (
 	"dienlanhphongvan/models"
-	"dienlanhphongvan/repo"
 	"dienlanhphongvan/utilities/uer"
+	"fmt"
 )
 
 type Category struct {
-	Id       int       `json:"id"`
-	Name     string    `json:"name"`
-	Products []Product `json:"products"`
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Url  string `json:"url"`
 }
 
 func NewCategoryForDashboard(category models.Category) Category {
@@ -20,21 +20,9 @@ func NewCategoryForDashboard(category models.Category) Category {
 }
 
 func NewCategory(category models.Category) (cate Category, err error) {
-	limit, offset := 10, 0
-	products, _, err := repo.Product.GetByCategory(category.Id, limit, offset)
-	if err != nil {
-		err = uer.InternalError(err)
-		return
-	}
-
-	productViews, err := NewProducts(products)
-	if err != nil {
-		return
-	}
-
 	return Category{
-		Name:     category.Name,
-		Products: productViews,
+		Name: category.Name,
+		Url:  fmt.Sprintf("/categories/%s", category.Slug),
 	}, nil
 }
 

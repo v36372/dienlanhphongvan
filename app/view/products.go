@@ -46,7 +46,7 @@ func NewProduct(product models.Product) (Product, error) {
 		Category:        category.Name,
 		Price:           ac.FormatMoney(product.Price),
 		Slug:            product.Slug,
-		Url:             fmt.Sprintf("products/%s", product.Slug),
+		Url:             fmt.Sprintf("/products/%s", product.Slug),
 		Thumbnail:       NewImage(product.Thumbnail),
 		Images: []string{
 			NewImage(product.Image01),

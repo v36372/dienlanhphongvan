@@ -5,6 +5,7 @@ import (
 	"dienlanhphongvan/utilities/uer"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gosimple/slug"
 	validator "gopkg.in/validator.v2"
 )
 
@@ -34,5 +35,6 @@ func (inputForm *Category) Validate() error {
 func (inputForm *Category) ToModelDb() models.Category {
 	return models.Category{
 		Name: inputForm.Name,
+		Slug: slug.Make(inputForm.Name),
 	}
 }

@@ -2,10 +2,9 @@
 	<div class="product"> 
 		<div class="container">
 			<div class="product-top">
-				{{ with $g := .   }}
-				{{ range $index, $cate := $g.Categories }}
 				<div class="product-one">
-					{{ range $index, $product := $cate.Products }}
+				{{ with $g := .   }}
+				{{ range $index, $product := $g.Products }}
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
 							<a href="{{ $product.Url }}" class="mask"><img class="img-responsive zoom-img" src="{{ $product.Thumbnail }}" alt="" /></a>
@@ -15,11 +14,9 @@
 							</div>
 						</div>
 					</div>
-					{{ end }}
-					<div class="clearfix"></div>
+				{{ end }}
+				{{ end }}
 				</div>
-				{{ end }}
-				{{ end }}
 			</div>
 		</div>
 	</div>

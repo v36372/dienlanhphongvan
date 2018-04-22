@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 body{
 	background:#fff;
-	font-family: 'Muli-Regular';
+	font-family: 'Merriweather-Regular';
 }
 body a{
 	transition: 0.5s all;
@@ -16,28 +16,8 @@ body a{
 	-ms-transition: 0.5s all;
 }
 @font-face {
-	font-family: 'SpectralSC-Regular';
-	src:url(../fonts/SpectralSC-Regular.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'Lora-Regular';
-	src:url(../fonts/Lora-Regular.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'Roboto Slab';
-	src:url(../fonts/Roboto-Slab.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'Muli-Regular';
-	src:url(../fonts/Muli-Regular.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'Lato-Regular';
-	src:url(../fonts/Lato-Regular.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'BreeSerif-Regular';
-	src:url(../fonts/BreeSerif-Regular.ttf) format('truetype');
+	font-family: 'Merriweather-Regular';
+	src:url(../fonts/Merriweather-Regular.ttf) format('truetype');
 }
 /*--starts-logo--*/
 .logo {
@@ -427,9 +407,7 @@ span.simpleCart_total {
 	margin: 0;
 }
 .rslides li {
-	-webkit-backface-visibility: hidden;
 	position: absolute;
-	display: none;
 	width: 100%;
 	left: 0;
 	top: 0;
@@ -666,8 +644,8 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
 	margin: 5px 0 0 0;
 	text-transform: uppercase;
 }
-.product-one:nth-child(2){
-	margin-top:30px;
+.product-left{
+	margin-top:20px;
 }
 img.zoom-img {
 	-webkit-transform: scale(1, 1);
@@ -1341,7 +1319,7 @@ a.mask {
 	margin-top:4%;
 }
 .contact-right input[type="text"] {
-	width: 32.51%;
+	width: 32.4%;
 	margin: 0px;
 	color: #000;
 	background: none;

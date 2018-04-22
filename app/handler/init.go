@@ -67,47 +67,60 @@ func InitEngine(conf *config.Config) *gin.Engine {
 
 	r.Use(authMiddleware.Interception())
 
+	// INIT ENTITY
+	productEntity := entity.NewProduct()
+	categoryEntity := entity.NewCategory()
+	imageEntity := entity.NewImage(imgx, uploadImageDir, originalImageDir, cachedImageDir, conf.App.Debug)
+	userEntity := entity.NewUser()
+
+	// INIT HANDLER
 	indexHandler := indexHandler{
-		Category: entity.NewCategory(),
+		Category: categoryEntity,
+		Product:  productEntity,
 	}
+	productHandler := productHandler{
+		productEntity: productEntity,
+		imageEntity:   imageEntity,
+	}
+	dashboardHandler := dashboardHandler{
+		product:  productEntity,
+		category: categoryEntity,
+		image:    imageEntity,
+	}
+	categoryHandler := categoryHandler{
+		category: categoryEntity,
+	}
+	userHandler := userHandler{
+		user:      userEntity,
+		secCookie: secCookie,
+	}
+	imageHandler := imageHandler{
+		imageEntity: imageEntity,
+	}
+	contactHandler := contactHandler{}
+
+	// INIT ROUTE
 	groupIndex := r.Group("")
 	{
 		GET(groupIndex, "", indexHandler.Index)
 	}
 
-	productEntity := entity.NewProduct()
-	imageEntity := entity.NewImage(imgx, uploadImageDir, originalImageDir, cachedImageDir, conf.App.Debug)
-
-	// Product
-	productHandler := productHandler{
-		productEntity: productEntity,
-		imageEntity:   imageEntity,
+	groupContact := r.Group("/contact")
+	{
+		GET(groupContact, "", contactHandler.ContactPage)
 	}
+
 	groupProduct := r.Group("/products")
 	{
 		GET(groupProduct, "/:slug", productHandler.GetDetail)
 		GET(groupProduct, "", productHandler.GetList)
 	}
 
-	categoryEntity := entity.NewCategory()
-	// Dashboard
-	dashboardHandler := dashboardHandler{
-		product:  productEntity,
-		category: categoryEntity,
-		image:    imageEntity,
+	groupCategory := r.Group("/categories")
+	{
+		GET(groupCategory, "/:slug", productHandler.GetByCategory)
 	}
 
-	// Category
-	categoryHandler := categoryHandler{
-		category: categoryEntity,
-	}
-
-	// User
-	userEntity := entity.NewUser()
-	userHandler := userHandler{
-		user:      userEntity,
-		secCookie: secCookie,
-	}
 	userGroup := r.Group("/user")
 	{
 		GET(userGroup, "/login", userHandler.LoginPage)
@@ -126,9 +139,6 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	}
 
 	// Image processing
-	imageHandler := imageHandler{
-		imageEntity: imageEntity,
-	}
 	groupImage := r.Group("/images")
 	{
 		POST(groupImage, "/upload", imageHandler.Upload)

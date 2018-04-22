@@ -21,6 +21,7 @@ func init() {
 type IProduct interface {
 	GetBySlug(slug string) (*models.Product, error)
 	GetList(limit, offset int) (products []models.Product, total int, err error)
+	GetNewest(limit int) (products []models.Product, err error)
 	GetByCategory(categoryId, limit, offset int) (products []models.Product, total int, err error)
 	Create(*models.Product) error
 	Update(*models.Product) error
@@ -90,4 +91,18 @@ func (product) GetList(limit, offset int) (products []models.Product, total int,
 	}
 
 	return products, total, nil
+}
+
+func (product) GetNewest(limit int) (products []models.Product, err error) {
+	err = infra.PostgreSql.Model(models.Product{}).
+		Order("products.created_at DESC").
+		Limit(limit).
+		Find(&products).
+		Error
+	if err != nil {
+		err = uerror.StackTrace(err)
+		return
+	}
+
+	return products, nil
 }

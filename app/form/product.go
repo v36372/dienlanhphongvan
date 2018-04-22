@@ -3,7 +3,6 @@ package form
 import (
 	"dienlanhphongvan/models"
 	"dienlanhphongvan/utilities/uer"
-	"fmt"
 
 	"github.com/gin-gonic/gin"
 	validator "gopkg.in/validator.v2"
@@ -41,7 +40,6 @@ func (inputForm *Product) Validate() error {
 }
 
 func (inputForm *Product) ToModelDb() models.Product {
-	fmt.Println(inputForm.Description)
 	return models.Product{
 		Name:        inputForm.Name,
 		Price:       inputForm.Price,

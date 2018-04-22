@@ -4,6 +4,8 @@ import (
 	"dienlanhphongvan/infra"
 	"dienlanhphongvan/models"
 	"utilities/uerror"
+
+	"github.com/jinzhu/gorm"
 )
 
 type category struct {
@@ -19,7 +21,8 @@ func init() {
 type ICategory interface {
 	GetAll() (categories []models.Category, err error)
 	GetList(limit, offset int) (categories []models.Category, err error)
-	GetById(id int) (category models.Category, err error)
+	GetById(id int) (*models.Category, error)
+	GetBySlug(slug string) (*models.Category, error)
 	Create(*models.Category) error
 	Update(*models.Category) error
 }
@@ -58,15 +61,27 @@ func (category) GetList(limit, offset int) (categories []models.Category, err er
 	return categories, nil
 }
 
-func (category) GetById(id int) (category models.Category, err error) {
-	err = infra.PostgreSql.Model(models.Category{}).
+func (category) GetBySlug(slug string) (*models.Category, error) {
+	var category models.Category
+	err := infra.PostgreSql.Model(models.Category{}).
+		Where("slug = ?", slug).
+		Find(&category).
+		Error
+	if err == gorm.ErrRecordNotFound {
+		return nil, nil
+	}
+
+	return &category, err
+}
+func (category) GetById(id int) (*models.Category, error) {
+	var category models.Category
+	err := infra.PostgreSql.Model(models.Category{}).
 		Where("id = ?", id).
 		Find(&category).
 		Error
-	if err != nil {
-		err = uerror.StackTrace(err)
-		return
+	if err == gorm.ErrRecordNotFound {
+		return nil, nil
 	}
 
-	return category, nil
+	return &category, err
 }

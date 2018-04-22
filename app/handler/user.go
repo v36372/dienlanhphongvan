@@ -3,6 +3,7 @@ package handler
 import (
 	"dienlanhphongvan/app/entity"
 	"dienlanhphongvan/app/form"
+	"dienlanhphongvan/app/presenter"
 	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/uer"
 
@@ -22,12 +23,8 @@ func (h userHandler) LoginPage(c *gin.Context) {
 		return
 	}
 
-	loginPageView := struct {
-		IsAdmin bool
-	}{
-		IsAdmin: admin != nil,
-	}
-	c.HTML(200, "login", loginPageView)
+	loginPagePresenter := presenter.NewLoginPagePresenter()
+	c.HTML(200, "login", loginPagePresenter)
 }
 
 func (h userHandler) Login(c *gin.Context) {

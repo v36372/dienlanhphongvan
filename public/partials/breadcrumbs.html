@@ -1,12 +1,15 @@
 {{ define "breadcrumbs" }}
-	<div class="breadcrumbs">
-		<div class="container">
-			<div class="breadcrumbs-main">
-				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">New Products</li>
-				</ol>
-			</div>
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="breadcrumbs-main">
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a></li>
+
+				{{ range $index, $br := .CurrentPageBreadCrumbs }}
+				<li class="active">{{ $br }}</li>
+				{{ end }}
+			</ol>
 		</div>
 	</div>
+</div>
 {{ end }}

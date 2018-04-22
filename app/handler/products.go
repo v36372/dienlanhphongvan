@@ -4,6 +4,7 @@ import (
 	"dienlanhphongvan/app/entity"
 	"dienlanhphongvan/app/form"
 	"dienlanhphongvan/app/params"
+	"dienlanhphongvan/app/presenter"
 	"dienlanhphongvan/app/view"
 	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/uer"
@@ -14,6 +15,26 @@ import (
 type productHandler struct {
 	productEntity entity.Product
 	imageEntity   entity.Image
+}
+
+func (h productHandler) GetByCategory(c *gin.Context) {
+	admin := middleware.Auth.GetCurrentUser(c)
+
+	categorySlug := params.NewGetProductSlugParam(c)
+	products, categoryName, err := h.productEntity.GetByCategorySlug(categorySlug)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	productsView, err := view.NewProducts(products)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	productsPagePresenter := presenter.NewProductsPagePresenter(productsView, categoryName, admin != nil)
+	c.HTML(200, "product-list", productsPagePresenter)
 }
 
 func (h productHandler) GetDetail(c *gin.Context) {
@@ -36,14 +57,9 @@ func (h productHandler) GetDetail(c *gin.Context) {
 		uer.HandleErrorGin(err, c)
 		return
 	}
-	productPageView := struct {
-		Product view.Product
-		IsAdmin bool
-	}{
-		Product: productView,
-		IsAdmin: admin != nil,
-	}
-	c.HTML(200, "product-detail", productPageView)
+
+	productPagePresenter := presenter.NewProductPagePresenter(productView, admin != nil)
+	c.HTML(200, "product-detail", productPagePresenter)
 }
 
 func (h productHandler) GetList(c *gin.Context) {
