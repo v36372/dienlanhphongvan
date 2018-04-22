@@ -2,6 +2,7 @@ package handler
 
 import (
 	"dienlanhphongvan/app/entity"
+	"dienlanhphongvan/app/presenter"
 	"dienlanhphongvan/app/view"
 	"dienlanhphongvan/middleware"
 	"dienlanhphongvan/utilities/uer"
@@ -17,30 +18,14 @@ type dashboardHandler struct {
 
 func (h dashboardHandler) CreateProduct(c *gin.Context) {
 	admin := middleware.Auth.GetCurrentUser(c)
-	categories, err := h.category.GetForDashboard()
-	if err != nil {
-		uer.HandleErrorGin(err, c)
-		return
-	}
-	categoriesView := view.NewCategoriesForDashboard(categories)
-	createProductPageView := struct {
-		Categories []view.Category
-		IsAdmin    bool
-	}{
-		Categories: categoriesView,
-		IsAdmin:    admin != nil,
-	}
-	c.HTML(200, "create-product", createProductPageView)
+	dashboardPagePresenter := presenter.NewDashboardPagePresenter(admin != nil, "Tạo sản phẩm")
+	c.HTML(200, "create-product", dashboardPagePresenter)
 }
 
 func (h dashboardHandler) CreateCategory(c *gin.Context) {
 	admin := middleware.Auth.GetCurrentUser(c)
-	createCategoryPageView := struct {
-		IsAdmin bool
-	}{
-		IsAdmin: admin != nil,
-	}
-	c.HTML(200, "create-category", createCategoryPageView)
+	dashboardPagePresenter := presenter.NewDashboardPagePresenter(admin != nil, "Tạo phan loại")
+	c.HTML(200, "create-category", dashboardPagePresenter)
 }
 
 func (h dashboardHandler) ListProduct(c *gin.Context) {
@@ -60,12 +45,6 @@ func (h dashboardHandler) ListProduct(c *gin.Context) {
 		return
 	}
 
-	productListPageView := struct {
-		Products []view.Product
-		IsAdmin  bool
-	}{
-		Products: productViews,
-		IsAdmin:  admin != nil,
-	}
-	c.HTML(200, "list-product", productListPageView)
+	dashboardProductList := presenter.NewDashboardProductListPresenter(productViews, admin != nil)
+	c.HTML(200, "list-product", dashboardProductList)
 }
