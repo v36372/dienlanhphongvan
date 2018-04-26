@@ -1,0 +1,114 @@
+{{define "content"}}
+{{template "breadcrumbs" .}}
+<div class="contact">
+	<div class="container">
+		<div class="contact-top heading">
+			<h2>CREATE PRODUCT</h2>
+		</div>
+
+		{{ with $g := . }}
+		<div class="col-md-12 account-left">
+			{{ range $index, $image := $.Product.Images }}
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh {{ $index }}: <br>
+				<form id="form-image{{ $index }}" action="/dashboard/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
+					<input id="image{{ $index }}" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image{{ $index }}" src="{{ $image }}" style="width:150px;height:200px;" alt="" />
+				</form>
+			</div>
+			{{ end }}
+			<div class="col-md-12">
+
+				<div class="col-md-6 account-left">
+					<form action="/dashboard/products/{{$g.Product.Slug}}" method="post">
+						<input placeholder="Product name" type="text" tabindex="1" required name="name" value={{ $g.Product.Name }}>
+						<select name="categoryId" tabindex="2" required>
+							<option value="{{ $g.Product.CategoryId }}">{{ $g.Product.Category }}</option>
+							{{ range $index, $category := $.Categories  }}
+								{{ if ne $category.Name $g.Product.Category }}
+								<option value="{{ $category.Id }}">{{ $category.Name }}</option>
+								{{ end }}
+							{{ end }}
+						</select>
+
+						<input placeholder="Price" type="text" tabindex="3" required  name="pricetext" onkeyup="priceFormat(this)" value="{{ $g.Product.RealPrice }}"/>
+						<input type="number" style="display:none" required  name="price" id="trueprice" value="{{ $g.Product.RealPrice }}"/>
+						<textarea placeholder="Description" type="text" tabindex="4" required="" name="desc">{{ $g.Product.Description }}</textarea>
+
+						{{ if $g.Product.Active }}
+						<input type="checkbox" name="active" value="true" checked>Còn hàng<br>
+						{{ else }}
+						<input type="checkbox" name="active" value="true">Còn hàng<br>
+						{{ end }}
+
+						{{ range $index, $image := $.Product.Images }}
+						<input id="url-image{{ $index }}" type="text" name="image{{ $index }}" style="display:none;" value="{{ $image }}">
+						{{ end }}
+						<div class="submit-btn">
+							<input type="submit" value="SUBMIT" tabindex="4">
+						</div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		{{ end }}
+		</article>
+
+	</div>
+</div> 
+<script type="text/javascript">
+function readURL(input) {
+	var inputId = input.id
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#preview-'+inputId)
+					.attr('src', e.target.result)
+					.width(150)
+					.height(200);
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+
+	$('#form-'+inputId).ajaxForm(function(data) { 
+		var url = data.data[0].url; 
+		$('#url-'+inputId).val(url)
+	}); 
+
+	$('#form-'+inputId).submit()
+};
+
+function priceFormat(input) {
+	var ele = $( input  );
+	var value = ele.val();
+
+	var ovalue = value.replace(/[\D\s\._\-]+/g, "");
+
+	value = ovalue ? parseInt( ovalue, 10  ) : 0;
+
+	ele.val( function() {
+		return ( value === 0  ) ? "" : value.toLocaleString("en-US");
+	}  );
+
+	var truePrice = $('#trueprice');
+	trueprice.value  = parseFloat(ovalue)
+};
+
+</script>
+<script src="/static/js/jquery.form.js"></script> 
+
+<iframe  id="concac" name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<style>
+img[src=""] {
+	display: none;
+
+}
+</style>
+</div>	
+</div>
+{{ end }}
+
+

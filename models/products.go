@@ -9,6 +9,7 @@ type Product struct {
 	CategoryId  int
 	Price       float32
 	Slug        string
+	Active      bool
 	Thumbnail   string
 	Image01     string
 	Image02     string

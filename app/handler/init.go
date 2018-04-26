@@ -138,9 +138,11 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	dashboardGroup.Use(authMiddleware.RequireLogin())
 	{
 		GET(dashboardGroup, "/create-product", dashboardHandler.CreateProduct)
+		GET(dashboardGroup, "/update-product/:slug", dashboardHandler.UpdateProduct)
 		GET(dashboardGroup, "/create-category", dashboardHandler.CreateCategory)
 		GET(dashboardGroup, "/product-list", dashboardHandler.ListProduct)
 		POST(dashboardGroup, "/products", productHandler.Create)
+		POST(dashboardGroup, "/products/:slug", productHandler.Update)
 		POST(dashboardGroup, "/categories", categoryHandler.Create)
 	}
 

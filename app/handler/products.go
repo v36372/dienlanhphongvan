@@ -81,6 +81,12 @@ func (h productHandler) GetList(c *gin.Context) {
 }
 
 func (h productHandler) Create(c *gin.Context) {
+	admin := middleware.Auth.GetCurrentUser(c)
+	if admin == nil {
+		uer.HandleUnauthorized(c)
+		return
+	}
+
 	var productForm form.Product
 	err := productForm.FromCtx(c)
 	if err != nil {
@@ -90,6 +96,43 @@ func (h productHandler) Create(c *gin.Context) {
 
 	productModelDb := productForm.ToModelDb()
 	err = h.productEntity.Create(productModelDb, h.imageEntity)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	c.Redirect(302, "/dashboard/product-list")
+}
+
+func (h productHandler) Update(c *gin.Context) {
+	admin := middleware.Auth.GetCurrentUser(c)
+	if admin == nil {
+		uer.HandleUnauthorized(c)
+		return
+	}
+
+	productSlug := params.NewGetProductSlugParam(c)
+	product, err := h.productEntity.GetBySlug(productSlug)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	if product == nil {
+		uer.HandleNotFound(c)
+		return
+	}
+
+	var productForm form.Product
+	err = productForm.FromCtx(c)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	productModelDb := productForm.ToModelDb()
+	productModelDb.Id = product.Id
+	err = h.productEntity.Update(productModelDb, h.imageEntity)
 	if err != nil {
 		uer.HandleErrorGin(err, c)
 		return

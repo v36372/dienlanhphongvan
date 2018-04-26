@@ -6,14 +6,13 @@
 			</div>
 			<div class="ckeckout-top">
 			<div class="cart-items">
-			 <h3>My Shopping Bag (3)</h3>
 			<div class="in-check" >
 				<ul class="unit">
-					<li><span>Item</span></li>
-					<li><span>Name</span></li>		
-					<li><span>Price</span></li>
-					<li><span>Category</span></li>
-					<li><span>Description</span></li>
+					<li><span>Hàng</span></li>
+					<li><span>Tên </span></li>		
+					<li><span>Giá</span></li>
+					<li><span>Loại</span></li>
+					<li><span>Tình trạng</span></li>
 					<li> </li>
 					<div class="clearfix"> </div>
 				</ul>
@@ -24,11 +23,13 @@
 						<li><span class="name">{{ $product.Name }}</span></li>
 						<li><span class="cost">{{ $product.Price }}</span></li>
 						<li><span class="cost">{{ $product.Category }}</span></li>
-						<li>
-							<p class="prod-desc">
-							{{ $product.DescriptionHtml }}
-							</p>
-						</li>
+						{{ if $product.Active }}
+						<li><span class="cost">Còn hàng</span></li>
+						{{ else }}
+						<li><span class="cost">Hết hàng</span></li>
+						{{ end }}
+
+						<li class="action"><a href="/dashboard/update-product/{{ $product.Slug }}">Cập nhật</a></li>
 					<div class="clearfix"> </div>
 				</ul>
 				{{ end }}

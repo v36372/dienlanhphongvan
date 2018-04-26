@@ -9,6 +9,11 @@ type DashboardPagePresenter struct {
 	global
 }
 
+type DashboardUpdateProductPresenter struct {
+	global
+	Product view.Product
+}
+
 type DashboardProductListPresenter struct {
 	global
 	Products []view.Product
@@ -38,5 +43,19 @@ func NewDashboardProductListPresenter(products []view.Product, isAdmin bool) Das
 			CurrentPageTitle: fmt.Sprintf("%s - %s", websiteName, "Danh sách sản phẩm"),
 		},
 		Products: products,
+	}
+}
+
+func NewDashboardUpdateProductPresenter(product view.Product, isAdmin bool) DashboardUpdateProductPresenter {
+	return DashboardUpdateProductPresenter{
+		global: global{
+			Categories: getGlobalCategories(),
+			IsAdmin:    isAdmin,
+			CurrentPageBreadCrumbs: []string{
+				"Cập nhật sản phẩm",
+			},
+			CurrentPageTitle: fmt.Sprintf("%s - %s", websiteName, "Cập nhật sản phẩm"),
+		},
+		Product: product,
 	}
 }

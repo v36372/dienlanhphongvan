@@ -25,7 +25,7 @@ func getGlobalCategories() []view.Category {
 		return []view.Category{}
 	}
 
-	globalCategories, err := view.NewCategories(categories)
+	globalCategories := view.NewCategoriesForDashboard(categories)
 	if err != nil {
 		ulog.Logger().LogErrorObjectManual(err, "error when populate view global categories", nil)
 		return []view.Category{}

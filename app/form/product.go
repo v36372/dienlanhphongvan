@@ -13,11 +13,12 @@ type Product struct {
 	Price       float32 `form:"price" json:"price" validator:"nonzero"`
 	Description string  `form:"desc" json:"desc" validator:"nonzero"`
 	CategoryId  int     `form:"categoryId" json:"categoryId" validator:"nonzero"`
-	Image01     string  `form:"image01" json:"image01" validator:"nonzero"`
-	Image02     string  `form:"image02" json:"image02" validator:"nonzero"`
-	Image03     string  `form:"image03" json:"image03" validator:"nonzero"`
-	Image04     string  `form:"image04" json:"image04" validator:"nonzero"`
-	Image05     string  `form:"image05" json:"image05" validator:"nonzero"`
+	Active      bool    `form:"active" json:"active" validator:"nonzero"`
+	Image0      string  `form:"image0" json:"image01" validator:"nonzero"`
+	Image1      string  `form:"image1" json:"image02" validator:"nonzero"`
+	Image2      string  `form:"image2" json:"image03" validator:"nonzero"`
+	Image3      string  `form:"image3" json:"image04" validator:"nonzero"`
+	Image4      string  `form:"image4" json:"image05" validator:"nonzero"`
 }
 
 func (inputForm *Product) FromCtx(c *gin.Context) error {
@@ -45,10 +46,11 @@ func (inputForm *Product) ToModelDb() models.Product {
 		Price:       inputForm.Price,
 		Description: inputForm.Description,
 		CategoryId:  inputForm.CategoryId,
-		Image01:     inputForm.Image01,
-		Image02:     inputForm.Image02,
-		Image03:     inputForm.Image03,
-		Image04:     inputForm.Image04,
-		Image05:     inputForm.Image05,
+		Active:      inputForm.Active,
+		Image01:     inputForm.Image0,
+		Image02:     inputForm.Image1,
+		Image03:     inputForm.Image2,
+		Image04:     inputForm.Image3,
+		Image05:     inputForm.Image4,
 	}
 }

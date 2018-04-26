@@ -16,7 +16,10 @@ type Product struct {
 	DescriptionHtml template.HTML `json:"-"`
 	Description     string        `json:"desc"`
 	Category        string        `json:"category"`
+	CategoryId      int           `json:"categoryId"`
+	Active          bool          `json:"active"`
 	Price           string        `json:"price"`
+	RealPrice       float32       `json:"realPrice"`
 	Slug            string        `json:"slug"`
 	Url             string        `json:"url"`
 	Thumbnail       string        `json:"thumbnail"`
@@ -31,8 +34,10 @@ func NewProduct(product models.Product) (Product, error) {
 	}
 
 	var productCategory string
+	var productCategoryId int
 	if category != nil {
 		productCategory = category.Name
+		productCategoryId = category.Id
 	}
 
 	ac := accounting.Accounting{
@@ -49,7 +54,10 @@ func NewProduct(product models.Product) (Product, error) {
 		DescriptionHtml: template.HTML(desc),
 		Description:     product.Description,
 		Category:        productCategory,
+		CategoryId:      productCategoryId,
+		Active:          product.Active,
 		Price:           ac.FormatMoney(product.Price),
+		RealPrice:       product.Price,
 		Slug:            product.Slug,
 		Url:             fmt.Sprintf("/products/%s", product.Slug),
 		Thumbnail:       NewImage(product.Thumbnail),

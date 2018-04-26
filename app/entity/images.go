@@ -35,6 +35,10 @@ type Image interface {
 	GetCached(name model.Filename) (string, error)
 }
 
+const (
+	cachedImagePrefix = "/images/cached/"
+)
+
 func NewImage(imgx *client.Client, uploadDir, originalDir, cachedDir string, debug bool) *imageEntity {
 	return &imageEntity{
 		Imgx:        imgx,
@@ -105,10 +109,18 @@ func (i imageEntity) GetCached(name model.Filename) (string, error) {
 
 }
 
+func isOldImage(image string) bool {
+	return strings.HasPrefix(image, cachedImagePrefix)
+}
+
 func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err error) {
 	for _, image := range images {
 		if len(image) == 0 {
-			oimages = append(oimages, "")
+			oimages = append(oimages, image)
+			continue
+		}
+		if isOldImage(image) {
+			oimages = append(oimages, image[len(cachedImagePrefix):])
 			continue
 		}
 		fromName, err := model.ParseUploadFilename(image)

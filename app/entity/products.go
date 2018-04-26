@@ -18,6 +18,7 @@ type Product interface {
 	GetNewest(limit int) (products []models.Product, err error)
 	GetByCategorySlug(categorySlug string) (products []models.Product, categoryName string, err error)
 	Create(product models.Product, imgx Image) (err error)
+	Update(product models.Product, imgx Image) (err error)
 }
 
 func NewProduct() Product {
@@ -103,6 +104,37 @@ func (productEntity) Create(product models.Product, imgx Image) (err error) {
 	product.Image05 = originalImages[4]
 
 	err = repo.Product.Create(&product)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	return
+}
+
+func (productEntity) Update(product models.Product, imgx Image) (err error) {
+	product.Slug = slug.Make(product.Name)
+
+	uploadImages := []string{
+		product.Image01,
+		product.Image02,
+		product.Image03,
+		product.Image04,
+		product.Image05,
+	}
+	originalImages, err := imgx.MoveImagesOfProduct(uploadImages)
+	if err != nil {
+		return uer.InternalError(err)
+	}
+
+	product.Thumbnail = originalImages[0]
+	product.Image01 = originalImages[0]
+	product.Image02 = originalImages[1]
+	product.Image03 = originalImages[2]
+	product.Image04 = originalImages[3]
+	product.Image05 = originalImages[4]
+
+	err = repo.Product.Update(&product)
 	if err != nil {
 		err = uer.InternalError(err)
 		return

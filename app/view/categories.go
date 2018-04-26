@@ -2,7 +2,6 @@ package view
 
 import (
 	"dienlanhphongvan/models"
-	"dienlanhphongvan/utilities/uer"
 	"fmt"
 )
 
@@ -19,11 +18,11 @@ func NewCategoryForDashboard(category models.Category) Category {
 	}
 }
 
-func NewCategory(category models.Category) (cate Category, err error) {
+func NewCategory(category models.Category) Category {
 	return Category{
 		Name: category.Name,
 		Url:  fmt.Sprintf("/categories/%s", category.Slug),
-	}, nil
+	}
 }
 
 func NewCategoriesForDashboard(categories []models.Category) (categoryViews []Category) {
@@ -34,14 +33,10 @@ func NewCategoriesForDashboard(categories []models.Category) (categoryViews []Ca
 
 	return
 }
-func NewCategories(categories []models.Category) (categoryViews []Category, err error) {
+func NewCategories(categories []models.Category) (categoryViews []Category) {
 	categoryViews = make([]Category, len(categories))
 	for i, cate := range categories {
-		categoryViews[i], err = NewCategory(cate)
-		if err != nil {
-			err = uer.InternalError(err)
-			return
-		}
+		categoryViews[i] = NewCategory(cate)
 	}
 
 	return
