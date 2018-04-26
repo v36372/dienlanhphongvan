@@ -13,7 +13,7 @@ type IndexPage struct {
 func NewIndexPagePresenter(products []view.Product, isAdmin bool) IndexPage {
 	return IndexPage{
 		global: global{
-			Categories:       globalCategories,
+			Categories:       getGlobalCategories(),
 			IsAdmin:          isAdmin,
 			CurrentPageTitle: fmt.Sprintf("%s - %s", websiteName, "Trang chủ"),
 		},

@@ -9,7 +9,7 @@ type ContactPagePresenter struct {
 func NewContactPagePresenter(isAdmin bool) ContactPagePresenter {
 	return ContactPagePresenter{
 		global: global{
-			Categories:       globalCategories,
+			Categories:       getGlobalCategories(),
 			IsAdmin:          isAdmin,
 			CurrentPageTitle: fmt.Sprintf("%s - %s", websiteName, "Liên hệ"),
 			CurrentPageBreadCrumbs: []string{

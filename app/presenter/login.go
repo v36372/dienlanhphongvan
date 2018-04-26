@@ -9,7 +9,7 @@ type LoginPagePresenter struct {
 func NewLoginPagePresenter() LoginPagePresenter {
 	return LoginPagePresenter{
 		global: global{
-			Categories: globalCategories,
+			Categories: getGlobalCategories(),
 			IsAdmin:    false,
 			CurrentPageBreadCrumbs: []string{
 				"Đăng nhập",

@@ -18,7 +18,7 @@ type ProductsPage struct {
 func NewProductPagePresenter(product view.Product, isAdmin bool) ProductPage {
 	return ProductPage{
 		global: global{
-			Categories: globalCategories,
+			Categories: getGlobalCategories(),
 			IsAdmin:    isAdmin,
 			CurrentPageBreadCrumbs: []string{
 				product.Category,
@@ -33,7 +33,7 @@ func NewProductPagePresenter(product view.Product, isAdmin bool) ProductPage {
 func NewProductsPagePresenter(products []view.Product, categoryName string, isAdmin bool) ProductsPage {
 	return ProductsPage{
 		global: global{
-			Categories: globalCategories,
+			Categories: getGlobalCategories(),
 			IsAdmin:    isAdmin,
 			CurrentPageBreadCrumbs: []string{
 				categoryName,

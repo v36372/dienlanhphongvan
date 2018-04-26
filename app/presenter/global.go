@@ -3,11 +3,7 @@ package presenter
 import (
 	"dienlanhphongvan/app/view"
 	"dienlanhphongvan/repo"
-	"fmt"
-)
-
-var (
-	globalCategories []view.Category
+	"dienlanhphongvan/utilities/ulog"
 )
 
 const (
@@ -22,14 +18,18 @@ type global struct {
 	IsAdmin                bool
 }
 
-func InitGlobalPresenter() {
+func getGlobalCategories() []view.Category {
 	categories, err := repo.Category.GetList(limitCategoriesHomePage, 0)
 	if err != nil {
-		panic(fmt.Errorf("Cant init presenter: %s", err))
+		ulog.Logger().LogErrorObjectManual(err, "error when get global categories", nil)
+		return []view.Category{}
 	}
 
-	globalCategories, err = view.NewCategories(categories)
+	globalCategories, err := view.NewCategories(categories)
 	if err != nil {
-		panic(fmt.Errorf("Cant init presenter: %s", err))
+		ulog.Logger().LogErrorObjectManual(err, "error when populate view global categories", nil)
+		return []view.Category{}
 	}
+
+	return globalCategories
 }

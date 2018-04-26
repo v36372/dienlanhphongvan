@@ -108,6 +108,7 @@ func (i imageEntity) GetCached(name model.Filename) (string, error) {
 func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err error) {
 	for _, image := range images {
 		if len(image) == 0 {
+			oimages = append(oimages, "")
 			continue
 		}
 		fromName, err := model.ParseUploadFilename(image)

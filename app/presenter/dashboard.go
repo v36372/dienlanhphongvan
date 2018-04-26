@@ -17,7 +17,7 @@ type DashboardProductListPresenter struct {
 func NewDashboardPagePresenter(isAdmin bool, br string) DashboardPagePresenter {
 	return DashboardPagePresenter{
 		global: global{
-			Categories: globalCategories,
+			Categories: getGlobalCategories(),
 			IsAdmin:    isAdmin,
 			CurrentPageBreadCrumbs: []string{
 				br,
@@ -30,7 +30,7 @@ func NewDashboardPagePresenter(isAdmin bool, br string) DashboardPagePresenter {
 func NewDashboardProductListPresenter(products []view.Product, isAdmin bool) DashboardProductListPresenter {
 	return DashboardProductListPresenter{
 		global: global{
-			Categories: globalCategories,
+			Categories: getGlobalCategories(),
 			IsAdmin:    isAdmin,
 			CurrentPageBreadCrumbs: []string{
 				"Danh sách sản phẩm",

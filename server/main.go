@@ -2,7 +2,6 @@ package main
 
 import (
 	"dienlanhphongvan/app/handler"
-	"dienlanhphongvan/app/presenter"
 	"dienlanhphongvan/cmd"
 	"dienlanhphongvan/config"
 	"dienlanhphongvan/infra"
@@ -20,7 +19,6 @@ func main() {
 	setupInfra(conf)
 	defer infra.ClosePostgreSql()
 
-	presenter.InitGlobalPresenter()
 	ginEngine := handler.InitEngine(&conf)
 	address := fmt.Sprintf("%s:%d", config.Get().App.Host, config.Get().App.Port)
 	server := http.Server{
