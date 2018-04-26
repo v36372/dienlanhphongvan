@@ -116,6 +116,12 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		GET(groupProduct, "", productHandler.GetList)
 	}
 
+	groupImage := r.Group("/images")
+	{
+		GET(groupImage, "/original/:name", imageHandler.GetOriginal)
+		GET(groupImage, "/cached/:name", imageHandler.GetCached)
+	}
+
 	groupCategory := r.Group("/categories")
 	{
 		GET(groupCategory, "/:slug", productHandler.GetByCategory)
@@ -139,12 +145,10 @@ func InitEngine(conf *config.Config) *gin.Engine {
 	}
 
 	// Image processing
-	groupImage := r.Group("/images")
+	groupDashboardImage := dashboardGroup.Group("/images")
 	{
-		POST(groupImage, "/upload", imageHandler.Upload)
-		POST(groupImage, "/move/:name", imageHandler.Move)
-		GET(groupImage, "/original/:name", imageHandler.GetOriginal)
-		GET(groupImage, "/cached/:name", imageHandler.GetCached)
+		POST(groupDashboardImage, "/upload", imageHandler.Upload)
+		POST(groupDashboardImage, "/move/:name", imageHandler.Move)
 	}
 
 	return r

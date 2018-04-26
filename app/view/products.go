@@ -30,6 +30,11 @@ func NewProduct(product models.Product) (Product, error) {
 		return Product{}, uer.InternalError(err)
 	}
 
+	var productCategory string
+	if category != nil {
+		productCategory = category.Name
+	}
+
 	ac := accounting.Accounting{
 		Symbol:   "₫",
 		Thousand: ".",
@@ -43,7 +48,7 @@ func NewProduct(product models.Product) (Product, error) {
 		Name:            product.Name,
 		DescriptionHtml: template.HTML(desc),
 		Description:     product.Description,
-		Category:        category.Name,
+		Category:        productCategory,
 		Price:           ac.FormatMoney(product.Price),
 		Slug:            product.Slug,
 		Url:             fmt.Sprintf("/products/%s", product.Slug),
