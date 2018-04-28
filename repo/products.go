@@ -50,6 +50,7 @@ func (product) GetBySlug(slug string) (*models.Product, error) {
 
 func (product) GetByCategory(categoryId, limit, offset int) (products []models.Product, total int, err error) {
 	query := infra.PostgreSql.Model(models.Product{}).
+		Where("active = true").
 		Where("category_id = ?", categoryId)
 
 	err = query.Count(&total).Error
@@ -95,6 +96,7 @@ func (product) GetList(limit, offset int) (products []models.Product, total int,
 
 func (product) GetNewest(limit int) (products []models.Product, err error) {
 	err = infra.PostgreSql.Model(models.Product{}).
+		Where("active = true").
 		Order("products.created_at DESC").
 		Limit(limit).
 		Find(&products).
