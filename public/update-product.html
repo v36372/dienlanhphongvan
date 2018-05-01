@@ -66,8 +66,8 @@ function readURL(input) {
 			reader.onload = function (e) {
 				$('#preview-'+inputId)
 					.attr('src', e.target.result)
-					.width(150)
-					.height(200);
+					.width(210)
+					.height(210);
 			};
 
 			reader.readAsDataURL(input.files[0]);

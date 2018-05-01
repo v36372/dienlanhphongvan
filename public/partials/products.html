@@ -6,10 +6,12 @@
 				{{ with $g := .   }}
 				{{ range $index, $product := $g.Products }}
 					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
+						<div class="product-main">
 							<a href="{{ $product.Url }}" class="mask"><img class="img-responsive zoom-img" src="{{ $product.Thumbnail }}" alt="" /></a>
 							<div class="product-bottom">
-								<h3>{{ $product.Name }}</h3>
+								<div style="height:30px;">
+									<h3>{{ $product.Name }}</h3>
+								</div>
 								<h4><span class="item_price">{{ $product.Price }}</span></h4>
 							</div>
 						</div>

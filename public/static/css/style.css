@@ -2204,6 +2204,7 @@ h3.ghj {
 	}
 	.product-bottom h4 {
 		margin: 4px 0 0 0;
+		color: red;
 	}
 	.product-bottom p {
 		font-size: 11px;
@@ -2469,6 +2470,7 @@ h3.ghj {
 	}
 	.product-bottom h4 span {
 		font-size: 15px;
+		color: #ea0707; 
 	}
 	.product-bottom h4 i {
 		margin-right: 2px;

@@ -9,37 +9,37 @@
 		<div class="col-md-12 account-left">
 			<div class="col-md-2" style="height:300px;margin-right:37px;">
 				Chọn ảnh 1: <br>
-				<form id="form-image1" action="/dashboard/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
+				<form id="form-image0" action="/dashboard/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
+					<input id="image0" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
+					<img id="preview-image0" src="" alt="your image" />
+				</form>
+			</div>
+			<div class="col-md-2" style="height:300px;margin-right:37px;">
+				Chọn ảnh 2: <br>
+				<form id="form-image1" action="/dashboard/images/upload" method="post">
 					<input id="image1" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
 					<img id="preview-image1" src="" alt="your image" />
 				</form>
 			</div>
 			<div class="col-md-2" style="height:300px;margin-right:37px;">
-				Chọn ảnh 2: <br>
+				Chọn ảnh 3: <br>
 				<form id="form-image2" action="/dashboard/images/upload" method="post">
 					<input id="image2" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
 					<img id="preview-image2" src="" alt="your image" />
 				</form>
 			</div>
 			<div class="col-md-2" style="height:300px;margin-right:37px;">
-				Chọn ảnh 3: <br>
+				Chọn ảnh 4: <br>
 				<form id="form-image3" action="/dashboard/images/upload" method="post">
 					<input id="image3" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
 					<img id="preview-image3" src="" alt="your image" />
 				</form>
 			</div>
 			<div class="col-md-2" style="height:300px;margin-right:37px;">
-				Chọn ảnh 4: <br>
+				Chọn ảnh 5: <br>
 				<form id="form-image4" action="/dashboard/images/upload" method="post">
 					<input id="image4" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
 					<img id="preview-image4" src="" alt="your image" />
-				</form>
-			</div>
-			<div class="col-md-2" style="height:300px;margin-right:37px;">
-				Chọn ảnh 5: <br>
-				<form id="form-image5" action="/dashboard/images/upload" method="post">
-					<input id="image5" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-					<img id="preview-image5" src="" alt="your image" />
 				</form>
 			</div>
 			<div class="col-md-12">
@@ -56,11 +56,14 @@
 						<input placeholder="Price" type="text" tabindex="3" required  name="pricetext" onkeyup="priceFormat(this)"/>
 						<input type="number" style="display:none" required  name="price" id="trueprice"/>
 						<textarea placeholder="Description" value="" type="text" tabindex="4" required="" name="desc"></textarea>
-						<input id="url-image1" type="text" name="image01" style="display:none;">
-						<input id="url-image2" type="text" name="image02" style="display:none;">
-						<input id="url-image3" type="text" name="image03" style="display:none;">
-						<input id="url-image4" type="text" name="image04" style="display:none;">
-						<input id="url-image5" type="text" name="image05" style="display:none;">
+
+						<input type="checkbox" name="active" value="true" checked>Còn hàng<br>
+
+						<input id="url-image0" type="text" name="image0" style="display:none;">
+						<input id="url-image1" type="text" name="image1" style="display:none;">
+						<input id="url-image2" type="text" name="image2" style="display:none;">
+						<input id="url-image3" type="text" name="image3" style="display:none;">
+						<input id="url-image4" type="text" name="image4" style="display:none;">
 						<div class="submit-btn">
 							<input type="submit" value="SUBMIT" tabindex="4">
 						</div>
@@ -83,8 +86,8 @@ function readURL(input) {
 				console.log(inputId)
 					$('#preview-'+inputId)
 					.attr('src', e.target.result)
-					.width(150)
-					.height(200);
+					.width(210)
+					.height(210);
 
 			};
 
