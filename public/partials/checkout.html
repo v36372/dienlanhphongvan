@@ -18,7 +18,7 @@
 				</ul>
 				{{ range $index, $product := $.Products  }}
 				<ul class="cart-header">
-					<li class="ring-in"><a href="single.html" ><img src="{{ $product.Thumbnail }}" class="img-responsive" alt="" style="max-width:50%;"></a>
+					<li class="ring-in"><a href="{{ $product.Url }}" ><img src="{{ $product.Thumbnail }}" class="img-responsive" alt="" style="max-width:50%;"></a>
 						</li>
 						<li><span class="name">{{ $product.Name }}</span></li>
 						<li><span class="cost">{{ $product.Price }}</span></li>
