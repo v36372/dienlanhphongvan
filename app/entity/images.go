@@ -120,6 +120,10 @@ func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err
 			continue
 		}
 		if isOldImage(image) {
+			if index := strings.Index(image, "?"); index > 0 {
+				image = image[:index]
+			}
+
 			oimages = append(oimages, image[len(cachedImagePrefix):])
 			continue
 		}

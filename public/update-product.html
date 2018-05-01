@@ -13,7 +13,7 @@
 				Chọn ảnh {{ $index }}: <br>
 				<form id="form-image{{ $index }}" action="/dashboard/images/upload" method="post" enctype="multipart/form-data" target="hiddenFrame">
 					<input id="image{{ $index }}" type="file" name="files" accept="image/*" onchange="readURL(this);"><br>
-					<img id="preview-image{{ $index }}" src="{{ $image }}" style="width:150px;height:200px;" alt="" />
+					<img id="preview-image{{ $index }}" src="{{ $image }}" style="width:210px;height:210px;" alt="" />
 				</form>
 			</div>
 			{{ end }}
