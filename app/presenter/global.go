@@ -8,7 +8,7 @@ import (
 
 const (
 	limitCategoriesHomePage = 100
-	websiteName             = "Điện lạnh Phong Van"
+	websiteName             = "Điện lạnh Phong Vân"
 )
 
 type global struct {
