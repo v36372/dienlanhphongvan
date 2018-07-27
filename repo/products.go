@@ -25,6 +25,7 @@ type IProduct interface {
 	GetByCategory(categoryId, limit, offset int) (products []models.Product, total int, err error)
 	Create(*models.Product) error
 	Update(*models.Product) error
+	Delete(*models.Product) error
 }
 
 func (p product) Create(product *models.Product) error {
@@ -33,6 +34,10 @@ func (p product) Create(product *models.Product) error {
 
 func (p product) Update(product *models.Product) error {
 	return p.save(product)
+}
+
+func (p product) Delete(product *models.Product) error {
+	return p.delete(product)
 }
 
 func (product) GetBySlug(slug string) (*models.Product, error) {

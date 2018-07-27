@@ -71,3 +71,7 @@ func MoveFile(srcFilepath, dstFilepath string) error {
 	}
 	return os.Rename(srcFilepath, dstFilepath)
 }
+
+func RemoveFile(srcFilepath string) error {
+	return os.Remove(srcFilepath)
+}

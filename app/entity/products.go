@@ -19,6 +19,7 @@ type Product interface {
 	GetByCategorySlug(categorySlug string) (products []models.Product, categoryName string, err error)
 	Create(product models.Product, imgx Image) (err error)
 	Update(product models.Product, imgx Image) (err error)
+	Delete(product models.Product, imgx Image) (err error)
 }
 
 func NewProduct() Product {
@@ -135,6 +136,30 @@ func (productEntity) Update(product models.Product, imgx Image) (err error) {
 	product.Image05 = originalImages[4]
 
 	err = repo.Product.Update(&product)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	return
+}
+
+func (productEntity) Delete(product models.Product, imgx Image) (err error) {
+	err = imgx.Delete(
+		[]string{
+			product.Image01,
+			product.Image02,
+			product.Image03,
+			product.Image04,
+			product.Image05,
+		},
+	)
+	if err != nil {
+		err = uer.InternalError(err)
+		return
+	}
+
+	err = repo.Product.Delete(&product)
 	if err != nil {
 		err = uer.InternalError(err)
 		return

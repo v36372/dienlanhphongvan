@@ -143,6 +143,7 @@ func InitEngine(conf *config.Config) *gin.Engine {
 		GET(dashboardGroup, "/product-list", dashboardHandler.ListProduct)
 		POST(dashboardGroup, "/products", productHandler.Create)
 		POST(dashboardGroup, "/products/:slug", productHandler.Update)
+		POST(dashboardGroup, "/delete-product/:slug", productHandler.Delete)
 		POST(dashboardGroup, "/categories", categoryHandler.Create)
 	}
 

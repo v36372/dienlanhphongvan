@@ -1,24 +1,24 @@
 {{ define "checkout" }}
-	<div class="ckeckout">
-		<div class="container">
-			<div class="ckeck-top heading">
-				<h2>Danh sách sản phẩm</h2>
-			</div>
-			<div class="ckeckout-top">
+<div class="ckeckout">
+	<div class="container">
+		<div class="ckeck-top heading">
+			<h2>Danh sách sản phẩm</h2>
+		</div>
+		<div class="ckeckout-top">
 			<div class="cart-items">
-			<div class="in-check" >
-				<ul class="unit">
-					<li><span>Hàng</span></li>
-					<li><span>Tên </span></li>		
-					<li><span>Giá</span></li>
-					<li><span>Loại</span></li>
-					<li><span>Tình trạng</span></li>
-					<li> </li>
-					<div class="clearfix"> </div>
-				</ul>
-				{{ range $index, $product := $.Products  }}
-				<ul class="cart-header">
-					<li class="ring-in"><a href="{{ $product.Url }}" ><img src="{{ $product.Thumbnail }}" class="img-responsive" alt="" style="max-width:50%;"></a>
+				<div class="in-check" >
+					<ul class="unit">
+						<li><span>Hàng</span></li>
+						<li><span>Tên </span></li>		
+						<li><span>Giá</span></li>
+						<li><span>Loại</span></li>
+						<li><span>Tình trạng</span></li>
+						<li> </li>
+						<div class="clearfix"> </div>
+					</ul>
+					{{ range $index, $product := $.Products  }}
+					<ul class="cart-header">
+						<li class="ring-in"><a href="{{ $product.Url }}" ><img src="{{ $product.Thumbnail }}" class="img-responsive" alt="" style="max-width:50%;"></a>
 						</li>
 						<li><span class="name">{{ $product.Name }}</span></li>
 						<li><span class="cost">{{ $product.Price }}</span></li>
@@ -29,13 +29,20 @@
 						<li><span class="cost">Hết hàng</span></li>
 						{{ end }}
 
-						<li class="action"><a href="/dashboard/update-product/{{ $product.Slug }}">Cập nhật</a></li>
-					<div class="clearfix"> </div>
-				</ul>
-				{{ end }}
-			</div>
+						<li class="action">
+							<a href="/dashboard/update-product/{{ $product.Slug }}">Cập nhật</a>
+							<form action="/dashboard/delete-product/{{ $product.Slug }}" method="post" onSubmit="return confirm('Bạn có chắc chắn xóa sản phẩm {{ $product.Name }} không?')">
+								<div class="submit-btn">
+									<input type="submit" value="Xóa">
+								</div>
+							</form>
+						</li>
+						<div class="clearfix"> </div>
+					</ul>
+					{{ end }}
+				</div>
 			</div>  
-		 </div>
 		</div>
 	</div>
+</div>
 {{ end }}

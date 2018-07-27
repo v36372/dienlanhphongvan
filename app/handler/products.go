@@ -140,3 +140,30 @@ func (h productHandler) Update(c *gin.Context) {
 
 	c.Redirect(302, "/dashboard/product-list")
 }
+
+func (h productHandler) Delete(c *gin.Context) {
+	admin := middleware.Auth.GetCurrentUser(c)
+	if admin == nil {
+		uer.HandleUnauthorized(c)
+		return
+	}
+
+	productSlug := params.NewGetProductSlugParam(c)
+	product, err := h.productEntity.GetBySlug(productSlug)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	if product == nil {
+		uer.HandleNotFound(c)
+		return
+	}
+	err = h.productEntity.Delete(*product, h.imageEntity)
+	if err != nil {
+		uer.HandleErrorGin(err, c)
+		return
+	}
+
+	c.Redirect(302, "/dashboard/product-list")
+}

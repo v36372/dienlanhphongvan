@@ -33,6 +33,7 @@ type Image interface {
 	Move(fromName model.UploadFilename, toName model.Filename) error
 	MoveImagesOfProduct(images []string) ([]string, error)
 	GetCached(name model.Filename) (string, error)
+	Delete(images []string) error
 }
 
 const (
@@ -111,6 +112,35 @@ func (i imageEntity) GetCached(name model.Filename) (string, error) {
 
 func isOldImage(image string) bool {
 	return strings.HasPrefix(image, cachedImagePrefix)
+}
+
+func (i imageEntity) Delete(images []string) error {
+	for _, image := range images {
+		if len(image) == 0 {
+			continue
+		}
+		fromName, err := model.ParseUploadFilename(image)
+		if err != nil {
+			return uer.InternalError(err)
+		}
+		originImage := path.Join(i.OriginalDir, fromName.Path())
+		cachedImage := path.Join(i.CachedDir, fromName.Path())
+
+		if !file.ExistFile(originImage) {
+			continue
+		}
+		if err := file.RemoveFile(originImage); err != nil {
+			return uer.InternalError(err)
+		}
+		if !file.ExistFile(cachedImage) {
+			continue
+		}
+		if err := file.RemoveFile(cachedImage); err != nil {
+			return uer.InternalError(err)
+		}
+	}
+
+	return nil
 }
 
 func (i imageEntity) MoveImagesOfProduct(images []string) (oimages []string, err error) {
